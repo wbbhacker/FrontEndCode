@@ -55,19 +55,35 @@
 
 
 // *** 五 ***
-var a = 10;
+// var a = 10;
 
-function test(){
-	a = 100;
-	b = 10;
+// function test(){
+// 	a = 100;
+// 	b = 10;
 
-	console.log(this);
-	console.log(a);
-	console.log(this.a);
-	var a;
-	console.log(a)
-}
-test();
+// 	console.log(this);
+// 	console.log(a);
+// 	console.log(this.a);
+// 	var a;
+// 	console.log(a)
+// }
+// test();
+
+
+// *** 六 ***
+var name = "The window";
+var object = {
+	name:"My Object",
+	getNameFunc:function(){
+		var a = 1;
+		return function(){
+			console.log(a)
+			return this.name;
+		};
+	}
+};
+console.log(this.name);
+console.log(object.getNameFunc()());
 
 
 
