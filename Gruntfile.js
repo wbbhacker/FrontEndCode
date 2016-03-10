@@ -1,17 +1,20 @@
-module.exports = function(grunt){
-	grunt.initConfig({
-		pkg:grunt.file.readJSON('package.json'),
-		watch:{
-			Questions:{
-				files:'Questions/*'
-			}
-		}
-	})
+module.exports = function(grunt) {
 
-	// 加载任务插件
+  // Project configuration.
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    watch:{
+    	Questions:{
+    		files:'Questions/*.*'
+    	}
+    }
+ 
+  });
 
-	grunt.loadNpmTasks('grunt-contrib-watch');
+  // 加载包含 "uglify" 任务的插件。
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default',['watch']);
+  // 默认被执行的任务列表。
+  grunt.registerTask('default', ['watch']);
 
-}
+};
