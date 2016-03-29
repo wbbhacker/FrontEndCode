@@ -71,21 +71,32 @@
 
 
 // *** 六 ***
-var name = "The window";
-var object = {
-	name:"My Object",
-	getNameFunc:function(){
-		var a = 1;
-		return function(){
-			console.log(a)
-			return this.name;
-		};
-	}
-};
-console.log(this.name);
-console.log(object.getNameFunc()());
+// var name = "The window";
+// var object = {
+// 	name:"My Object",
+// 	getNameFunc:function(){
+// 		var a = 1;
+// 		return function(){
+// 			console.log(a)
+// 			return this.name;
+// 		};
+// 	}
+// };
+// console.log(this.name);
+// console.log(object.getNameFunc()());
 
+// *** 七 ***
+var a = "a";
+function say(word) {
+  console.log(a);
+}
 
+function execute(someFunction, value) {
+	var  a = "b";
+    someFunction(a);
+}
+
+execute(say, "Hello");
 
 
 
