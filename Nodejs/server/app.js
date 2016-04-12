@@ -13,6 +13,7 @@ var server = http.createServer(function(request,response){
 
 	var pathname = url.parse(request.url).pathname;
 
+	// 为了不让用户在浏览器端通过请求/app.js查看到我们的代码,我们设定用户只能请求assets目录下的文件.
 	var realPath = "assets" + pathname;
 
 
