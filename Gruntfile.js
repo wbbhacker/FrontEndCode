@@ -1,5 +1,20 @@
 module.exports = function(grunt) {
+    var lrPort = 35729;
+    var lrSnippet = require('connect-livereload')({port:lrPort});
 
+ var lrMiddleware = function(connect, options) {
+    // console.log(connect.static)
+    // console.log(options.base[0])
+    console.log(connect)
+    return [
+      // 把脚本，注入到静态文件中
+      lrSnippet,
+      // 静态文件服务器的路径
+      connect.static(options.base[0]),
+      // 启用目录浏览(相当于IIS中的目录浏览)
+      connect.directory(options.base[0])
+    ];
+  };
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -8,7 +23,7 @@ module.exports = function(grunt) {
     	Questions:{
     		files:'javascript/ajax/*.*',
             options: {
-              livereload: 35729
+              livereload: lrPort
             }
     	}
     },
@@ -17,7 +32,7 @@ module.exports = function(grunt) {
         server: {
             port:8000,
             options: {
-              livereload: 35729
+                middleware:lrMiddleware
             }
         }
     }
