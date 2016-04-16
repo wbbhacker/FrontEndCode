@@ -4,17 +4,7 @@ var querystring = require("querystring");
 function start(response){
 	
 	console.log("Request handler 'start' was called.");
-	// var content = "empty";
 
-	// function sleep(millSeconds){
-	// 	var startTime = new Date().getTime();
-	// 	while ( new Date().getTime() < startTime + millSeconds );
-	// }
-	// sleep(10000)
-
-	// exec("ls -lah",function(error,stdout,stderr){
-	// 	content = stdout;
-	// })
 	var body = '<html>'+
 	    '<head>'+
 	    '<meta http-equiv="Content-Type" content="text/html; '+
@@ -32,9 +22,6 @@ function start(response){
 	response.write(body);
 
 	response.end();
-
-	// console.log("this")
-	// return content;
 
 }
 

@@ -10,7 +10,6 @@ function route(handle,pathname,response,postData){
 		response.write("404 Not found");
 		response.end();
 
-		// return "404 Not found";
 	}
 
 }

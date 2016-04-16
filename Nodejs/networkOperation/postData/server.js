@@ -21,12 +21,6 @@ function start(route,handle){
 		request.addListener("end",function(){
 			route(handle,pathname,response,postDate);
 		})
-
-		// response.writeHead(200,{"Content-Type":"text/plain"});
-		// var content = route(handle,pathname,response);
-		// console.log(content)
-		// response.write(content); 
-		// response.end();
 		
 	}
 
