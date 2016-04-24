@@ -1014,4 +1014,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>ajax</title></head><body><article class="markdown-body"><h1 id="ajax"><a name="user-content-ajax" href="#ajax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Ajax</h1></article></body></html>
+</style><title>Basics</title></head><body><article class="markdown-body"><h1 id="js"><a name="user-content-js" href="#js" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>js 常用函数</h1>
+<div class="toc">
+<ul>
+<li><a href="#js">js 常用函数</a><ul>
+<li><a href="#sprintf">字符串模板替换  sprintf</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 id="sprintf"><a name="user-content-sprintf" href="#sprintf" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>字符串模板替换  sprintf</h3>
+<pre><code>    var sprintf = function (str) {
+        var args = arguments,
+            flag = true,
+            i = 1;
+
+        str = str.replace(/%s/g, function () {
+            var arg = args[i++];
+
+            if (typeof arg === 'undefined') {
+                flag = false;
+                return '';
+            }
+            return arg;
+        });
+        return flag ? str : '';
+    };
+
+</code></pre></article></body></html>

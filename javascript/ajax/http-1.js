@@ -1,4 +1,5 @@
 var PORT = 3000;
+var webRootFile = 'web-1';
 
 var http = require('http');
 var url=require('url');
@@ -10,13 +11,10 @@ var server = http.createServer(function (request, response) {
 
     var pathname = url.parse(request.url).pathname;
 
-    var realPath = path.join("assets", pathname);
+    var realPath = path.join(webRootFile, pathname);
     console.log(realPath);
     var ext = path.extname(realPath);
     ext = ext ? ext.slice(1) : 'unknown';1
-
-    
-
     fs.exists(realPath, function (exists) {
         if (!exists) {
             response.writeHead(404, {
