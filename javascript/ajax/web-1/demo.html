@@ -10,28 +10,43 @@
 	<!-- jsonp解决跨域 -->
 	<div class="box"></div>
 	<script src="lib/jquery-1.10.1.min.js"></script>
+	<!-- 预先定义好的callback函数 -->
+	// <script>
+	// 	var callback = function(data){
+	// 		console.log(data.name)
+	// 	}
+	// </script>
 	<script>
-		var url = 'http://192.168.1.93:4000';
-		$.ajax({
-			url:url,
-			type:'GET',
-			dataType:'jsop',
-			jsonp:'callback',
-			success:function(res){
-				console.log(res)
-			}
-		});
 
-		// $.getJSON(url,
-		// 	function(res){
-		// 		console.log(res)
-		// 	})
+		// cors 解决跨域
+		// var url = 'http://192.168.1.93:4000';
 		// $.ajax({
 		// 	url:url,
 		// 	success:function(res){
-		// 		console.log(res)
+		// 		console.log(res.name)
 		// 	}
 		// })
+
+
+		// jsonp 解决跨域
+		// var url = 'http://192.168.1.93:4000?callback=?';
+		// $.ajax({
+		// 	url:url,
+		// 	type:'GET',
+		// 	dataType:'jsonp',
+		// 	jsonp:'callback',
+		// 	success:function(res){
+		// 		console.log(res)
+		// 	}
+		// });
+		
+
+		// 插入script
+
 	</script>
+	<!-- 通过插入script 来解决跨域 -->
+	<!--
+	<script src="http://192.168.1.93:4000?callback=callback"></script>
+	-->
 </body>
 </html>
