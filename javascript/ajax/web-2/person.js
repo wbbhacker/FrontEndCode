@@ -1,10 +1,10 @@
 [
 	{
-		"name":"wang".
+		"name":"wang",
 		"sex":"nan"
 	},
 	{
-		"name":"li".
+		"name":"li",
 		"sex":"nv"
 	}
 
