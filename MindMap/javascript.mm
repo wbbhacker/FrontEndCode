@@ -5,7 +5,7 @@
 <node CREATED="1461484110166" ID="ID_752193307" MODIFIED="1461598606002" TEXT="Object">
 <node CREATED="1461484137336" ID="ID_800098196" MODIFIED="1461598606002" TEXT="hasOwnProperty()"/>
 </node>
-<node CREATED="1461042936565" FOLDED="true" ID="ID_1512718557" LINK="http://www.w3school.com.cn/jsref/jsref_obj_array.asp" MODIFIED="1461598606002" STYLE="fork" TEXT="Array">
+<node CREATED="1461042936565" FOLDED="true" ID="ID_1512718557" LINK="http://www.w3school.com.cn/jsref/jsref_obj_array.asp" MODIFIED="1461736098352" STYLE="fork" TEXT="Array">
 <node CREATED="1461043071085" ID="ID_917244862" MODIFIED="1461596486987" STYLE="fork" TEXT="unshift()">
 <icon BUILTIN="full-1"/>
 </node>
@@ -46,7 +46,7 @@
 <icon BUILTIN="full-0"/>
 </node>
 </node>
-<node CREATED="1461048513501" FOLDED="true" ID="ID_1029404775" LINK="http://www.w3school.com.cn/jsref/jsref_obj_boolean.asp" MODIFIED="1461598606002" STYLE="fork" TEXT="Boolean">
+<node CREATED="1461048513501" FOLDED="true" ID="ID_1029404775" LINK="http://www.w3school.com.cn/jsref/jsref_obj_boolean.asp" MODIFIED="1461736099807" STYLE="fork" TEXT="Boolean">
 <node CREATED="1461049044620" ID="ID_599553485" MODIFIED="1461130694480" STYLE="fork" TEXT="toString()">
 <icon BUILTIN="full-0"/>
 </node>
@@ -57,7 +57,7 @@
 <icon BUILTIN="full-0"/>
 </node>
 </node>
-<node CREATED="1461049117049" FOLDED="true" ID="ID_1600121535" LINK="http://www.w3school.com.cn/jsref/jsref_obj_date.asp" MODIFIED="1461598606002" STYLE="fork" TEXT="Date">
+<node CREATED="1461049117049" FOLDED="true" ID="ID_1600121535" LINK="http://www.w3school.com.cn/jsref/jsref_obj_date.asp" MODIFIED="1461736100897" STYLE="fork" TEXT="Date">
 <node CREATED="1461049532901" ID="ID_1352948657" MODIFIED="1461130694480" STYLE="fork" TEXT="Date()">
 <icon BUILTIN="full-1"/>
 </node>
@@ -162,7 +162,7 @@
 <icon BUILTIN="full-0"/>
 </node>
 </node>
-<node CREATED="1461254273933" FOLDED="true" ID="ID_1401861441" LINK="http://www.w3school.com.cn/jsref/jsref_obj_math.asp" MODIFIED="1461598606003" TEXT="Math">
+<node CREATED="1461254273933" FOLDED="true" ID="ID_1401861441" LINK="http://www.w3school.com.cn/jsref/jsref_obj_math.asp" MODIFIED="1461736101856" TEXT="Math">
 <node CREATED="1461595193524" ID="ID_521393445" MODIFIED="1461595652797" TEXT="abs(x)">
 <icon BUILTIN="full-1"/>
 </node>
@@ -420,5 +420,6 @@
 <node CREATED="1461574935720" ID="ID_107933393" MODIFIED="1461574938846" TEXT="SSE"/>
 <node CREATED="1461574942573" ID="ID_1111149732" MODIFIED="1461574951871" TEXT="websocket"/>
 </node>
+<node CREATED="1461736110431" ID="ID_1471995327" MODIFIED="1461736118932" POSITION="left" TEXT="escape()"/>
 </node>
 </map>
