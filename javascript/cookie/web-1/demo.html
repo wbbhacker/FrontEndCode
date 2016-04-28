@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<button class="ajax">点击</button>
+	<button class="getCookie">获取cookie值</button>
+	<script src="lib/jquery-1.10.1.min.js"></script>
+
+	<script>
+
+		document.cookie = 'sex=nan';
+
+		$(".ajax").click(function(){
+			var url = 'http://10.0.0.95:4000?callback=?';
+			$.ajax({
+				url:url,
+				type:'GET',
+				dataType:'jsonp',
+				jsonp:'callback',
+				success:function(res){
+					
+				}
+			});
+		})
+
+		$(".getCookie").click(function(){
+			var gck = document.cookie;
+			console.log(gck)
+		})
+
+
+		// jsonp 解决跨域
+
+
+	
+		
+
+	</script>
+</body>
+</html>
