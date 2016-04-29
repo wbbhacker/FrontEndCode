@@ -6,14 +6,14 @@ require.config({
 });
 
 // Start the main app logic.
-require(['a', 'app/sub'],
+require(['app/sub'],
 
-function (underscore, sub) {
+function (person) {
+	var instance = new person();
+	// var instanceMan = new superMan();
+	console.log(instance.xMan);
 
-    console.log(underscore)
-    //jQuery, canvas and the app/sub module are all
-    //loaded and can be used here now.
-    // console.log($('div'))
+
 
 
 });
