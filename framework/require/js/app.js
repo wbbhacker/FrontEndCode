@@ -1,4 +1,4 @@
-requirejs.config({
+require.config({
     baseUrl: 'js/lib',
     paths: {
         app: '../app'
@@ -6,11 +6,14 @@ requirejs.config({
 });
 
 // Start the main app logic.
-requirejs(['jquery', 'Underscore', 'app/sub'],
-function   ($, _, sub) {
+require(['a', 'app/sub'],
 
-    console.log(_)
+function (underscore, sub) {
+
+    console.log(underscore)
     //jQuery, canvas and the app/sub module are all
     //loaded and can be used here now.
     // console.log($('div'))
+
+
 });

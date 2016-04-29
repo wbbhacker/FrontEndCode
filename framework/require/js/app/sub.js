@@ -1,1 +1,3 @@
-defined()
+define(function(){
+	console.log("this")
+});
