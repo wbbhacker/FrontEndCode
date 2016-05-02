@@ -12,11 +12,8 @@ require.config({
 require(['app/sub'],
 
 function (person) {
+	
 	var instance = new person();
-	// var instanceMan = new superMan();
 	console.log(instance.xMan);
-
-
-
 
 });
