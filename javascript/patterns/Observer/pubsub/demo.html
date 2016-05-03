@@ -6,7 +6,7 @@
 </head>
 <body>
 	
-	<button>发布</button>
+	<button id="btn">发布</button>
 	
 
 	<div class="container">
@@ -15,11 +15,27 @@
 
 	<script src="../../require-2.1.11.js"></script>
 	<script>
+
 		require(['pubsub'],function(pubsub){
 
-			console.log(pubsub.name)
-			
+			var first = pubsub.subscribe('speak',function(data){
+				console.log('我是第一个:',data);
+			});
+
+			var two = pubsub.subscribe('speak',function(data){
+				console.log('我是第二个',data);
+			});
+
+			var btn = document.getElementById('btn');
+
+			btn.addEventListener('click',function(){
+				pubsub.publish('speak','hello world')
+			});
+
+
+			// pubsub.unsubscribe(two);
 		})
+		
 	</script>
 </body>
 </html>
