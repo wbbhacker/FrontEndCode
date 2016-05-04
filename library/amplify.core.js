@@ -18,6 +18,8 @@ var amplify = global.amplify = {
 			throw new Error( "You must provide a valid topic to publish." );
 		}
 
+		// arguments 不是真正的数组
+
 		var args = slice.call( arguments, 1 ),
 			topicSubscriptions,
 			subscription,
@@ -32,6 +34,8 @@ var amplify = global.amplify = {
 		topicSubscriptions = subscriptions[ topic ].slice();
 		for ( length = topicSubscriptions.length; i < length; i++ ) {
 			subscription = topicSubscriptions[ i ];
+
+			// 防止this 发生变化
 			ret = subscription.callback.apply( subscription.context, args );
 			if ( ret === false ) {
 				break;
@@ -111,7 +115,7 @@ var amplify = global.amplify = {
 			if ( subscriptions[ topic ][ i ].callback === callback ) {
 				if ( !context || subscriptions[ topic ][ i ].context === context ) {
 					subscriptions[ topic ].splice( i, 1 );
-					
+					// 因为删除了一个元素，所以要调整i和length的长度
 					// Adjust counter and length for removed item
 					i--;
 					length--;
