@@ -11,11 +11,11 @@
 	<div class="box"></div>
 	<script src="lib/jquery-1.10.1.min.js"></script>
 	<!-- 预先定义好的callback函数 -->
-	// <script>
+	<!-- <script>
 	// 	var callback = function(data){
 	// 		console.log(data.name)
 	// 	}
-	// </script>
+	</script>-->
 	<script>
 
 		// cors 解决跨域
@@ -29,16 +29,15 @@
 
 
 		// jsonp 解决跨域
-		// var url = 'http://192.168.1.93:4000?callback=?';
-		// $.ajax({
-		// 	url:url,
-		// 	type:'GET',
-		// 	dataType:'jsonp',
-		// 	jsonp:'callback',
-		// 	success:function(res){
-		// 		console.log(res)
-		// 	}
-		// });
+		var url = 'http://10.0.0.92:4000?callback=?';
+		$.ajax({
+			url:url,
+			type:'GET',
+			dataType:'jsonp',
+			success:function(res){
+				console.log(typeof res)
+			}
+		});
 		
 
 		// 插入script

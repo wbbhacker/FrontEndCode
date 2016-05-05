@@ -4,7 +4,9 @@ var http = require('http');
 var url=require('url');
 var fs=require('fs');
 var path=require('path');
-var querystring=require('querystring')
+var querystring=require('querystring');
+
+
 var data = {'name':'wbb','sex':'man'};
 
 
@@ -27,6 +29,9 @@ var server = http.createServer(function (request, response) {
 
     // jsonp 解决跨域问题
     var str =  qs.callback+'('+JSON.stringify(data)+')';
+
+    console.log(str)
+    
     response.writeHead(200,{'Content-Type':'application/javascript'});
 
     response.write(str)
