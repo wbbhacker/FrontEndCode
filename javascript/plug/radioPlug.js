@@ -43,6 +43,7 @@
 				//  添加事件
 				this.event();
 			},
+
 			handle:function(index,activeClassName){
 
 				var  nowObj = this.tJqAs.eq(index);
@@ -64,6 +65,7 @@
 				//把当前对象赋值给上一个对象
 				setting.prevObj = nowObj;
 			},
+			
 			event:function(){
 
 				var _slef = this;
