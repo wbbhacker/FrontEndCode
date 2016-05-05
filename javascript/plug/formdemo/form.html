@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="form.css">
+</head>
+<body>
+	<div id="name" class="textInput">
+		<input class="hC" type="hidden" value="">
+		<label for="male">姓名:</label>
+		<span class="vC">小张</span>
+		<input class="iC" type="text" value="">
+	</div>
+	<div id="year" class="textInput">
+		<input class="hC" type="hidden" value="">
+		<label for="male">年龄:</label>
+		<span class="vC">20</span>
+		<input class="iC" type="text" value="">
+	</div>
+	<div id="hobby" class="textInput">
+		<input class="hC" type="hidden" value="">
+		<label for="male">爱好:</label>
+		<span class="vC">电竞</span>
+		<input class="iC" type="text" value="">
+	</div>
+	<br>
+	<br>
+	<button class="edit">编辑</button>
+	<button class="unable_edit">禁止编辑</button>
+	<button class="able_edit">启动编辑</button>
+	<button class="cancel_edit">取消编辑</button>
+	<button class="confirm_edit">确认编辑</button>
+	
+
+	<script src="jquery-1.10.1.min.js"></script>
+	<script src="textInput.js"></script>
+	<script>
+	var names = textInput({
+		hC:'#name .hC',   //hidden input classname
+		vC:'#name .vC',   //visible value classname
+		iC:'#name .iC',   //edit input classname
+		normalStyle:function(){
+			normalStyle($('#name .iC'),$('#name .vC'))	
+		},
+		editStyle:function(){
+			editStyle($('#name .vC'),$('#name .iC'))
+		},
+		ableStyle:function(){
+			ableStyle($('#name .iC'))
+		},
+		unableStyle:function(){
+			unableStyle($('#name .iC'))
+		}
+	})
+	var year = textInput({
+		hC:'#year .hC',   //hidden input classname
+		vC:'#year .vC',   //visible value classname
+		iC:'#year .iC',   //edit input classname
+		normalStyle:function(){
+			normalStyle($('#year .iC'),$('#year .vC'))	
+		},
+		editStyle:function(){
+			editStyle($('#year .vC'),$('#year .iC'))
+		},
+		ableStyle:function(){
+			ableStyle($('#year .iC'))
+		},
+		unableStyle:function(){
+			unableStyle($('#year .iC'))
+		}
+	})
+
+
+	var hobby = textInput({
+		hC:'#hobby .hC',   //hidden input classname
+		vC:'#hobby .vC',   //visible value classname
+		iC:'#hobby .iC',   //edit input classname
+		normalStyle:function(){
+			normalStyle($('#hobby .iC'),$('#hobby .vC'))	
+		},
+		editStyle:function(){
+			editStyle($('#hobby .vC'),$('#hobby .iC'))
+		},
+		ableStyle:function(){
+			ableStyle($('#hobby .iC'))
+		},
+		unableStyle:function(){
+			unableStyle($('#hobby .iC'))
+		}
+	})
+
+
+	function normalStyle(elem_f,elem_t){
+		elem_f.css('display','none');
+		elem_t.css('display','inline-block');
+	}
+
+	function editStyle(elem_f,elem_t){
+		// console.log("this")
+		elem_f.css('display','none');
+		elem_t.css('display','inline-block');
+	}
+
+	function ableStyle(elem){
+		elem.removeAttr('disabled');
+	}
+
+	function unableStyle(elem){
+		elem.attr('disabled','');
+	}
+
+
+	// names.edit();
+	// year.edit();
+	// hobby.edit();
+
+	
+
+	$('.edit').click(function(){
+		names.edit();
+		year.edit();
+		hobby.edit();
+	})
+
+	$(".unable_edit").click(function(){
+		names.unableEdit();
+	})
+	$('.able_edit').click(function(){
+		names.ableEdit();
+	})
+
+	$('.cancel_edit').click(function(){
+		names.cancelEdit();
+	})
+	$('.confirm_edit').click(function(){
+		names.confirmEdit();
+		console.log(names)
+	})
+
+
+
+	</script>
+</body>
+</html>
