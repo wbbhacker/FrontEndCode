@@ -36,68 +36,38 @@
 	<script src="jquery-1.10.1.min.js"></script>
 	<script src="textInput.js"></script>
 	<script>
-	var names = textInput({
-		hC:'#name .hC',   //hidden input classname
-		vC:'#name .vC',   //visible value classname
-		iC:'#name .iC',   //edit input classname
-		normalStyle:function(){
-			normalStyle($('#name .iC'),$('#name .vC'))	
-		},
-		editStyle:function(){
-			editStyle($('#name .vC'),$('#name .iC'))
-		},
-		ableStyle:function(){
-			ableStyle($('#name .iC'))
-		},
-		unableStyle:function(){
-			unableStyle($('#name .iC'))
-		}
-	})
-	var year = textInput({
-		hC:'#year .hC',   //hidden input classname
-		vC:'#year .vC',   //visible value classname
-		iC:'#year .iC',   //edit input classname
-		normalStyle:function(){
-			normalStyle($('#year .iC'),$('#year .vC'))	
-		},
-		editStyle:function(){
-			editStyle($('#year .vC'),$('#year .iC'))
-		},
-		ableStyle:function(){
-			ableStyle($('#year .iC'))
-		},
-		unableStyle:function(){
-			unableStyle($('#year .iC'))
-		}
-	})
 
+	var textArray = ['name','year','hobby'],
+		textRes = [];
 
-	var hobby = textInput({
-		hC:'#hobby .hC',   //hidden input classname
-		vC:'#hobby .vC',   //visible value classname
-		iC:'#hobby .iC',   //edit input classname
-		normalStyle:function(){
-			normalStyle($('#hobby .iC'),$('#hobby .vC'))	
-		},
-		editStyle:function(){
-			editStyle($('#hobby .vC'),$('#hobby .iC'))
-		},
-		ableStyle:function(){
-			ableStyle($('#hobby .iC'))
-		},
-		unableStyle:function(){
-			unableStyle($('#hobby .iC'))
-		}
-	})
-
-
+	
+	$(textArray).each(function(i,v){
+		var textRe = textInput({
+						hC:'#'+v+' '+'.hC',   //hidden input classname
+						vC:'#'+v+' '+'.vC',   //visible value classname
+						iC:'#'+v+' '+'.iC',   //edit input classname
+						normalStyle:function(){
+							normalStyle($('#'+v+' '+'.iC'),$('#'+v+' '+'.vC'))	
+						},
+						editStyle:function(){
+							editStyle($('#'+v+' '+'.vC'),$('#'+v+' '+'.iC'))
+						},
+						ableStyle:function(){
+							ableStyle($('#'+v+' '+'.iC'))
+						},
+						unableStyle:function(){
+							unableStyle($('#'+v+' '+'.iC'))
+						}
+					});
+		textRes.push(textRe);
+	});
+	
 	function normalStyle(elem_f,elem_t){
 		elem_f.css('display','none');
 		elem_t.css('display','inline-block');
 	}
 
 	function editStyle(elem_f,elem_t){
-		// console.log("this")
 		elem_f.css('display','none');
 		elem_t.css('display','inline-block');
 	}
@@ -110,32 +80,24 @@
 		elem.attr('disabled','');
 	}
 
-
-	// names.edit();
-	// year.edit();
-	// hobby.edit();
-
-	
-
 	$('.edit').click(function(){
-		names.edit();
-		year.edit();
-		hobby.edit();
+		textRes[0].edit();
+		textRes[1].edit();
+		textRes[2].edit();
 	})
 
 	$(".unable_edit").click(function(){
-		names.unableEdit();
+		textRes[0].unableEdit();
 	})
 	$('.able_edit').click(function(){
-		names.ableEdit();
+		textRes[0].ableEdit();
 	})
 
 	$('.cancel_edit').click(function(){
-		names.cancelEdit();
+		textRes[0].cancelEdit();
 	})
 	$('.confirm_edit').click(function(){
-		names.confirmEdit();
-		console.log(names)
+		textRes[0].confirmEdit();
 	})
 
 

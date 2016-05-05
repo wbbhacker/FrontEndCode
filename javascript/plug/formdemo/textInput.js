@@ -18,7 +18,6 @@ function textInput (o){
 		var $hiddenValue = $(o.hC),
 			$visibleValue = $(o.vC),
 			$editingValue = $(o.iC);
-		
 		backObj.value = $visibleValue.text();
 
 		function edit(cb){
