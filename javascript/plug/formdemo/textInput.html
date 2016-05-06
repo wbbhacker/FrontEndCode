@@ -4,6 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="form.css">
+	<style>
+		button{
+			cursor:pointer;
+		}
+
+		div{
+			visibility: visible;
+		}
+	</style>
 </head>
 <body>
 	<div id="name" class="textInput">
@@ -98,6 +107,7 @@
 	})
 	$('.confirm_edit').click(function(){
 		textRes[0].confirmEdit();
+		console.log(textRes[0].value);
 	})
 
 
