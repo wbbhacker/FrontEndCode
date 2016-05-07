@@ -112,7 +112,7 @@
 			<li data-value='7'>类型七</li>
 		</ul>
 	</div>
-<!-- 	<br>
+	<br>
 	<div id="dropDown_2" class="dropDown ">
 		<input type="hidden" value="">
 		<p>
@@ -128,7 +128,7 @@
 			<li data-value='6'>类型六</li>
 			<li data-value='7'>类型七</li>
 		</ul>
-	</div> -->
+	</div>
 	<button class="edit">编辑</button>
 	<button class="cancel_edit">取消编辑</button>
 	<button class="confirm_edit">确认编辑</button>
@@ -137,7 +137,10 @@
 	<script src="jquery-1.10.1.min.js"></script>
 	<script src="dropDown.js"></script>
 	<script>
+
+
 		var dropDown_1 = new dropDown({
+			op:'#dropDown_1',
 			hC:'#dropDown_1 input',
 			vC:'#dropDown_1 p span',
 			oC:'#dropDown_1 ul li',
@@ -157,20 +160,28 @@
 				$('#dropDown_1 i').removeClass('bottom');
 			}
 		});
+
+
+		// console.log(dropDown_1)
 		$('.edit').click(function(){
 			dropDown_1.edit();
+			console.log(dropDown_1.value);
 		});
 		$('.cancel_edit').click(function(){
 			dropDown_1.cancelEdit();
+			console.log(dropDown_1.value);
 		});
 		$('.confirm_edit').click(function(){
 			dropDown_1.confirmEdit();	
+			console.log(dropDown_1.value);
 		});
 		$('.open').click(function(){
 			dropDown_1.open();
+			console.log(dropDown_1.value);
 		});
 		$('.close').click(function(){
 			dropDown_1.close();
+			console.log(dropDown_1.value);
 		});
 	</script>
 </body>
