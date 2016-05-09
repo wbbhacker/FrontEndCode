@@ -29,16 +29,25 @@
 
 
 		// jsonp 解决跨域
-		var url = 'http://10.0.0.92:4000?callback=?';
-		$.ajax({
-			url:url,
-			type:'GET',
-			dataType:'jsonp',
-			success:function(res){
-				console.log(typeof res)
-			}
-		});
-		
+			// GET方式
+		// var url = 'http://10.0.0.92:4000?callback=?';
+		// $.ajax({
+		// 	url:url,
+		// 	type:'GET',
+		// 	dataType:'jsonp',
+		// 	success:function(res){
+		// 		console.log(typeof res)
+		// 	}
+		// });
+
+		// 图像Ping  
+			// 单向通信、GET方式、最常用于跟踪用户点击页面或动态广告曝光次数
+		var url = 'http://10.0.0.92:4000?name=wbb';
+		var img = new Image();
+		img.onload = img.onerror = function(){
+			console.log("this")
+		}
+		img.src = url;
 
 		// 插入script
 

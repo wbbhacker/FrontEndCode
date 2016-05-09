@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		button{
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+
+
+	<div class="box">
+		<p>姓名: <span class="name"></span></p>
+		<p>性别: <span class="sex"></span></p>
+	</div>
+	<button class="getData">获取数据</button>
+	<script src="lib/jquery-1.10.1.min.js"></script>
+
+	<script>
+
+
+	$('.getData').click(function(){
+		// cors 解决跨域
+		var url = 'http://10.0.0.92:4000';
+		$.ajax({
+			url:url,
+			success:function(res){
+				$('.name').text(res.name);
+				$('.sex').text(res.sex);
+
+			}
+		})
+
+	})
+
+	
+	</script>
+</body>
+</html>

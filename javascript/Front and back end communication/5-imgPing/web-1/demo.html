@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<!-- jsonp解决跨域 -->
+	<div class="box"></div>
+	<script src="lib/jquery-1.10.1.min.js"></script>
+	<script>
+		// 图像Ping  
+			// 单向通信、GET方式、最常用于跟踪用户点击页面或动态广告曝光次数
+		var url = 'http://10.0.0.92:4000?name=wbb';
+		var img = new Image();
+		img.onload = img.onerror = function(){
+			console.log("this")
+		}
+		img.src = url;
+
+	</script>
+</body>
+</html>

@@ -17,17 +17,12 @@ var server = http.createServer(function (request, response) {
     var json = JSON.stringify(data);
 
 
-    // cors 解决ajax跨域问题
-
- 
-    // response.writeHead(200,{"Content-Type":'application/json','charset':'utf-8','Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'PUT,POST,GET,DELETE,OPTIONS'});//可以解决跨域的请求
-    // response.write(json)
-    // response.end();
 
 
+    
 
-
-    // jsonp 解决跨域问题
+    // script 解决跨域问题
+    
     var str =  qs.callback+'('+JSON.stringify(data)+')';
 
     console.log(str)
