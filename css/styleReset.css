@@ -1,3 +1,13 @@
+	/*视情况而定*/
+/*
+*{
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*/
+
+
 body,p,ul,li,h1,h2,h3,h4,h5,h6{
 	margin:0px;
 	padding:0px;
@@ -11,4 +21,9 @@ img{
 }
 ul,li{
 	list-style: none;
+}
+button,button:active{
+	border:none;
+	background:none;
+	outline:none;
 }
