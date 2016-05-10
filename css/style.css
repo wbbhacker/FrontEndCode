@@ -1,0 +1,11 @@
+
+/*1.三角型*/
+
+i.triangle{
+	position: relative;
+	display: inline-block;
+	width: 0px;
+	height: 0px;
+    border:6px solid transparent;
+    border-left:6px solid #000;
+}

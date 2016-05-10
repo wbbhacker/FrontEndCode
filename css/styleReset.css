@@ -1,7 +1,14 @@
-a{
+body,p,ul,li,h1,h2,h3,h4,h5,h6{
+	margin:0px;
+	padding:0px;
+}
+a:link,a:visited,a:hover,a:active{
 	text-decoration:none;
 }
 img{
 	display: block;
 	border:none;
+}
+ul,li{
+	list-style: none;
 }
