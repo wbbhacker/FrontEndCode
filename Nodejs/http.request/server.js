@@ -8,7 +8,7 @@ var url = require('url');
 var server = http.createServer(function(req,res){
 
 	var pathname = url.parse(req.url).pathname;
-
+	
 	res.end('kaishi')
 	
 }).listen(8000)
