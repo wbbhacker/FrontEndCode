@@ -16,29 +16,25 @@
 // //gulp.src(globs[, options]) 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组) 
 // //gulp.dest(path[, options]) 处理完后文件生成路径
 
+// gulpfile.js 
 var gulp = require('gulp');
-var server = require('gulp-express');
+  var gls = require('gulp-live-server');
+  gulp.task('server', function() {
+  //1. serve with default settings 
+  var server = gls.static('views'); //equals to gls.static('public', 3000); 
+  server.start();
  
-gulp.task('server', function () {
-    // Start the server at the beginning of the task 
-    server.run(['app.js']);
- 	// server.stop();
-    // Restart the server when file changes 
-    gulp.watch(['views/*.html'], server.notify);
-
-    gulp.watch(['views/*.html'],server.run);
-    gulp.watch(['app/styles/**/*.scss'], ['styles:scss']);
-    //gulp.watch(['{.tmp,app}/styles/**/*.css'], ['styles:css', server.notify]); 
-    //Event object won't pass down to gulp.watch's callback if there's more than one of them. 
-    //So the correct way to use server.notify is as following: 
-    gulp.watch(['{.tmp,app}/styles/**/*.css'], function(event){
-        gulp.run('styles:css');
-        server.notify(event);
-        //pipe support is added for server.notify since v0.1.5, 
-        //see https://github.com/gimm/gulp-express#servernotifyevent 
-    });
+  //2. serve at custom port 
+  // var server = gls.static('dist', 8888);
+  // server.start();
  
-    gulp.watch(['app/scripts/**/*.js'], ['jshint']);
-    gulp.watch(['app/images/**/*'], server.notify);
-    gulp.watch(['app.js', 'routes/**/*.js'], [server.run]);
+  //3. serve multi folders 
+  // var server = gls.static(['dist', '.tmp']);
+  // server.start();
+ 
+  //use gulp.watch to trigger server actions(notify, start or stop) 
+  gulp.watch(['views/*.html'], function (file) {
+    console.log("this")
+    server.notify.apply(server, [file]);
+  });
 });
