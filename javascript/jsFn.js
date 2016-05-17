@@ -20,6 +20,9 @@ var sprintf = function (str) {
 
 
 
+
+
+
 // 判断数组的方法
 
 var ObjProto = Object.prototype;
