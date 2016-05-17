@@ -152,12 +152,15 @@
 				$('#dropDown_1').removeClass('dropDown_s');
 			},
 			openStyle:function(){
-				$('#dropDown_1').addClass('dropDown_show');
+				$('#dropDown_1').addClass('dropDown_show').css('z-index','10000');
 				$('#dropDown_1 i').addClass('bottom');
 			},
 			closeStyle:function(){	
-				$('#dropDown_1').removeClass('dropDown_show');
+				$('#dropDown_1').removeClass('dropDown_show').css('z-index','0');
 				$('#dropDown_1 i').removeClass('bottom');
+			},
+			callback:function(res){
+				console.log(res)
 			}
 		});
 
