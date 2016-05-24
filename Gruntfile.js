@@ -15,15 +15,8 @@ module.exports = function(grunt) {
       connect.directory(options.base[0])
     ];
   };
-
-
-
-
-
-
-
-
   
+
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
