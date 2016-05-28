@@ -22,7 +22,4 @@
     "grunt-contrib-watch": "^0.6.1",
     "gulp": "^3.9.1"
   }
-
-
-  
 }
