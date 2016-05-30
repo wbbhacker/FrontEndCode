@@ -7,7 +7,7 @@ http.createServer(function(req, res) {
 
 console.log( 'server start at port 8124 ')
  
-var filepath = 'E:/myGit/FrontEndCode/javascript/Front and back end communication/6-comet/long polling/a.txt';
+var filepath = 'E:/Git/FrontEndCode/javascript/Front and back end communication/6-comet/long polling/a.txt';
  
 function checkFile(req, res) {
     var reqUrl = req.url;
