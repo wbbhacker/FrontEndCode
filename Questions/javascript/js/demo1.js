@@ -5,14 +5,16 @@
 // 	function b(){
 // 		n++;
 // 		console.log(n)
+// 		console.log('1')
 // 	}
 // 	b();
-
+// 	console.log('2')
 // 	return b;
 // }
 // var c = a();
 // c();
 // console.log(n);
+
 
 
 // *** 二 ***
@@ -78,6 +80,7 @@
 // 		var a = 1;
 // 		return function(){
 // 			console.log(a)
+// 			console.log(this)
 // 			return this.name;
 // 		};
 // 	}
@@ -86,28 +89,65 @@
 // console.log(object.getNameFunc()());
 
 // *** 七 ***
-var a = "a";
-function say(word) {
-  console.log(a);
-}
+// var a = "a";
+// function say(word) {
+//   console.log(a);
+// }
 
-function execute(someFunction, value) {
-	var  a = "b";
-    someFunction(a);
-}
+// function execute(someFunction, value) {
+// 	var  a = "b";
+//     someFunction(a);
+// }
 
-execute(say, "Hello");
-
-
+// execute(say, "Hello");
 
 
+// ***八***
+
+// var a = 1;
+
+// function demo(){
+// 	console.log(a)
+// }
+// function test(conf){
+// 	var a = 2;
+// 	conf();
+// }
+// test(demo);
+// 见 一、二
 
 
+// ***九***
+// 请写出下面代码段结果
+// function fun(n,o){
 
+// 	console.log(o);
 
+// 	return {
+// 		fun:function(m){
+// 			return fun(m,n);
+// 		}
+// 	};
+// };
+// var a = fun(0); a.fun(1); a.fun(2); a.fun(3); 
+// var b = fun(0).fun(1).fun(2).fun(3);
+// var c = fun(0).fun(1); c.fun(2); c.fun(3);
 
+// ***十***
+// 非严格模式下执行以下代码段， 请输出最终结果
+// function fn(){
+// 	prop = function (){ console.log(1); };
+// 	return this;
+// }
+// fn.prop = function (){ console.log(2); };
+// fn.prototype.prop = function (){ console.log(3); };
+// var prop = function (){ console.log(4); };
+// function prop() {console.log(5)};
 
-
-
-
+// // 连续代码段， 不是独立的
+// fn.prop();
+// prop();
+// fn().prop();
+// new fn.prop();
+// new fn().prop();
 
