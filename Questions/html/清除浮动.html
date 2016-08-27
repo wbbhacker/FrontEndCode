@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{	margin:0px;	padding:0px; }
+	.parent{
+		position: relative;
+		/*float:left;*/
+		/*overflow: hidden;*/
+		/*overflow: auto*/	
+	}
+
+	.left,.right{
+		float:left;
+		width:100px;
+		height:100px;
+		background-color: #f00;
+	}
+	.right{
+		background-color: #f0f;
+	}
+	.fix-float{
+		
+		clear:both;
+	}
+	</style>
+</head>
+<body>
+
+	<!-- 方法一 -->
+	<!-- 给父元素加上 overflow:hidden/auto -->
+	<div class="parent">
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+
+	<!-- 方法二在内部添加元素 并设置 clear:both; (或者用伪类元素:after)-->
+<!-- 	<div class="parent">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="fix-float">
+			
+		</div>
+	</div> -->
+	<!-- 给父元素也设置float:left -->
+<!-- 	<div class="parent">
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>	 -->
+
+</body>
+</html>
