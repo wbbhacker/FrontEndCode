@@ -133,6 +133,13 @@
 // var b = fun(0).fun(1).fun(2).fun(3);
 // var c = fun(0).fun(1); c.fun(2); c.fun(3);
 
+
+// 闭包的作用：
+// 1.匿名自执行函数
+// 2.延长作用域链
+// 3.封装  实现对象的私有方法，等 （隐藏对象的细节）
+// 4.
+
 // ***十***
 // 非严格模式下执行以下代码段， 请输出最终结果
 // function fn(){
@@ -148,6 +155,27 @@
 // fn.prop();
 // prop();
 // fn().prop();
+// prop();
 // new fn.prop();
 // new fn().prop();
+// new new Foo().getName();
+
+// ***十一***
+// console.log(x);//输出：function x(){}
+// var x=1;
+// function x(){}
+
+// console.log(undefined == null);
+// console.log(undefined === null);
+// console.log(undefined == NaN);
+// console.log(undefined === NaN);
+// console.log( null == NaN );
+// console.log( null === NaN );
+// console.log( undefined == 0)
+// console.log( undefined === 0)
+// console.log( null == 0 )
+// console.log( null === 0 )
+
+// console.log(Number(null))
+
 
