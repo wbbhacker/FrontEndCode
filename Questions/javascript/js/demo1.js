@@ -179,3 +179,30 @@
 // console.log(Number(null))
 
 
+// ***十二***
+function a(){
+	console.log(this)
+	console.log("我是内部");
+	this.name = function(){
+		console.log("我是内部的方法")
+	}();
+
+ 	console.log(this)
+
+	return {
+		b:"c"
+	}
+	// return "c"
+	// 没有return 的情况下返回什么
+
+}
+a.prototype.say = function(){
+	console.log("我是原型链")
+}();
+
+console.log(new a());
+
+// 如果 return "c"
+   // console.log(new a())  打印值为？
+//  如果没有return 
+	// console.log(new a())  打印值为？
