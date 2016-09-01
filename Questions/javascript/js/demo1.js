@@ -236,7 +236,7 @@
 
 
 // ***十四***
-// 下面函数存在的问题？
+下面函数存在的问题？
 function point(x,y){
 	if(!x){
 		x = 320;
@@ -249,8 +249,25 @@ function point(x,y){
 point(0,0)
 console.log(point(0,0))
 
+
+
+
 // ***十五***
 // 说说下面输出的原因
-var s1 = 
+var s1 = new String('hello');
+var s2 = new String('hello');
+
+console.log(s1 === s2)
+console.log(s1)
+console.log(s2)
+
+var s3 = 'hello';
+var s4 = 'hello';
+console.log(s3 === s4)
+console.log(s3)
+console.log(s4)
 
 
+// ***十六***
+// 尾递归 和 递归
+// 二叉树 搞计算器  evel（）
