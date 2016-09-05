@@ -24,12 +24,14 @@
 		// 	GET方式
 		$('.getData').click(function(){
 
-			var url = 'http://10.0.0.92:4000?callback=?';
+			var url = 'http://127.0.0.1:4000?callback=?';
+			
 			$.ajax({
 				url:url,
 				type:'GET',
 				dataType:'jsonp',
 				success:function(res){
+					console.log(res)
 					$(".name").text(res.name)
 					$(".sex").text(res.sex)
 				}
