@@ -15,7 +15,7 @@
 // c();
 // console.log(n);
 
-
+// 词法作用域规则：函数的嵌套关系是定义时决定的，而非调用时决定的，即词法作用域，即嵌套关系是由词法分析时确定的，而运行时决定。
 
 // *** 二 ***
 // var name = 'wang';
@@ -165,24 +165,7 @@
 // var x=1;
 // function x(){}
 
-// console.log(undefined == null);
-// console.log(undefined === null);
-// console.log(undefined == NaN);
-// console.log(undefined === NaN);
-// console.log( null == NaN );
-// console.log( null === NaN );
-// console.log( undefined == 0)
-// console.log( undefined === 0)
-// console.log( null == 0 )
-// console.log( null === 0 )
 
-// console.log(Number(null))
-
-// console.log(var undefined);
-// console.log([] == false );
-// console.log( [] == ![] );
-
-// console.log(2+true)
 
 // ***十二***
 // function a(){
@@ -236,38 +219,146 @@
 
 
 // ***十四***
-下面函数存在的问题？
-function point(x,y){
-	if(!x){
-		x = 320;
-	}
-	if(!y){
-		y = 240;
-	}
-	return {x:x,y:y}
-}
-point(0,0)
-console.log(point(0,0))
+// 下面函数存在的问题？
+// function point(x,y){
+// 	if(!x){
+// 		x = 320;
+// 	}
+// 	if(!y){
+// 		y = 240;
+// 	}
+// 	return {x:x,y:y}
+// }
+// point(0,0)
+// console.log(point(0,0))
 
 
 
 
 // ***十五***
 // 说说下面输出的原因
-var s1 = new String('hello');
-var s2 = new String('hello');
+// var s1 = new String('hello');
+// var s2 = new String('hello');
 
-console.log(s1 === s2)
-console.log(s1)
-console.log(s2)
+// console.log(s1 === s2)
+// console.log(s1)
+// console.log(s2)
 
-var s3 = 'hello';
-var s4 = 'hello';
-console.log(s3 === s4)
-console.log(s3)
-console.log(s4)
+// var s3 = 'hello';
+// var s4 = 'hello';
+// console.log(s3 === s4)
+// console.log(s3)
+// console.log(s4)
 
 
 // ***十六***
 // 尾递归 和 递归
 // 二叉树 搞计算器  evel（）
+
+// ***十七***
+
+// console.log(undefined == null);
+// console.log(undefined === null);
+// console.log(undefined == NaN);
+// console.log(undefined === NaN);
+// console.log( null == NaN );
+// console.log( null === NaN );
+// console.log( undefined == 0)
+// console.log( undefined === 0)
+// console.log( null == 0 )
+// console.log( null === 0 )
+
+// console.log(Number(null))
+
+// console.log(var undefined);
+// console.log([] == false );
+// console.log( [] == ![] );
+
+// console.log(2+true)
+// console.log(!!(0 == false))
+// console.log(!!( 0 == undefined ))
+// console.log(undefined == null )
+// console.log(isNaN("1312") == NaN )
+// console.log(typeof 1 == true ? 1 : 0) 
+// console.log(typeof [] == "array")
+// console.log([] instanceof Array )
+
+// ***十八***
+
+// for(var i=0; i<3; i++ ){
+// 	setTimeout(function(){
+// 		console.log(i);	
+// 	},(function(){
+// 		var b = i*1000;
+// 		console.log(b);
+// 		return b;
+// 	})())
+// }
+
+// ***十九***
+
+// function Person(){
+
+// }
+// Person.prototype = {
+// 	name:"N"
+// }
+// var friend = new Person();
+// console.log(friend instanceof Object )
+// console.log(friend instanceof Person )
+// console.log(friend.__proto__)
+// console.log( friend.constructor == Person )
+// console.log( friend.constructor == Object )
+
+// function Person(){
+
+// }
+// Person.prototype = {
+// 	constructor:Person,
+// 	name:"N"
+// }
+// var friend = new Person();
+// console.log( friend.constructor == Person )
+// console.log( Person.prototype )
+// console.log( friend.constructor == Object )
+// console.log(friend)
+// console.log(document.getElementsByTagName('div'))
+
+// ***二十***
+// var foo = {},
+//     F = function(){};
+
+// Object.prototype.a = 'value a';
+// Function.prototype.b = 'value b';
+
+// console.log(foo.a)    // value a
+// console.log(foo.b)    // undefined
+// console.log(F.a)      // value a
+// console.log(F.b)      // value b
+
+// foo.a的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 找到value a
+// foo.b的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 没有 ---> foo.__proto__.__proto__ (Object.prototype.__proto__): 没有
+// F.a的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 没有 ---> F.__proto__.__proto__(Object.prototype): 找到value a
+// F.b的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 找到value b
+
+
+// function a(){
+// 	this.name = "wang";
+
+// }
+// var b = new a();
+// console.log(b.__proto__)
+// console.log(a.__proto__.__proto__)
+// console.log(Object.__proto__)
+// console.log(Object.prototype)
+
+// console.log({}.__proto__ === Object.prototype )
+
+
+// 关于instanceof的结果不要仅从字面上理解, 它的计算规则是: 如果右侧构造函数的prototype属性能在左侧的对象的原型链中找到, 那么就返回true, 否则就返回false
+
+// Object intanceof Function: Object.__proto__ === Function.prototype, 因为结果为true
+// Function instanceof Object: Function.__proto__.__proto__ === Object.prototype, 因为结果也为true
+
+
+
