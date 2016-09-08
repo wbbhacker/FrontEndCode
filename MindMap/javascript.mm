@@ -1,11 +1,11 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1461042755090" ID="ID_242740479" MODIFIED="1473085277886" STYLE="fork" TEXT="javascript">
-<node CREATED="1461042772219" FOLDED="true" ID="ID_1164529643" MODIFIED="1473085228344" POSITION="right" TEXT="JS &#x5bf9;&#x8c61;">
+<node CREATED="1461042772219" ID="ID_1164529643" MODIFIED="1473345920279" POSITION="right" TEXT="JS &#x5bf9;&#x8c61;">
 <node CREATED="1461484110166" ID="ID_752193307" MODIFIED="1464165462902" TEXT="Object">
 <node CREATED="1461484137336" ID="ID_800098196" MODIFIED="1461598606002" TEXT="hasOwnProperty()"/>
 </node>
-<node CREATED="1461042936565" ID="ID_1512718557" LINK="http://www.w3school.com.cn/jsref/jsref_obj_array.asp" MODIFIED="1472475412057" STYLE="fork" TEXT="Array">
+<node CREATED="1461042936565" ID="ID_1512718557" LINK="http://www.w3school.com.cn/jsref/jsref_obj_array.asp" MODIFIED="1473346380477" STYLE="fork" TEXT="Array">
 <node CREATED="1461043071085" ID="ID_917244862" MODIFIED="1461596486987" STYLE="fork" TEXT="unshift()">
 <icon BUILTIN="full-1"/>
 </node>
@@ -31,6 +31,9 @@
 <icon BUILTIN="full-2"/>
 </node>
 <node CREATED="1461043023247" ID="ID_159773316" MODIFIED="1461596496649" STYLE="fork" TEXT="sort()">
+<icon BUILTIN="full-2"/>
+</node>
+<node CREATED="1473346398844" ID="ID_563033892" MODIFIED="1473346415594" TEXT="slice()">
 <icon BUILTIN="full-2"/>
 </node>
 <node CREATED="1461043053700" ID="ID_824802129" MODIFIED="1461130694480" STYLE="fork" TEXT="toString()">
@@ -226,7 +229,7 @@
 <node CREATED="1461596376084" ID="ID_443262501" MODIFIED="1461596381273" TEXT="SQRT2"/>
 </node>
 </node>
-<node CREATED="1461491344933" FOLDED="true" ID="ID_226147679" LINK="http://www.w3school.com.cn/jsref/jsref_obj_string.asp" MODIFIED="1464165453424" TEXT="String">
+<node CREATED="1461491344933" ID="ID_226147679" LINK="http://www.w3school.com.cn/jsref/jsref_obj_string.asp" MODIFIED="1473345952973" TEXT="String">
 <node CREATED="1461597038256" ID="ID_40622476" MODIFIED="1461598155126" TEXT="charAt()">
 <icon BUILTIN="full-1"/>
 </node>

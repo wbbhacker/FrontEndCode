@@ -298,15 +298,43 @@
 // ***十九***
 
 // function Person(){
+// 	this.sex = "man"
+// }
+// function animation(){
+
+// }
+// function goods(){
 
 // }
 // Person.prototype = {
+// 	constructor:Person,
 // 	name:"N"
 // }
+// goods.prototype = {
+// 	name:"N"
+// }
+// animation.prototype.run = {
+// 	name:"N"
+// }
+
 // var friend = new Person();
+// var goodss = new goods();
+// var runs = new animation();
+// console.log(friend.__proto__)	 //
+// console.log(goodss.__proto__)    //  这就是有无constructor
+// console.log(runs.__proto__)	     //
+// console.log(goodss instanceof goods)
+// console.log(goodss.__proto__ === goods.prototype )
+// console.log(goodss.__proto__)
+// console.log(goods.prototype)
+
+
+// console.log(friend.__proto__ === Person.prototype )
+// console.log(friend.__proto__ )
+
+
 // console.log(friend instanceof Object )
 // console.log(friend instanceof Person )
-// console.log(friend.__proto__)
 // console.log( friend.constructor == Person )
 // console.log( friend.constructor == Object )
 
@@ -362,3 +390,16 @@
 
 
 
+// ***二十一***
+// function SuperType(){
+// 	this.colors = ["red","blue"];
+// }
+// function SubType(){
+// 	this.name="s";
+// 	SuperType.call(this);
+// }
+// var instance1 = new SubType();
+
+// console.log(instance1.__proto__)                                //原型链是对象
+// console.log(SubType.__proto__)
+// console.log(instance1.__proto__.__proto__.__proto__)            //
