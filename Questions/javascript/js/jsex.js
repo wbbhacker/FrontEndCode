@@ -20,8 +20,8 @@
 // var a = [2,3,1,5,2,3,8,8,8,8,8,8];
 // var b = Bubble(a);
 
-// ***二***
 
+// ***二***
 
 // 计算斐波那契(1、1、2、3、5......)的第几个数是几?
 // function getNthFibonacci(count) {
@@ -76,7 +76,43 @@
 	// var a = fib(3);
  //    console.log(a)
 
+// ***三***
 
+// 实现一个dog类， setName、setColor能设置dog实例的名字和颜色，crow方法每隔一秒钟dog叫一次
+// function Dog(name,color){
+// 	this.name = name;
+// 	this.color = color;
+// 	this.yelp = function(){
+// 		console.log("wow")
+// 	}
+// }
+// Dog.prototype.setName = function(newname){
+// 		this.name = newname;
+// 		return this;
+// 	}
+// Dog.prototype.setColor = function( newcolor ){
+// 		this.name = newcolor;
+// 		return this;
+// }
+// Dog.prototype.crow = function(num){
+
+// 		var n = 0;
+// 		var _this = this;
+// 		var nn = num;
+// 		var m = function(){
+// 			n++;
+// 			if(n>nn){
+// 				return;
+// 			}
+// 			 return _this.yelp();
+// 		}
+		
+// 		var aaa = setInterval(m ,1000)
+// }
+
+// var dog = new Dog('jack','black');
+// dog.setName('Tom').setColor('white').crow(3)
+// console.log(dog)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
