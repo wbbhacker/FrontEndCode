@@ -403,3 +403,7 @@
 // console.log(instance1.__proto__)                                //原型链是对象
 // console.log(SubType.__proto__)
 // console.log(instance1.__proto__.__proto__.__proto__)            //
+
+
+// ***二十二***
+//
