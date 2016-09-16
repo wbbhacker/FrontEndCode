@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<style>
+	html,body,div,span,a,img,form{ margin:0px; padding:0px;}
+	html,body{ width:100%; height:100%; }
+	img{ display:block;}
+	#loopImg{perspective:0px; -webkit-perspective:0px; transform-style:preserve-3d; -webkit-transform-style:preserve-3d; width:96%; margin:2% 2%; height:30%; position:relative;}
+	#loopImg img {transition:transform 2s;-webkit-transition:-webkit-transform 2s; position:absolute;  border-radius:5px; -webkit-border-radius:5px; -o-border-radius:5px; -moz-border-radius:5px;  }
+	</style>
+</head>
+<body>
+	<div id="loopImg" class="loopImg">
+		<img src="img/banner_01.jpg">		
+		<img src="img/banner_02.jpg">		
+		<img src="img/banner_03.jpg">		
+	</div>
+	<script>	
+	document.addEventListener('touchmove', function (e) {   e.preventDefault(); }, false);
+		var LRsignMaker = function( poConf ){
+			poConf.way = "";
+			LRsignMaker._start = function(e){
+				var point = e.touches ? e.touches[0] : e ;
+				poConf.startcoor = [point.screenX,point.screenY];
+				poConf.control = 2 ;
+			};
+			LRsignMaker._move = function(e){
+				//console.log("d")
+				if(2 != poConf.control)
+					return;
+				var _this = poConf;
+				var point = e.touches ? e.touches[0] : e ;
+				poConf.endcoor = [point.screenX,point.screenY];
+				poConf.control = 3;
+
+			};
+			LRsignMaker._end = function(e){
+				if(3 != poConf.control)
+					return;
+				if( poConf.endcoor[0] > poConf.startcoor[0] ){
+					poConf.way = "R";
+				}else if( poConf.endcoor[0] < poConf.startcoor[0] ){
+					poConf.way = "L";
+				}
+				poConf.touche();
+			};
+			poConf.control = 1;
+			poConf.bind.addEventListener('touchstart',LRsignMaker._start,false);
+			poConf.bind.addEventListener('touchmove',LRsignMaker._move,false);
+			poConf.bind.addEventListener('touchend',LRsignMaker._end,false);
+			return poConf;
+		};
+		var loopimgMaker = function( poConf ){
+			poConf.arr = [];
+			poConf.control = true;
+			poConf.getImg = document.getElementsByTagName("img");
+			poConf.layout = function(){
+				var toConf = this;
+				var a = toConf.getImg;
+				var w = toConf.bind.offsetWidth;
+				var h = toConf.bind.offsetHeight;
+				var i0 = -w*0.111;
+				var i1 = w*0.111;
+				var i2 = w*0.32884;
+				toConf.arr.push(i0);
+				toConf.arr.push(i1);
+				toConf.arr.push(i2);
+
+				for( var i = 0; i < a.length; i++){
+					a[i].style.height = h + "px";
+					a[i].style.width = w*0.778 +"px";
+					//a[i].style.transition = "transform 2s";
+					//a[i].style.webkitTransition = "transform 2s";
+					a[i].addEventListener('webkitTransitionEnd',function(){
+						poConf.control = true;
+					})
+				}
+
+				poConf.css(0,1,2,100,10);
+			};
+			poConf.css = function(a1,a2,a3,b1,b2){
+				var a = this.getImg;
+				var arr = this.arr;
+
+				a[a1].style.transform = "translateX("+arr[0]+"px) scale(0.72,0.72)";
+				a[a1].style.webkitTransform = "translateX("+arr[0]+"px) scale(0.72,0.72)";
+				a[a1].style.zIndex = b1;
+
+				a[a2].style.transform = "translateX("+arr[1]+"px)";
+				a[a2].style.webkitTransform = "translateX("+arr[1]+"px)";
+				a[a2].style.zIndex = 1000;
+         
+				a[a3].style.transform = "translateX("+arr[2]+"px) scale(0.72,0.72)";
+				a[a3].style.webkitTransform = "translateX("+arr[2]+"px) scale(0.72,0.72)";
+				a[a3].style.zIndex = b2;
+			}
+			poConf.layout();
+			return poConf;
+		};
+		var loopimgMaker = loopimgMaker({
+						bind:document.getElementById("loopImg")
+					});
+		var arr = [0,1,2];
+		LRsignMaker({
+			bind:document.getElementById("loopImg"),
+			touche:function(){
+				var c = loopimgMaker.control;
+				if( false == c )
+						return;
+				if( 'L' == this.way ){
+					var a = arr.shift();
+					arr.push(a);
+					loopimgMaker.css(arr[0],arr[1],arr[2],100,10);
+				}else if( 'R' == this.way ) {
+					if( false == c )
+						return;
+					var a = arr.pop();
+					arr.unshift(a);
+					loopimgMaker.css(arr[0],arr[1],arr[2],10,100);
+				}
+				loopimgMaker.control = false;
+			}
+		});
+	</script>
+</body>
+</html>

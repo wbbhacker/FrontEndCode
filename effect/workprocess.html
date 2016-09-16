@@ -1,0 +1,44 @@
+<script>
+function workProcessMaker(poConf) {
+	if (!poConf.workProcess)
+		return false;	
+	poConf.msNowStep = 0;
+	poConf.nextStep = function() {
+		var tsFN = this.workProcess[this.msNowStep++];
+		this[tsFN](this, function() {
+				poConf.nextStep();
+			});
+	};
+	
+	poConf.start = function() {
+		this.msNowStep = 0;
+		this.nextStep();
+	};
+	
+	poConf.doProcess = function(psFN) {
+		var tdStep = this.workProcess.indexOf(psFN);
+		if (-1 == tdStep) {
+			return false;
+		}
+		
+		this.msNowStep = tdStep;
+		this.nextStep();
+	};
+	
+	
+	return poConf;
+}
+
+var goWork = workProcessMaker({
+	workProcess: ['onInit', 'onLoadData', 'onDraw', 'onEnd'],
+	onInit: function(poConf, pfnSuccess) {
+	},
+	onLoadData: function(poConf, pfnSuccess) {
+	},
+	onDraw: function(poConf, pfnSuccess) {
+	},
+	onEnd: function(poConf, pfnSuccess) {
+	}
+})
+
+</script>

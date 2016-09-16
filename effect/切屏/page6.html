@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title></title>
+
+	<style>
+		*{ margin:0px; padding:0px; }
+		html,body{ width:100%; height:100%; }
+		#page6{ width:100%; height:100%;  position:absolute;}
+		#singleCarousel{ width:100%; height:100%; position:absolute; overflow:hidden;}
+		#singleCarousel img {transition:all 1s;-webkit-transition:all 1s; width:100%; height:100%; left:0px; top:0px; position:absolute; transform-origin:0% 100%; -webkit-transform-origin:0% 100%;}
+		.zheng{ transform:rotate(0deg) !important; -webkit-transform:rotate(0deg) !important; }
+		.zou{ transform:rotate(0deg) translateX(-100%) !important; -webkit-transform:rotate(0deg) translateX(-100%) !important; }
+
+	</style>
+
+</head>
+<body>
+	<div id="page6" class="group_elem">
+
+		<div id="singleCarousel">
+
+			<img src="img/banner_01.jpg">
+			<img src="img/banner_02.jpg">
+			<img src="img/banner_03.jpg">
+			<img src="img/banner_04.jpg">
+			<img src="img/banner_04.jpg">
+			<img src="img/banner_04.jpg">
+			
+		</div>
+	</div>
+
+
+	<script>
+	var LRsignMaker = function( poConf ){
+			LRsignMaker._start = function(e){
+				var point = e.touches ? e.touches[0] : e ;
+				poConf.startcoor = [point.screenX,point.screenY];
+				poConf.control = true ;
+			};
+			LRsignMaker._move = function(e){
+				if(!poConf.control)
+					return;
+				var _this = poConf;
+				var point = e.touches ? e.touches[0] : e ;
+				poConf.endcoor = [point.screenX,point.screenY];
+			};
+			LRsignMaker._end = function(e){
+				if(!poConf.control)
+					return;
+				if( poConf.endcoor[0] > poConf.startcoor[0] ){
+					poConf.way = "R";
+				}else{
+					poConf.way = "L";
+				}
+				poConf.touche();
+			};
+			poConf.control = false;
+			poConf.bind.addEventListener('touchstart',LRsignMaker._start,false);
+			poConf.bind.addEventListener('touchmove',LRsignMaker._move,false);
+			poConf.bind.addEventListener('touchend',LRsignMaker._end,false);
+		}
+
+	/*
+	poConf{
+		bind:Dom
+	}
+	*/ 
+
+       var singleCarousel = function(poConf){
+
+       		poConf.next = function(){
+
+       			console.log(poConf.nowindex)
+       			if( poConf.nowindex < poConf.bind.children.length ){
+
+       				poConf.bind.children[poConf.nowindex].className = "zou";
+
+       				if( poConf.nowindex != poConf.bind.children.length-1 ){
+       					poConf.bind.children[poConf.nowindex+1].className = "zheng";
+       					poConf.nowindex++;
+       				}
+       				
+       			}
+       		}
+       		poConf.prev = function(){
+       			console.log(poConf.nowindex)
+       			if( poConf.nowindex >= 0 ){
+
+       				poConf.bind.children[poConf.nowindex].className = "zheng";
+       					if( poConf.nowindex != poConf.bind.children.length-1 ){
+       						poConf.bind.children[poConf.nowindex+1].className = "";
+       					}
+       					if( poConf.nowindex != 0)
+       						poConf.nowindex--;
+       			}
+       		}
+       		poConf.layout = function(){
+
+       			var imgs = poConf.bind.children,
+       			imgSum = imgs.length,
+       			deg = 5,
+       			lv = deg/imgs.length,
+       			control = true;
+       			for( var i = 0; i < imgs.length; i++ ){
+
+       				degnow = deg-lv*i ;
+       				control == true && ( degnow = -1*degnow )
+       				imgs[i].style.zIndex = imgSum;
+       				imgs[i].style.transform = "rotate("+degnow+"deg)";
+       				imgs[i].style.webkitTransform = "rotate("+degnow+"deg)";
+       				control = control ? false :true; 
+       				imgSum--;
+
+       			}
+
+       		} 
+
+       		poConf.layout();
+
+       		poConf.nowindex = 0;
+       		poConf.bind.children = findChildren(poConf.bind);
+
+       		return poConf;
+
+       }
+
+      var aaa = singleCarousel({
+       	bind:document.getElementById("singleCarousel")
+       })
+      	aaa.bind.children[0].className = "zheng";
+       LRsignMaker({
+       		bind:document.getElementById("singleCarousel"),
+			touche:function(){
+				if( "L" == this.way ){
+					aaa.next();
+				}else{
+					aaa.prev();
+				}
+			}
+       })
+
+       function findChildren(poElem){
+             var children = poElem.childNodes;
+
+             var elemAry = [];
+             for( var i = 0; i < children.length; i++ ){
+             	if( 3 == children[i].nodeType ){
+             		elemAry.push(children[i])
+             	}
+             }
+             return elemAry;
+       }
+	</script>
+</body>
+</html>

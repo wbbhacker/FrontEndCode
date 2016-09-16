@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title></title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+<style>
+html, body {
+	width:100%;height:100%;
+}
+html, body,div,a,span,img {
+	padding:0;
+	margin:0;
+}
+canvas {
+display:block;
+}
+.button{
+	width:100px;
+	height:50px;	
+	line-height:50px;
+	background:#f00;
+	position:absolute;
+	bottom:0;
+	right:0;
+	z-index:100;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	text-align:center;
+	cursor:pointer;
+
+}
+</style>
+
+</head>
+<body>
+
+<div style="width:100%;height:100%;">
+<canvas id="aaa"></canvas>
+</div>
+<div id="button" class="button">完成</div>
+<script>
+		
+var toElem = document.getElementById("button"),
+    toCanvas = document.getElementById('aaa');
+toCanvas.width = document.body.offsetWidth;
+toCanvas.height = document.body.offsetHeight;
+toCanvas.addEventListener('touchstart', onActDown);
+toCanvas.addEventListener('touchend', onActUp);
+toCanvas.addEventListener('touchmove', onActMove);
+toCanvas.addEventListener('mousedown', onActDown);
+toCanvas.addEventListener('mouseup', onActUp);
+toCanvas.addEventListener('mousemove', onActMove);
+	
+toElem.addEventListener('click', onSubmit)
+
+var go鼠标上一个点 = null;
+function onSubmit() {
+    var imageData = toCanvas.toDataURL("image/a.png");
+    var toImgData =  toCanvas.getContext('2d').getImageData(0, 0, toCanvas.width, toCanvas.height);
+    var b64 = imageData.substring( 22 );
+    
+    
+}
+function onActDown(e) {
+	var point = e.touches ? e.touches[0] : e;
+	
+	go鼠标上一个点 = {x:point.clientX, y:point.clientY};
+	
+	toCanvas.getContext('2d').beginPath();
+	toCanvas.getContext('2d').moveTo(go鼠标上一个点.x, go鼠标上一个点.y);
+}		
+function onActMove(e) {
+
+	if (null == go鼠标上一个点)
+		return;
+		
+	var point = e.touches ? e.touches[0] : e;
+	go鼠标上一个点 = {x:point.clientX, y:point.clientY};
+	
+	
+	toCanvas.getContext('2d').lineTo(go鼠标上一个点.x, go鼠标上一个点.y);
+	toCanvas.getContext('2d').stroke();
+}		
+function onActUp(e) {
+	go鼠标上一个点 = null;
+		
+	toCanvas.getContext('2d').closePath();
+}		
+
+function ajaxFunction( url ){
+    var xmlHttp;
+
+	try{
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp = new XMLHttpRequest();    // 实例化对象
+	    }
+    catch( e ){
+     // Internet Explorer
+	     try{
+	      xmlHttp = new ActiveXObject( "Msxml2.XMLHTTP" );
+	     }
+	     catch ( e ){
+		      try
+		      {
+		       xmlHttp = new ActiveXObject( "Microsoft.XMLHTTP" );
+		      }
+		      catch( e )
+		      {
+		       alert("您的浏览器不支持AJAX！");
+		       return false;
+		      }
+	     }
+    }
+
+    xmlHttp.onreadystatechange = function()
+    {
+     if( xmlHttp.readyState == 4  && xmlHttp.status == 200 )
+     {
+      document.getElementByIdx_x_x_x( 'sub' ).value =  xmlHttp.responseText;
+     }
+    }
+    xmlHttp.open( "GET", url, true );
+    xmlHttp.send( null );
+
+   }
+
+
+</script>
+</body>
+</html>

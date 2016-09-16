@@ -1,0 +1,39 @@
+* { margin: 0px; padding:0px;}
+img{ padding:0px; display: block;}
+body {
+  margin: 0;
+  font-family:"黑体";
+  font-size: 1em;
+  line-height: 1;
+}
+.swiper-slide img{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide{
+	margin-top:0px;
+    overflow: hidden;
+    position: relative;
+}
+.reel{
+	width: 50%; 
+	height:100%; 
+	overflow: scroll;
+	position: absolute;
+	display: block;
+}
+.left{
+	background-color: red; width: 100%; height: auto;
+}
+.right{
+	background-color: green; width: 100%; height: auto;
+}
+.com_con{ width: 100%; position: relative;}
+.com_con img{ width: 100%;height:auto;}
+.com_con .bg{ position: absolute;bottom: 0px; background: #000;height: 20px; width: 100%;opacity: 0.5}
+.com_con .p{ position: absolute;bottom: 0px; color: #fff}
+
+
+
+

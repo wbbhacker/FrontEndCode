@@ -283,6 +283,18 @@
 // console.log(typeof [] == "array")
 // console.log([] instanceof Array )
 
+
+	// console.log(2&3)
+	// 	console.log(2|3)
+	// 	console.log(~true)    //true boolean   -2
+	// 	console.log(NaN == NaN)    //true boolean   -2
+	// 	console.log(undefined == undefined)    //true boolean   -2
+	// 	console.log(null == null)    //true boolean   -2
+	// 	console.log( typeof(NaN) )    
+	// 	console.log( typeof(undefined) )    
+	// 	console.log( typeof(null) )    
+	// 	console.log( typeof([]) )    
+
 // ***十八***
 
 // for(var i=0; i<3; i++ ){
@@ -407,3 +419,167 @@
 
 // ***二十二***
 //
+// var color = "red";
+// var o = {
+// 	color:"blue"
+// }
+
+// function getColor(){
+// 	console.log(this.color)	
+// }
+
+// getColor();     		//call和apply真正强大的地方是能够扩充函数赖以运行的作用域。
+// getColor.call(o);       //在使用call方法时，传递给函数的参数必须逐个列举出来。
+// getColor.apply(o);		//在使用apply方法时，传递给函数的第二个参数是Array实例。
+
+
+// ***二十三***
+
+// function b(x, y, a) {
+
+// 	arguments[2] = 10;         //它的值永远与对应名字参数的值保持同步。
+// 	console.log(a)
+
+// }
+// b(1, 2, 3);  //  10
+// function c(x, y, a) {
+
+// 	a = 10;          
+// 	console.log(arguments[2] )  //它的值永远与对应名字参数的值保持同步。
+
+// }
+// c(1,2,3)
+
+
+// ***二十四***
+// n = 1;
+// var n = 4
+// console.log(n)
+// var n = 4
+// n = 1; 
+// console.log(n)
+
+
+
+// ***二十五***
+  // n = 1;
+	 //  function f1(){
+	 //  	test = 10;
+	 //  	var n = 999;
+	 //  	nAdd = function(){ n += 1 }
+	 //  	function f2(){
+	 //  		return n;
+	 //  	}
+	 //  	return f2;
+	 //  }
+	 //  var result = f1()();
+	 //  console.log(result)
+
+// ***二十六***
+// 	  	var n = 888;
+// 		function f1(){
+// 	　　　　var n=999;
+// 	　　　  nAdd=function(){n+=1}   // var nAdd=function(){n+=1}
+// 	　　　　function f2(){
+// 				console.log(n);
+// 	　　　　}
+// 	　　　　return f2;
+// 　　    }
+// 	　　var result=f1();
+// 	　　result(); // 999
+// 	　　nAdd();
+// 	　　result(); // 1000
+
+// ***二十七***
+// var name = "The Window";
+
+// 	   var object = {
+// 		   	name : "My Object",
+// 		   	getNameFunc : function(){
+// 		   		return function(){
+// 		   			return this.name;
+// 		   		}
+// 		   	}
+// 	   }
+
+
+// 	   console.log(object.getNameFunc()());
+
+
+   // var name = "The Window";
+
+   // var object = {
+	  //  	name : "My Object",
+	  //  	getNameFunc : function(){
+	  //  		console.log("this")
+	  //  		var that = this;
+	  //  		return function(){
+	  //  			console.log('this')
+	  //  			return that.name;
+	  //  		}
+	  //  	}
+   // }
+
+   // console.log(object.getNameFunc()());
+
+
+// ***二十七***
+
+// for( var i=0,j=0; j < 10,i < 6; i++, j++ ){
+// 	k = i +j;
+// }
+// console.log(k)
+
+// ***二十八***
+// var x = 1;
+// 	var y = 0;
+// 	var z = 0;
+// 	function add(n){ 
+// 		n = n+1;
+// 		return n;
+// 	};
+// 	y = add(x);
+// 	function add(n){ 
+// 		n = n+4;
+// 	};
+// 	z = add(x);
+// 	console.log(y);
+// 	console.log(z);
+
+
+
+// ***二十九***
+// var Obj=function(msg){
+
+// 		this.msg=msg;
+
+// 		this.shout=function(){
+// 		              console.log(this.msg);
+// 		}
+
+// 		this.waitAndShout=function(){
+
+// 					var aaa = function(ss){
+// 						var b = ss;
+// 						return function(){
+// 							console.log(b);
+// 						}
+// 					}
+
+// 		            setTimeout(aaa(this.msg), 2000);
+// 		}
+// 	}
+// var aa=new Obj("abc");
+// aa.waitAndShout();
+
+
+// ***二十九***  
+// var t=true;                 //js 是单线程语言
+// setTimeout(function(){
+//    console.log(123);
+//     t=false;
+// },1000);
+
+// while(t)
+// { }
+// console.log('end');

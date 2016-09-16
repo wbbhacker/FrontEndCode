@@ -1,0 +1,39 @@
+<html>
+
+<body>
+<div id="box">
+
+	<div id='domtpl' data-datafill='{"domattr":"innerHTML", "dataattr":"text"}'>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="domTemplate.js"></script>
+<script>
+
+window.onload = function() {
+	var goDomTpl = domTemplate({
+		bind: document.getElementById('domtpl')
+	});
+
+	var goBOX = document.getElementById('box');
+	
+	
+	var gaData = [
+		{'text':'aaaaaaaa1'},
+		{'text':'aaaaaaaa2'},
+		{'text':'aaaaaaaa3'},
+		{'text':'aaaaaaaa4'},
+		{'text':'aaaaaaaa5'},
+		{'text':'aaaaaaaa6'}
+	];
+	for (var i = 0; i < gaData.length; i++) {
+		var toItemElem = goDomTpl.clone(gaData[i]);
+		goBOX.appendChild(toItemElem);
+	}
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>360度全景</title>
+<style>
+
+html,body,div,span,a,img,form { margin:0; padding:0; }
+html,body { width: 100%; height:100%; }
+body { position:relative;  }
+
+
+.stage{ width:100%; height:100%;overflow:hidden; perspective:385px; -webkit-perspective:385px;}
+
+
+/*.screen{ width:100%; height:100%;position:relative;  transform-style:preserve-3d; -webkit-transform-style:preserve-3d; animation:rotation 10s linear infinite; -webkit-animation:rotation 10s linear infinite;}*/
+
+
+.screen{ width:100%; height:100%;position:relative;  transform-style:preserve-3d; -webkit-transform-style:preserve-3d;}
+
+
+
+
+.screen img{ width:100%; height:100%; position:absolute; left:0px; top:0px;/*backface-visibility:hidden;-webkit-backface-visibility:hidden;*/}
+
+
+
+/*@keyframes rotation { 
+	0%{ transform: rotateY(0deg);-webkit-transform: rotateY(0deg);}
+	100%{ transform: rotateY(360deg);-webkit-transform: rotateY(360deg);}
+}
+@-webkit-keyframes rotation { 
+	0%{ transform: rotateY(0deg);-webkit-transform: rotateY(0deg);}
+	100%{ transform: rotateY(360deg);-webkit-transform: rotateY(360deg);}
+}*/
+
+
+</style>
+</head>
+<body>
+<div id="text" style="position:fixed; z-index:1000;color:#000"></div>
+<div id="stage" class="stage">
+	<div id="screen" class="screen">
+		<!-- <div style="width:100%; height:100%; background:#f0f; position:absolute; left:0px; top:0px; -webkit-transform:rotateY(45deg)"></div>
+		<div style="width:100%; height:100%; background:#f00; position:absolute; left:0px; top:0px"></div> -->
+		<!-- <img src="img/1.jpg" style="-webkit-transform:rotateY(90deg)">
+		<img src="img/2.jpg" style=""> -->
+		<img src="img/1.jpg">
+		<img src="img/2.jpg">
+		<img src="img/3.jpg">
+		<img src="img/4.jpg">
+		<img src="img/1.jpg">
+		<img src="img/2.jpg">
+		<img src="img/3.jpg">
+		<img src="img/4.jpg">
+	</div>
+</div>
+<script>
+
+/*
+poConf {
+	bind:dom,
+	rate:int
+}
+*/
+var rotation = function(poConf){
+	poConf.numDegX=0;
+	poConf.numDegY=0;
+	poConf.prevPointX = 0;
+	poConf.prevPointY = 0; 
+
+	rotation._start = function(e){
+		
+	};
+	rotation._move = function(e){
+		
+		var point = e.touches ? e.touches[0] : e;
+		//横向
+		if( (360 <= poConf.numDegX) || (poConf.numDegX <= -360)){   //360度转动
+			poConf.numDegX = 0;
+		}
+		if( 0 < (point.screenX - poConf.prevPointX) ){   //判断手势方向
+			poConf.numDegX += poConf.rate;
+		} else {
+			poConf.numDegX -= poConf.rate;
+		}
+		//纵向
+		if( (360 <= poConf.numDegY) || (poConf.numDegY <= -360)){   //360度转动
+			poConf.numDegY = 0;
+		}
+		if( 0 < (point.screenY - poConf.prevPointY) ){   //判断手势方向
+			poConf.numDegY += poConf.rate;
+		} else {
+			poConf.numDegY -= poConf.rate;
+		}
+		console.log(poConf.numDegY)
+
+		document.getElementById("text").innerHTML = "X:"+point.screenX+",Y:"+point.screenY+","+poConf.numDegX+"&deg";
+		document.getElementById("screen").style['transform'] = "rotateY("+poConf.numDegX+"deg) rotateX("+poConf.numDegY+"deg) ";
+		document.getElementById("screen").style['webkitTransform'] = "rotateY("+poConf.numDegX+"deg) rotateX("+poConf.numDegY+"deg)";
+
+		poConf.prevPointX = point.screenX ;
+		poConf.prevPointY = point.screenY ;
+		
+	};
+	rotation._end = function(){
+		
+	};
+	rotation._cancel = function(){
+		
+	}
+	poConf.bind.addEventListener('touchstart',rotation._start,false);
+	poConf.bind.addEventListener('touchmove',rotation._move,false);
+	poConf.bind.addEventListener('touchend',rotation._end,false);
+	poConf.bind.addEventListener('touchcancel',rotation._cancel,false)
+}
+
+/*
+poConf{
+	bind:dom,
+}
+*/
+
+
+var imgLayout = function(poConf){
+
+	poConf.imgArrs = [];
+
+	poConf.findChilds = function(){
+		var childsElem = poConf.bind.childNodes;
+		for( var i = 0; i < childsElem.length; i++){
+			if( 1 == childsElem[i].nodeType )
+				poConf.imgArrs.push(childsElem[i])
+		}
+	}
+
+	poConf.findChilds();
+
+	poConf.layout = function(){
+		var imgs = poConf.imgArrs;
+		var imgWidth = document.getElementById("stage").offsetWidth;
+		var angle = 360/imgs.length/2;
+		var imgRotateZ = (imgWidth/2)/Math.tan(angle/180*Math.PI)
+		console.log(imgRotateZ)
+		for( var i = 0; i < imgs.length; i++ ){
+			var imgDeg = 360/imgs.length*i ;
+			imgs[i].style['transform'] = "rotateY("+imgDeg+"deg) translateZ("+imgRotateZ+"px)";
+			imgs[i].style['webkitTransform'] = "rotateY("+imgDeg+"deg) translateZ("+imgRotateZ+"px) ";
+		}
+	}
+
+	poConf.layout()
+	return poConf;
+}
+
+
+rotation({
+	bind:document.getElementById("stage"),
+	rate:1   //转动速率
+});
+
+
+var imgControl = imgLayout({
+	bind:document.getElementById("screen")
+})
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+</script>
+</body>
+</html>

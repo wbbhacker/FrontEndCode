@@ -169,7 +169,7 @@ function debounce(func,wait,immediate){
 //　也就是会说预先设定一个执行周期，当调用动作的时刻大于等于执行周期则执行该动作，然后进入下一个新周期。
 
 var throttle = function(delay, action){
-    var last = 0;
+    var last = 0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
     return function(){
 
         var curr = +new Date()
