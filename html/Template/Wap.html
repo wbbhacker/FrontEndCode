@@ -2,10 +2,56 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi= device-dpi" />
+	<!--  如果content设置为yes，Web应用会以全屏模式运行，反之，则不会。content的默认值是no，表示正常显示。你可以通过只读属性window.navigator.standalone来确定网页是否以全屏模式显示。-->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- 除非你先使用apple-mobile-web-app-capable指定全屏模式，否则这个meta标签不会起任何作用。
+	如果content设置为default，则状态栏正常显示。如果设置为blank，则状态栏会有一个黑色的背景。如果设置为blank-translucent，则状态栏显示为黑色半透明。如果设置为default或blank，则页面显示在状态栏的下方，即状态栏占据上方部分，页面占据下方部分，二者没有遮挡对方或被遮挡。如果设置为blank-translucent，则页面会充满屏幕，其中页面顶部会被状态栏遮盖住（会覆盖页面20px高度，而iphone4和itouch4的Retina屏幕为40px）。默认值是default。 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--默认情况下，设备会自动识别任何可能是电话号码的字符串。设置telephone=no可以禁用这项功能。  -->
+	<meta name="format-detection" content="telephone=no">
 	<title>wap</title>
 </head>
 <body>
-	
+
+
+
+
+	<script>
+	//初始化rem
+		reSetRem();
+		window.addEventListener('resize',reSetRem,false);
+
+		function reSetRem(){
+			var tHtml = document.getElementsByTagName('html')[0],
+				tW = $(window).width();
+
+			tHtml.style.fontSize = 20*tW/650 + 'px';
+		};
+		//解决滑动事件冲突
+
+		document.addEventListener("touchmove",function(e){
+			e.preventDefault();
+			e.stopPropagation();
+		},false);
+	</script>	
 </body>
 </html>
+
+<!--
+
+width	设置layout viewport  的宽度，为一个正整数，或字符串"width-device"
+initial-scale	设置页面的初始缩放值，为一个数字，可以带小数
+minimum-scale	允许用户的最小缩放值，为一个数字，可以带小数
+maximum-scale	允许用户的最大缩放值，为一个数字，可以带小数
+height	设置layout viewport  的高度，这个属性对我们并不重要，很少使用
+user-scalable	是否允许用户进行缩放，值为"no"或"yes", no 代表不允许，yes代表允许
+
+
+所有的iphone的ideal viewport宽度都是320px，无论它的屏幕宽度是320还是640，也就是说，在iphone中，css中的320px就代表iphone屏幕的宽度。
+
+
+  -->
+
+  <!-- target-densitydpi=device-dpi 可要可不要 -->
+  <!-- 特别说明的是，当 target-densitydpi=device-dpi 时， css中的1px会等于物理像素中的1px。因为这个属性只有安卓支持，并且安卓已经决定要废弃target-densitydpi  这个属性了，所以这个属性我们要避免进行使用  。 -->
