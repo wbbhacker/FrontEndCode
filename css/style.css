@@ -46,3 +46,8 @@ i.triangle{
 
 
 /*修改*/
+
+/*来改变按钮在iPhone下的默认风格*/
+select{
+	-webkit-appearance: none; 
+}
