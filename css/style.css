@@ -51,3 +51,21 @@ i.triangle{
 select{
 	-webkit-appearance: none; 
 }
+/*input 设置背景透明*/
+input{
+	background-color:transparent;
+}
+
+/*input placeholder 字体的颜色*/
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+　　color: #666;
+　　}
+　　input:-moz-placeholder, textarea:-moz-placeholder {
+　　color:#666;
+　　}
+　　input::-moz-placeholder, textarea::-moz-placeholder {
+　　color:#666;
+　　}
+　　input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+　　color:#666;
+　　}
