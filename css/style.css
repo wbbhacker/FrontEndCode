@@ -69,3 +69,9 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 　　input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 　　color:#666;
 　　}
+/**/
+{
+	position: relative;    /* 内容超出部分自动隐藏*/
+	position: absolute;    /*内容超出部分不自动隐藏*/
+}
+
