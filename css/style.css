@@ -75,3 +75,6 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 	position: absolute;    /*内容超出部分不自动隐藏*/
 }
 
+
+/* 用 transition 的时候要小心，因为页面刷新的时候会有动画效果*/
+
