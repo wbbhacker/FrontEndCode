@@ -46,3 +46,35 @@ i.triangle{
 
 
 /*修改*/
+
+/*来改变按钮在iPhone下的默认风格*/
+select{
+	-webkit-appearance: none; 
+}
+/*input 设置背景透明*/
+input{
+	background-color:transparent;
+}
+
+/*input placeholder 字体的颜色*/
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+　　color: #666;
+　　}
+　　input:-moz-placeholder, textarea:-moz-placeholder {
+　　color:#666;
+　　}
+　　input::-moz-placeholder, textarea::-moz-placeholder {
+　　color:#666;
+　　}
+　　input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+　　color:#666;
+　　}
+/**/
+{
+	position: relative;    /* 内容超出部分自动隐藏*/
+	position: absolute;    /*内容超出部分不自动隐藏*/
+}
+
+
+/* 用 transition 的时候要小心，因为页面刷新的时候会有动画效果*/
+
