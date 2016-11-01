@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script>
+		var meta = document.createElement('meta');
+		var orient= "onorientationchange" in window ? "orientationchange" : "resize";
+		var headElem = document.getElementsByTagName('head')[0];
+			meta.name = 'viewport';
+
+		window.addEventListener(orient, adaptationMeta, false);
+		adaptationMeta();
+		function adaptationMeta(){		
+			if(window.orientation==180||window.orientation==0){ 
+					meta.content = 'width=640,user-scalable=no,target-densitydpi= device-dpi';
+			    	headElem.appendChild(meta)
+			} 
+			if(window.orientation==90||window.orientation==-90){    
+					meta.content = 'width=1130,user-scalable=no,target-densitydpi= device-dpi';
+			    	headElem.appendChild(meta)
+			} 
+		}
+	</script>
+	<meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+	<title>新福特翼虎美国出色之旅</title>
+	<link rel="stylesheet" href="css/styleReset.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/zepto.min.js"></script>
+	<script src="js/orienter.min.js"></script>
+	<script src="js/jCanvaScript.1.5.18.min.js"></script>
+</head>
+<body>
+	
+	<canvas id="myCanvas">
+		
+	</canvas>	
+
+	<script src="js/index.js"></script>
+</body>
+</html>
