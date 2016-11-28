@@ -53,6 +53,11 @@ input{
   border:none;
   outline: none;
 }
-a:link,a:visited,a:hover,a:active{
+a,.a:link,a:visited,a:hover,a:active{
   text-decoration:none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+select{
+  outline: none;
+  -webkit-appearance: none;
 }

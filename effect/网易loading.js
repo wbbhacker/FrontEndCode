@@ -18,3 +18,12 @@ function netease_loadimg(imgs,callback){
         };
     }
 }
+
+
+
+var loadImgsArr=[
+        //将需要loading的图片放到此数组
+    ];
+netease_loadimg(loadImgsArr,function(){
+    //loading结束后的回调函数
+});

@@ -18,16 +18,17 @@ i.triangle{
 	border-top:1px solid #cccccc;
 	border-bottom:1px solid #cccccc;
 	vertical-align:middle;
-
 } 
+
 .search .form_text{
 	vertical-align:middle;
 	color:#181818;
 }
+
 .search .form_text label{
 	margin: 0 12px;
-
 }
+
 .search .query{
 	width: 100px;
 	height: 35px;
@@ -83,4 +84,10 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 select{
 	outline: none;
     -webkit-appearance: none;
+}
+
+
+/*去除ios中点击a标签时的默认背景*/
+a{
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
