@@ -1,6 +1,7 @@
 //获取目录下的所有子目录信息
-var node_path=require('path');
-var fs=require('fs');
+var node_path=  require('path');
+var fs       =  require('fs');
+var _        =  require('lodash');
 //模拟async.map的执行
 function myMap(arrayData,call,resultCallback){
     var p=arrayData;
@@ -20,13 +21,12 @@ function myMap(arrayData,call,resultCallback){
             },100);
         }(p[i]));
     }    
-
-}90909090909090909090909090909090
+}
 
 //获取目录下的所有文件信息
 function getDir(dir_path,finalCallback){
     var path=node_path.join(__dirname,dir_path);
-    console.log(path);
+    // console.log(path);
     var over=[];
     var watchProcessDir=[];
     watchProcessDir.push(path);
@@ -44,7 +44,7 @@ function getDir(dir_path,finalCallback){
 
     function forDir(path){
         var fi=fs.readdir(path,function(err,files){
-            //console.log(files);
+            // console.log(files);
             if(err){
                 return false;
             }
@@ -53,7 +53,7 @@ function getDir(dir_path,finalCallback){
                 return;
             }
             myMap(files,function(e,cb){
-                //console.log('file:'+e);
+                // console.log('file:'+path);
                 var paths=node_path.join(path,e);
                 fs.stat(paths,function(err,file){
                     if(file.isDirectory()){
@@ -87,9 +87,23 @@ function getDir(dir_path,finalCallback){
 
     forDir(path);
 
-
 }
 
-getDir('../node_modules',function(over){
-   console.log('~~~done~~~~file size：%d',over.length);
+getDir('img',function(over){
+
+    var newArr = [];
+    var reg = /F:\/workspace\/FrontEndCode\/Nodejs\/file\//;
+
+    _(over).forEach(function(n){
+       newArr.push(n.replace(/\\/g,'/').replace(reg,''));  
+    });
+    
+
+
+    str = 'var imgUrlArray='+JSON.stringify(newArr).replace(/"/g,'\'');
+
+    fs.writeFile('account.js',str,function(err){
+         
+    });
+   
 });

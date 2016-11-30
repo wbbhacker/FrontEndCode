@@ -1,0 +1,1 @@
+var imgUrlArray=['img/video1.jpg','img/video2.jpg','img/video4.jpg','img/video3.jpg','img/video5.jpg','img/image/btn1.png','img/image/btn2.png','img/image/btn3.png']

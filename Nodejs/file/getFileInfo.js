@@ -90,6 +90,6 @@ function getDir(dir_path,finalCallback){
 
 }
 
-getDir('../node_modules',function(over){
+getDir('img',function(over){
    console.log('~~~done~~~~file size：%d',over.length);
 });

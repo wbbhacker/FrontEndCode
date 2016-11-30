@@ -1,5 +1,3 @@
-
-
 function addClass(poElem, psClass) {
 	var tsClass = poElem.className;
 	if (-1 == tsClass.indexOf(psClass)) {   
