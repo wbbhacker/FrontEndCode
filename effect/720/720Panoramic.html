@@ -145,6 +145,8 @@ var imgLayout = function(poConf){
 		var imgWidth = document.getElementById("stage").offsetWidth;
 		var angle = 360/imgs.length/2;
 		var imgRotateZ = (imgWidth/2)/Math.tan(angle/180*Math.PI)
+		console.log(imgWidth)
+		// console.log(imgRotateZ)
 		console.log(imgRotateZ)
 		for( var i = 0; i < imgs.length; i++ ){
 			var imgDeg = 360/imgs.length*i ;
@@ -156,6 +158,7 @@ var imgLayout = function(poConf){
 	poConf.layout()
 	return poConf;
 }
+
 
 
 rotation({

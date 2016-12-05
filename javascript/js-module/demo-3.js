@@ -4,7 +4,7 @@
 	}
 
 	Duck.prototype = {
-		
+		constructor:Duck,
 		say:function(){
 
 		}
