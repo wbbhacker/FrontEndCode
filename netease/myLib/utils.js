@@ -81,13 +81,12 @@
 
 	utils.GetQueryString = function(url,name){
 
-		var reg = new RegExp('(^|&|\\?)'+ name +'=([^&]*)(&|$)',g);
+		var reg = new RegExp('(^|&|\\?)'+ name +'=([^&]*)(&|$)');
 
 	    var r = url.match(reg);
+	    
 	    console.log(url)
 	    console.log(r)
-
-	    // console.log(r[2])
 
 	    if(r!=null) {
 	    	return  unescape(r[2]);	
