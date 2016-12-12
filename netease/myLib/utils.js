@@ -23,6 +23,7 @@
 	        iosv: u.substr(u.indexOf('iPhone OS') + 9, 3),
 	        weixin: u2.match(/MicroMessenger/i) == "micromessenger",
 	        ali: u.indexOf('AliApp') > -1,
+	        NewsApp:u.indexOf('NewsApp') > -1,   //网易新闻客户端
 	    };
 	}
 	
@@ -75,6 +76,25 @@
 	            last = curr 
 	        }
 	    }
+	}
+
+
+	utils.GetQueryString = function(url,name){
+
+		var reg = new RegExp('(^|&|\\?)'+ name +'=([^&]*)(&|$)',g);
+
+	    var r = url.match(reg);
+	    console.log(url)
+	    console.log(r)
+
+	    // console.log(r[2])
+
+	    if(r!=null) {
+	    	return  unescape(r[2]);	
+	    }else{
+	    	return null;	
+	    } 
+
 	}
 
 }.call(this))

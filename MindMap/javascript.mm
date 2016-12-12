@@ -1,7 +1,7 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1461042755090" ID="ID_242740479" MODIFIED="1473085277886" STYLE="fork" TEXT="javascript">
-<node CREATED="1461042772219" FOLDED="true" ID="ID_1164529643" MODIFIED="1473752176098" POSITION="right" TEXT="JS &#x5bf9;&#x8c61;">
+<node CREATED="1461042772219" ID="ID_1164529643" MODIFIED="1481075614705" POSITION="right" TEXT="JS &#x5bf9;&#x8c61;">
 <node CREATED="1461484110166" ID="ID_752193307" MODIFIED="1464165462902" TEXT="Object">
 <node CREATED="1461484137336" ID="ID_800098196" MODIFIED="1461598606002" TEXT="hasOwnProperty()"/>
 </node>
