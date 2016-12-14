@@ -79,21 +79,44 @@
 	}
 
 
-	utils.GetQueryString = function(url,name){
+
+
+	utils.getQueryString = function(url,name){
 
 		var reg = new RegExp('(^|&|\\?)'+ name +'=([^&]*)(&|$)');
 
-	    var r = url.match(reg);
-	    
-	    console.log(url)
-	    console.log(r)
+	    var arr = url.match(reg);
 
-	    if(r!=null) {
-	    	return  unescape(r[2]);	
-	    }else{
-	    	return null;	
-	    } 
+	    return arr === null ? null : arr[2];
 
 	}
+
+
+	utils.parseUrlToObj = function(url){
+
+
+		var arr = url.split('?');
+
+		// var reg = new RegExp('(^|&|\\?)=([^&])(&|$)');
+
+		var reg = new RegExp('([^&=]+)=([\w\W]*?)(&|$)','g');
+
+		var arr2 = reg.exec(arr[1]);
+
+		var arr3 = reg.exec(url)
+
+		var arr1 = arr[1].match(reg);
+
+		console.log(arr2)
+
+		console.log(arr1)
+
+		console.log(arr3)
+
+		return null;
+
+	}
+
+
 
 }.call(this))
