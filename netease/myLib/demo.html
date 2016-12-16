@@ -11,10 +11,9 @@
 
 	<script>	
 
-		var url = 'https://www.baidu.com/index.php?tn=58051076_oem_dg&ch=33';
-		var url1 = 'https://www.baidu.com/s?wd=unescape&rsv_spt=1&rsv_iqid=0xb26ba0620002d7a6&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=58051076_oem_dg&rsv_enter=1&oq=string%20js&rsv_t=a583tlo5uZSC3VUS96E4EOFpq1N4damnSn2c%2Fe8JeYdDBIY8M3j0xwEy1XZIrRkgwGVQ9DCJ&inputT=2212&rsv_pq=e6115a520002a733&rsv_sug3=46&rsv_sug1=46&rsv_sug7=100&rsv_n=2&bs=string%20js'
-
-		console.log(utils.parseUrlToObj(url1))
+		var str = '我是世界第%s人,最%s';
+		var s = utils.sprintf(str,'一','帅');
+		console.log(s)
 
 
 		
