@@ -79,7 +79,7 @@
 	}
 
 
-
+	
 
 	utils.getQueryString = function(url,name){
 
@@ -90,6 +90,7 @@
 	    return arr === null ? null : arr[2];
 
 	}
+
 
 
 	utils.parseUrlToObj = function(url){
@@ -115,6 +116,12 @@
 
 		return null;
 
+	}
+
+	// 字符串去空
+
+	utils.trim = function(str){
+		return str.replace(/\s/g,'');
 	}
 
 
