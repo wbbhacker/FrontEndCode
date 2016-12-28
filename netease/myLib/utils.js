@@ -21,9 +21,10 @@
 	        iPad: u.indexOf('iPad') > -1, //是否iPad
 	        webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
 	        iosv: u.substr(u.indexOf('iPhone OS') + 9, 3),
-	        weixin: u2.match(/MicroMessenger/i) == "micromessenger",
+	        weixin: u2.match(/MicroMessenger/i) == "micromessenger",  // 微信
 	        ali: u.indexOf('AliApp') > -1,
 	        NewsApp:u.indexOf('NewsApp') > -1,   //网易新闻客户端
+	        weibo:u.indexOf('weibo') > -1,        // 微博
 	    };
 	}
 	
@@ -79,7 +80,7 @@
 	}
 
 
-	
+
 
 	utils.getQueryString = function(url,name){
 
@@ -123,6 +124,8 @@
 	utils.trim = function(str){
 		return str.replace(/\s/g,'');
 	}
+
+	
 
 
 
