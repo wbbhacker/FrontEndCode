@@ -7,19 +7,15 @@
 <body>
 	
 
-
 	<!-- 解决微信里面音频不能自动播放 -->
 
-
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-	
 	<script>
 	    $('#audio')[0].play();
 	    $(document).on('WeixinJSBridgeReady',function(){
 	        $('#audio')[0].play();
 	    });
 	</script>
-	
 	
 	<!-- 视频 -->
 
