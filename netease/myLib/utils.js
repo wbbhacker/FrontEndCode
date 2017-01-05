@@ -69,9 +69,7 @@
     utils.throttle = function(delay, action){
 	    var last = 0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 	    return function(){
-
-	        var curr = +new Date()
-
+	        var curr = +new Date();
 	        if (curr - last > delay){
 	            action.apply(this, arguments)
 	            last = curr 
@@ -79,17 +77,10 @@
 	    }
 	}
 
-
-
-
 	utils.getQueryString = function(url,name){
-
 		var reg = new RegExp('(^|&|\\?)'+ name +'=([^&]*)(&|$)');
-
 	    var arr = url.match(reg);
-
 	    return arr === null ? null : arr[2];
-
 	}
 
 
@@ -118,11 +109,14 @@
 		return null;
 
 	}
-
 	// 字符串去空
-
 	utils.trim = function(str){
 		return str.replace(/\s/g,'');
+	}
+
+	// 判断是否原生数组
+	utils.isArray = function(value){
+		return Object.prototype.toString.call(value) == '[object Array]';
 	}
 
 	
