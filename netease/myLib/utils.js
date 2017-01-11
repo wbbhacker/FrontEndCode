@@ -119,6 +119,13 @@
 		return Object.prototype.toString.call(value) == '[object Array]';
 	}
 
+	// 打乱数组顺序
+
+	utils.shuffle = function(arr){
+		return arr.sort(function(){return 0.5 - Math.random()})
+	}
+
+
 	
 
 
