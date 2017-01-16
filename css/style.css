@@ -115,3 +115,9 @@ a{
 }
 
 
+/*ios 禁止用户选中元素*/
+div{
+	-webkit-user-select: none;
+	user-select: none;
+}
+
