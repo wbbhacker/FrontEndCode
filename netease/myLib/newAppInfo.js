@@ -41,7 +41,6 @@
 // trashid.rk
 // trashid.rdata
 // trashid.datatype
-
 // var trashidValue;
 // function __newsapp_trashid_done(trashid){
  
@@ -49,17 +48,19 @@
 
 // }
 
-// window.__newsapp_trashid_done = function(rs){
-
-//     afterCallback(rs,Callbacks.afterTrashID);
-
-// }
+var sendData = {};
 
 
-// function afterCallback(rs,afterTrashID){
-//     alert(rs)
-//     alert(Callback.afterTrashID)
-// }
+window.__newsapp_trashid_done = function(info){  
+
+	sendData.deviceId = window.JSON.stringify(info);    
+	sendData.deviceType = info.id_ver.replace(/_.*/g, '').toLowerCase();
+
+}
+
+
+window.NewsAppClient.trashId();
+
 
 // window.addEventListener("load",function(){
 
@@ -86,7 +87,7 @@
 
 /*********************************************测试******************************************************************/ 
 document.getElementById('btn').addEventListener('click',function(){
-
+	alert(sendData.deviceId)
     // for(i in trashidValue){
     //     alert( i)
     //     alert(trashidValue[i])

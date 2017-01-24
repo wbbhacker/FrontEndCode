@@ -98,8 +98,6 @@ getDir('img',function(over){
        newArr.push(n.replace(/\\/g,'/').replace(reg,''));  
     });
     
-
-
     str = 'var imgUrlArray='+JSON.stringify(newArr).replace(/"/g,'\'');
 
     fs.writeFile('account.js',str,function(err){

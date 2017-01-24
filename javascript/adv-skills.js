@@ -67,3 +67,36 @@ Rectangle.prototype = new Polygon();   //加上这句话才正确，要不继承
 			}
 		}
 	})()
+
+
+// 数组分块技术 (array chunking)
+
+
+function chunk(array,process,context){
+	setTimeout(function(){
+		var item = array.shift();
+		process.call(context,item);
+		if(array.length > 0 ){
+			setTimeout(arguments.callee,100);
+		}
+	},100);
+}
+
+var data = [12,123,1234,453,436,23,23,5,4123,45,346,5634,2234,345,342];
+function printValue(item){
+	var div = document.getElementById("myDiv");
+	div.innerHTML += item + "<br>";
+}
+// chunk(data, printValue);
+// for(var i=0; i<data.length; i++){
+// 	printValue(data[i])
+// }
+var a = data.concat();
+console.log(data)
+console.log(a)
+
+data.shift();
+console.log(data)
+console.log(a)
+
+
