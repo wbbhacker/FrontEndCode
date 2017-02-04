@@ -3,12 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- 适用于640窗口 -->
-	<meta name="viewport" content="width=640,user-scalable=no,target-densitydpi= device-dpi" />
+	<meta name="viewport" content="width=640,user-scalable=no"/>  
+	
+	<!-- 忽略缩放的话，浏览器会自动匹配合适的缩放数值 -->
 
 	<!-- 这条会不管用，因为设置了比例是1:1 所以浏览器视口不会适配640的 -->
-	<!-- <meta name="viewport" content="width=640,user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" /> -->
+	<!-- <meta name="viewport" content="width=640, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" /> -->
 
-	<!-- <meta name="viewport" content="width=device-width,user-scalable=no,target-densitydpi= device-dpi" /> -->
+	<!-- <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1"  /> -->
 	
 	<!-- 使用于rem -->
 	<!-- <meta content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport"> -->
@@ -22,6 +24,10 @@
     <!-- 忽略Android平台中对邮箱地址的识别 -->
     <meta name="format-detection" content="email=no" />
 	<title></title>
+	<style>
+		*{margin:0;padding: 0;}
+		html,body{width: 100%;height: 100%;}
+	</style>
 </head>
 <body>
 	
