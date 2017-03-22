@@ -121,3 +121,8 @@ div{
 	user-select: none;
 }
 
+
+/*禁止点击图片，出现阴影*/
+html,body{
+	-webkit-tap-highlight-color: transparent;
+}
