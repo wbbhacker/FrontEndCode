@@ -5,10 +5,10 @@
 // 	function b(){
 // 		n++;
 // 		console.log(n)
-// 		console.log('1')
+// 		// console.log('1')
 // 	}
 // 	b();
-// 	console.log('2')
+// 	// console.log('2')
 // 	return b;
 // }
 // var c = a();
@@ -57,6 +57,7 @@
 
 
 // *** 五 ***
+
 // var a = 10;
 
 // function test(){
@@ -70,6 +71,8 @@
 // 	console.log(a)
 // }
 // test();
+
+
 
 
 // *** 六 ***
@@ -88,10 +91,14 @@
 // console.log(this.name);
 // console.log(object.getNameFunc()());
 
+
+
+
 // *** 七 ***
+
 // var a = "a";
 // function say(word) {
-//   console.log(a);
+
 // }
 
 // function execute(someFunction, value) {
@@ -116,7 +123,6 @@
 // test(demo);
 // 见 一、二
 
-
 // ***九***
 // 请写出下面代码段结果
 // function fun(n,o){
@@ -129,9 +135,9 @@
 // 		}
 // 	};
 // };
-// var a = fun(0); a.fun(1); a.fun(2); a.fun(3); 
-// var b = fun(0).fun(1).fun(2).fun(3);
-// var c = fun(0).fun(1); c.fun(2); c.fun(3);
+// var a = fun(0); a.fun(1); a.fun(2); a.fun(3);   
+// var b = fun(0).fun(1).fun(2).fun(3);   
+// var c = fun(0).fun(1); c.fun(2); c.fun(3); 
 
 
 // 闭包的作用：
@@ -152,13 +158,14 @@
 // function prop() {console.log(5)};
 
 // // 连续代码段， 不是独立的
-// fn.prop();
-// prop();
-// fn().prop();
-// prop();
+
+// fn.prop();  //2
+// prop();  //  4
+// fn().prop(); //1
+// prop(); // 1
 // new fn.prop();
 // new fn().prop();
-// new new Foo().getName();
+// new new fn().prop();
 
 // ***十一***
 // console.log(x);//输出：function x(){}
@@ -202,6 +209,18 @@
 // 写一个add函数实现以下结果
 // add(2,5);   // 结果是7
 // add(2)(5);  // 结果为7
+
+// function add(){
+// 	var a = arguments[0];
+// 	if(arguments.length == 2){
+// 		return arguments[0] + arguments[1] ;
+// 	}else{
+// 		return function(){
+// 			return a + arguments[0];
+// 		}
+// 	}
+// }
+
 // function add(x,y){
 // 	var len = arguments.length;
 // 	var c = x;
@@ -220,6 +239,7 @@
 
 // ***十四***
 // 下面函数存在的问题？
+
 // function point(x,y){
 // 	if(!x){
 // 		x = 320;
@@ -229,8 +249,8 @@
 // 	}
 // 	return {x:x,y:y}
 // }
-// point(0,0)
-// console.log(point(0,0))
+// // point(2,3)
+// console.log(point(2,3))
 
 
 
@@ -246,9 +266,21 @@
 
 // var s3 = 'hello';
 // var s4 = 'hello';
+
+
+// var a = 'sssss';
+// var b = a;
 // console.log(s3 === s4)
 // console.log(s3)
 // console.log(s4)
+
+// console.log([1,2] == [1,2])
+
+// var s5 = String('hello');
+// var s6 = String('hello');
+
+// console.log(this)
+// console.log(typeof s3)
 
 
 // ***十六***
@@ -284,16 +316,16 @@
 // console.log([] instanceof Array )
 
 
-	// console.log(2&3)
-	// 	console.log(2|3)
-	// 	console.log(~true)    //true boolean   -2
-	// 	console.log(NaN == NaN)    //true boolean   -2
-	// 	console.log(undefined == undefined)    //true boolean   -2
-	// 	console.log(null == null)    //true boolean   -2
-	// 	console.log( typeof(NaN) )    
-	// 	console.log( typeof(undefined) )    
-	// 	console.log( typeof(null) )    
-	// 	console.log( typeof([]) )    
+// console.log(2&3)
+// 	console.log(2|3)
+// 	console.log(~true)    //true boolean   -2
+// 	console.log(NaN == NaN)    //true boolean   -2
+// 	console.log(undefined == undefined)    //true boolean   -2
+// 	console.log(null == null)    //true boolean   -2
+// 	console.log( typeof(NaN) )    
+// 	console.log( typeof(undefined) )    
+// 	console.log( typeof(null) )    
+// 	console.log( typeof([]) )    
 
 // ***十八***
 
@@ -318,26 +350,33 @@
 // function goods(){
 
 // }
+// function sun(){
+
+// }
+// console.log(Person.prototype)
 // Person.prototype = {
 // 	constructor:Person,
 // 	name:"N"
 // }
 // goods.prototype = {
-// 	name:"N"
+// 	name:"goods"
 // }
 // animation.prototype.run = {
-// 	name:"N"
+// 	name:"animation"
 // }
 
 // var friend = new Person();
 // var goodss = new goods();
 // var runs = new animation();
+
+// console.log(sun.prototype)
+
 // console.log(friend.__proto__)	 //
 // console.log(goodss.__proto__)    //  这就是有无constructor
 // console.log(runs.__proto__)	     //
 // console.log(goodss instanceof goods)
 // console.log(goodss.__proto__ === goods.prototype )
-// console.log(goodss.__proto__)
+// console.log(goods.prototype)
 // console.log(goods.prototype)
 
 
@@ -347,6 +386,7 @@
 
 // console.log(friend instanceof Object )
 // console.log(friend instanceof Person )
+// console.log(friend.constructor)
 // console.log( friend.constructor == Person )
 // console.log( friend.constructor == Object )
 
@@ -365,6 +405,7 @@
 // console.log(document.getElementsByTagName('div'))
 
 // ***二十***
+
 // var foo = {},
 //     F = function(){};
 
@@ -375,6 +416,9 @@
 // console.log(foo.b)    // undefined
 // console.log(F.a)      // value a
 // console.log(F.b)      // value b
+// console.log(Object.prototype.__proto__)
+
+// console.log(Function.__proto__)
 
 // foo.a的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 找到value a
 // foo.b的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 没有 ---> foo.__proto__.__proto__ (Object.prototype.__proto__): 没有
@@ -390,7 +434,10 @@
 // console.log(b.__proto__)
 // console.log(a.__proto__.__proto__)
 // console.log(Object.__proto__)
+
 // console.log(Object.prototype)
+
+// console.log(Object.prototype == Object.__proto__)
 
 // console.log({}.__proto__ === Object.prototype )
 
@@ -416,6 +463,24 @@
 // console.log(SubType.__proto__)
 // console.log(instance1.__proto__.__proto__.__proto__)            //
 
+// var a = {};
+// var b = function(){};
+// var c = 'hello';
+// console.log(a.prototype)
+// console.log(b.prototype)
+// console.log(c.prototype)
+// console.log(typeof Object)
+
+// var Person = function(){};  
+// Person.prototype.type = 'Person';  
+// Person.prototype.maxAge = 100;
+
+// var p = new Person();  
+// p.name = 'rainy';
+
+// console.log(Person.prototype.constructor === Person);  //=> true  
+// console.log(p.__proto__ === Person.prototype);         //=> true  
+// console.log(p.prototype);                 //=> undefined  
 
 // ***二十二***
 //
@@ -427,6 +492,7 @@
 // function getColor(){
 // 	console.log(this.color)	
 // }
+
 
 // getColor();     		//call和apply真正强大的地方是能够扩充函数赖以运行的作用域。
 // getColor.call(o);       //在使用call方法时，传递给函数的参数必须逐个列举出来。
@@ -583,3 +649,122 @@
 // while(t)
 // { }
 // console.log('end');
+
+
+// ***三十*** 
+
+// if (typeof Object.beget !== 'function') {
+//     Object.beget = function(o) {
+//         var F = function() {};
+//         F.prototype = o;
+//         return new F();
+//     };
+// }
+
+
+// window.onload = function() {
+//     var Dog = {
+//         wow: function() {
+//             console.log('wow');
+//         },
+//         yelp: function() {
+//             return this.wow();
+//         }
+//     };
+
+//     var MadDog = Object.beget(Dog);
+
+//     console.log(MadDog.__proto__ )
+
+//         MadDog = {
+// 	        madYelp: function() {
+// 	         var _self = this;
+// 	            setInterval(function() {              
+// 	                return _self.wow();
+// 	            }, 2000);
+// 	        }
+// 	    };
+
+// 	    MadDog.madYelp = function() {
+// 	         var _self = this;
+// 	            setInterval(function() {              
+// 	                return _self.wow();
+// 	            }, 2000);
+// 	    }
+
+
+//     //test xiaoXian
+//     var xiaoXian = Object.beget(Dog);
+//     var xiaoXianBtn = document.getElementById('xiaoXianBtn');
+//     xiaoXianBtn.onclick = function() {
+//         xiaoXian.yelp();
+//     };
+
+//     //test xiaoMang
+//     var xiaoMang = Object.beget(MadDog);
+//     var xiaoMangBtn = document.getElementById('xiaoMangBtn');
+//     xiaoMangBtn.onclick = function() {
+//         xiaoMang.madYelp();
+//     };
+// };	
+
+
+// ***三十一*** 
+// var x = 100;  
+// var inc = function(){  
+//   var x = 0;
+//   return function(){
+//     console.log(x++);
+//   };
+// };
+
+// var inc1 = inc();  
+// var inc2 = inc();
+
+// inc1();  // -> 0  
+// inc1();  // -> 1  
+// inc2();  // -> 0  
+// inc1();  // -> 2  
+// inc2();  // -> 1  
+// x;       // -> 100  
+
+
+// ***三十二*** 
+
+// var name = "global";  
+// var oo = {  
+//   name: "oo",
+//   getNameFunc: function(){
+//     return function(){
+//       return this.name;
+//     };
+//   }
+// }
+// var ooo = {  
+//   name: "ooo",
+//   getName: oo.getNameFunc() // 此时闭包函数的this被绑定到新的Object
+// };
+
+// console.log(ooo.getName())
+
+function Foo(){
+    Foo.a=function(){ console.log(4,this)}
+    
+    this.a=function(){ console.log(3,this)}
+
+    a=function(){ console.log(1,this)}
+    return this;
+}
+
+Foo.a=function(){ console.log(10)}
+Foo.prototype.a=function(){ console.log(13)}
+var a=function(){ console.log(11)}
+function a(){console.log(12)}
+
+
+Foo()
+Foo.a()
+a()
+Foo().a()
+new Foo().a()
+new Foo.a()
