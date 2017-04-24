@@ -132,7 +132,8 @@
  //                timeout = null;
  //                if (!immediate) func.apply(context, args);
  //            };
- //            var callNow = immediate && !timeout;
+ //            var callNow = immediate && !timeout;    // && !timeout 防止同时执行两次冲突
+
 
  //            clearTimeout(timeout);
  //            timeout = setTimeout(later, wait);
@@ -142,8 +143,17 @@
 
  //        };
  //    };
+
+
+function debounce(method, context) {                     // 这种用的命名空间，没用闭包
+    clearTimeout(method.tId);
+        method.tId= setTimeout(function(){
+        method.call(context);
+    }, 100);
+}
+
      
-function debounce(func,wait,immediate){
+function debounce(func,wait,immediate){             //  用的闭包来保存变量，但是消耗内存;
 
     var imeout;
 

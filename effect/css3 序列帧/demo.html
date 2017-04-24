@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>test</title>
+    <meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no">
+    <meta name="Keywords" content="真果粒,网易真果粒">
+    <meta name="Description" content="真果粒,网易真果粒">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="format-detection" content="telephone=no"/>
+    <style>
+        *{ margin:0;padding:0;}
+        .img11{
+            width:640px;
+            height:665px;
+            background:url(11.1.png) no-repeat;
+            background-position: 0 0;
+        }
+        .two{
+            animation: twos 1s steps(2) infinite alternate ;
+            -webkit-animation: twos 1s  steps(2) infinite alternate ;
+        }
+        @keyframes twos{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: 0 -1330px;
+            }
+        }
+        @-webkit-keyframes twos{
+            0%{
+                background-position: 0 0;
+                -webkit-background-position: 0 0;
+            }
+            100%{
+                background-position: 0 -1330px;
+                -webkit-background-position: 0 -1330px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="abso img11 two" id="aaa"></div>
+</body>
+</html>

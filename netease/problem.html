@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<!-- 解决微信里面音频不能自动播放 -->
+
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+	    $('#audio')[0].play();
+	    $(document).on('WeixinJSBridgeReady',function(){
+	        $('#audio')[0].play();
+	    });
+	</script>
+	
+	<!-- 视频 -->
+
+	<!--
+	1.目前只有ios7+、winphone8+支持自动播放
+	2.支持Airplay的设备（如：音箱、Apple TV)播放
+	x-webkit-airplay="true" 
+	3.播放视频不全屏，ios7、、winphone8+支持，部分android4+支持（含华为、小米、魅族）
+	webkit-playsinline="true" 
+	4.ios 10 : playsinline
+	5.ios 8、9 ：https://github.com/bfred-it/iphone-inline-video
+	6.poster 视频未播放时的图片
+	7.src 视频连接
+	-->
+	
+	<video src="http://flv.bn.netease.com/videolib3/1612/02/VPAnN7517/SD/VPAnN7517-mobile.mp4" poster="img/video.jpg" width="640" x-webkit-airplay="true" playsinline="true" webkit-playsinline="true" controls="controls" autoplay="autoplay" loop="loop"></video>
+	
+</body>
+</html>

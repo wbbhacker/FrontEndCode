@@ -1,0 +1,25 @@
+{
+  "name": "f2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "\\",
+  "devDependencies": {
+    "browser-sync": "^2.17.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-csslint": "^1.0.0",
+    "gulp-jslint": "^1.0.5",
+    "gulp-scss": "^1.4.0",
+    "gulp-scss-lint": "^0.4.0",
+    "gulp-sourcemaps": "^2.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.2"
+  }
+}

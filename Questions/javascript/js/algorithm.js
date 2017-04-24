@@ -11,7 +11,7 @@
 // 					arr[j] = arr[j+1];
 // 					arr[j+1] = temp; 
 // 			}
-// 		}
+// 		}5
 // 	}
 // 	console.timeEnd('改进后冒泡排序耗时');
 // 	return arr;
@@ -112,25 +112,26 @@
 
 // ***三***
 // ***插入排序***
-function insertionSort(array) {
-    if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
-        console.time('插入排序耗时：');
-        for (var i = 1; i < array.length; i++) {
-            var key = array[i];
-            var j = i - 1;
-            while (j >= 0 && array[j] > key) {
-                array[j + 1] = array[j];
-                j--;
-            }
-            array[j + 1] = key;
-        }
-        console.timeEnd('插入排序耗时：');
-        return array;
-    } else {
-        return 'array is not an Array!';
-    }
-}
-// ***一***
+// function insertionSort(array) {
+//     if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
+//         console.time('插入排序耗时：');
+//         for (var i = 1; i < array.length; i++) {
+//             var key = array[i];
+//             var j = i - 1;
+//             while (j >= 0 && array[j] > key) {
+//                 array[j + 1] = array[j];
+//                 j--;
+//             }
+//             array[j + 1] = key;
+//         }
+//         console.timeEnd('插入排序耗时：');
+//         return array;
+//     } else {
+//         return 'array is not an Array!';
+//     }
+// }
+
+// ***四***
 // ***快速排序***
 
 // function qSort(list){
@@ -154,3 +155,30 @@ function insertionSort(array) {
 // var b = qSort(a);
 // console.log(b);
 
+// ***四***
+// ***希尔排序***
+
+function shellSort(arr) {
+    var len = arr.length,
+        temp,
+        gap = 1;
+    console.time('希尔排序耗时:');
+    while(gap < len/5) {          //动态定义间隔序列
+        gap =gap*5+1;
+
+    }
+    for (gap; gap > 0; gap = Math.floor(gap/5)) {
+        console.log(gap)
+        for (var i = gap; i < len; i++) {
+            temp = arr[i];
+            for (var j = i-gap; j >= 0 && arr[j] > temp; j-=gap) {
+                arr[j+gap] = arr[j];
+            }
+            arr[j+gap] = temp;
+        }
+    }
+    console.timeEnd('希尔排序耗时:');
+    return arr;
+}
+var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+console.log(shellSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 
