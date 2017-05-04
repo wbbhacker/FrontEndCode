@@ -49,3 +49,15 @@
  // var result = compare({ name: "d", age: 20 }, { name: "c", age: 27 });
 
 
+ //随机一个0-n的数字，并且排除m
+ function random(num,now){
+    	
+    	var randomNum = Math.floor(Math.random()*num);
+    	if(randomNum == now){
+    		return random(num,now);   //  return 一点要加上 不然返回undefined
+    	}else{
+    		return randomNum
+    	}
+    }
+
+
