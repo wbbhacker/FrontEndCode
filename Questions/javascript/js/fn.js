@@ -54,7 +54,7 @@
     	
     	var randomNum = Math.floor(Math.random()*num);
     	if(randomNum == now){
-    		return random(num,now);   //  return 一点要加上 不然返回undefined
+    		return random(num,now);   //  return 一点要加上 不然返回undefined  好好想想这就是递归
     	}else{
     		return randomNum
     	}
