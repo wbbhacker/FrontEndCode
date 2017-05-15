@@ -11,7 +11,7 @@
 // 					arr[j] = arr[j+1];
 // 					arr[j+1] = temp; 
 // 			}
-// 		}5
+// 		}
 // 	}
 // 	console.timeEnd('改进后冒泡排序耗时');
 // 	return arr;
