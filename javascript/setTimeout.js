@@ -1,16 +1,16 @@
 /*****************测试一*******************/ 
 
-// var start = new Date();  
+var start = new Date();  
  
-// var end = 0;  
+var end = 0;  
  
-// setTimeout(function() {   
+setTimeout(function() {   
  
-//   console.log(new Date() - start);  
+  console.log(new Date() - start);  
  
-// },  500);  
+},  500);  
  
-// while (new Date() - start <= 1000) {}
+while (new Date() - start <= 1000) {}
 
 
 /*****************测试二*******************/ 
@@ -49,15 +49,16 @@ document.querySelector('#third input').addEventListener('keyup',function() {
 });
 
 /*****************测试四*******************/ 
-// document.querySelector('#test').addEventListener('keydown',function(){
-// 	console.log('keydown')
-// })
-// document.querySelector('#test').addEventListener('keypress',function(){
-// 	console.log('keypress')
-// })
-// document.querySelector('#test').addEventListener('keyup',function(){
-// 	console.log('keyup')
-// })
+
+document.querySelector('#test').addEventListener('keydown',function(){
+	console.log('keydown')
+})
+document.querySelector('#test').addEventListener('keypress',function(){
+	console.log('keypress')
+})
+document.querySelector('#test').addEventListener('keyup',function(){
+	console.log('keyup')
+})
 
 /*****************测试五*******************/ 
 // setTimeout 传参数
@@ -68,3 +69,5 @@ setTimeout(function(a, b){
   console.log(b);   // 4
  
 },0, 3, 4);
+
+
