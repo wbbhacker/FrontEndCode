@@ -37,6 +37,7 @@ var mediator = function(){
 
 	}
 
+
 	return {
 		Publish: publish,
 		Subscribe: subscribe,
