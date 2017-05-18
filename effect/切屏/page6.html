@@ -130,17 +130,17 @@
 
        }
 
-      var aaa = singleCarousel({
+      var instance = singleCarousel({
        	bind:document.getElementById("singleCarousel")
        })
-      	aaa.bind.children[0].className = "zheng";
+      	instance.bind.children[0].className = "zheng";
        LRsignMaker({
        		bind:document.getElementById("singleCarousel"),
 			touche:function(){
 				if( "L" == this.way ){
-					aaa.next();
+					instance.next();
 				}else{
-					aaa.prev();
+					instance.prev();
 				}
 			}
        })

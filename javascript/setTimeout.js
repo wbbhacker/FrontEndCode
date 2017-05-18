@@ -1,33 +1,33 @@
-/*****************测试一*******************/ 
+/*****************测试一*******************/
 
-var start = new Date();  
- 
-var end = 0;  
- 
-setTimeout(function() {   
- 
-  console.log(new Date() - start);  
- 
-},  500);  
- 
+var start = new Date();
+
+var end = 0;
+
+setTimeout(function() {
+
+    console.log(new Date() - start);
+
+}, 500);
+
 while (new Date() - start <= 1000) {}
 
 
-/*****************测试二*******************/ 
-	// 实时获取输入框的内容 方法一
-document.querySelector('#one input').onkeydown = function() {   
+/*****************测试二*******************/
+// 实时获取输入框的内容 方法一
+document.querySelector('#one input').onkeydown = function() {
 
- 	document.querySelector('#one span').innerHTML = this.value;   
- 
-};   
- 
-document.querySelector('#second input').onkeydown = function() {   
-  	setTimeout(function() {   
+    document.querySelector('#one span').innerHTML = this.value;
 
-    	document.querySelector('#second span').innerHTML = document.querySelector('#second input').value;   
+};
 
-	}, 0);
- 
+document.querySelector('#second input').onkeydown = function() {
+    setTimeout(function() {
+
+        document.querySelector('#second span').innerHTML = document.querySelector('#second input').value;
+
+    }, 0);
+
 };
 
 // 当你往两个表单输入内容时，你会发现未使用setTimeout函数的只会获取到输入前的内容，而使用setTimeout函数的则会获取到输入的内容。
@@ -41,33 +41,31 @@ document.querySelector('#second input').onkeydown = function() {
 // 使用setTimeout函数，执行顺序是：onkeydown => onkeypress => function => onkeyup
 
 
-	// 方法二  长按的话就不会实时同步了
+// 方法二  长按的话就不会实时同步了
 
-document.querySelector('#third input').addEventListener('keyup',function() {    
-    document.querySelector('#third span').innerHTML = document.querySelector('#third input').value;   
+document.querySelector('#third input').addEventListener('keyup', function() {
+    document.querySelector('#third span').innerHTML = document.querySelector('#third input').value;
 
 });
 
-/*****************测试四*******************/ 
+/*****************测试四*******************/
 
-document.querySelector('#test').addEventListener('keydown',function(){
-	console.log('keydown')
+document.querySelector('#test').addEventListener('keydown', function() {
+    console.log('keydown')
 })
-document.querySelector('#test').addEventListener('keypress',function(){
-	console.log('keypress')
+document.querySelector('#test').addEventListener('keypress', function() {
+    console.log('keypress')
 })
-document.querySelector('#test').addEventListener('keyup',function(){
-	console.log('keyup')
+document.querySelector('#test').addEventListener('keyup', function() {
+    console.log('keyup')
 })
 
-/*****************测试五*******************/ 
+/*****************测试五*******************/
 // setTimeout 传参数
-setTimeout(function(a, b){   
- 
-  console.log(a);   // 3
- 
-  console.log(b);   // 4
- 
-},0, 3, 4);
+setTimeout(function(a, b) {
 
+    console.log(a); // 3
 
+    console.log(b); // 4
+
+}, 0, 3, 4);

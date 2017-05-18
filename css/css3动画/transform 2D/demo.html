@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transform 2D 转换</title>
+	<style>
+
+	 *{ margin:0px; padding:0px;}
+	 a{ text-decoration:none; color:#000;}ss
+	 img{ display:block;}
+	
+	#rect{ width:200px; height:200px; background:#f00;}
+	#rect img{ width:100%; height:100%;}
+	#control { margin:50px 0px 10px;}
+	#control input{ cursor:pointer; margin-right:20px;}
+	#button { cursor:pointer;}
+
+   	/*  
+   	translate(X,Y)  位移
+   	X:距离左边的位移，Y:距离顶端的位移，都是相对原来位置移动的;
+   	单位为%时，是相对自身的宽度或者高度；
+   	可分开写：transform:translateX(-50px) 距离右边位移50px
+   	*/ 
+	.translate{ 
+		transform:translate(50px,50px);          
+		-webkit-transform:translate(50px,50px);  /* Safari and Chrome */
+		-moz-transform:translate(50px,50px);     /* Firefox */
+		-ms-transform:translate(50px,50px);      /* IE 9 */
+		-o-transform:translate(50px,50px);       /* Opera */
+	}
+	
+	/*  
+   	rotate(deg) 	旋转
+   	deg:旋转的度数,正值顺时针旋转，负值逆时针旋转;
+   	*/ 
+	.rotate{ 
+		transform:rotate(45deg);          
+		-webkit-transform:rotate(45deg);      
+		-moz-transform:rotate(45deg);         
+		-ms-transform:rotate(45deg);          
+		-o-transform:rotate(45deg);         
+	}
+	
+	/*  
+   	scale(X,Y) 	    倍数
+   	X:把宽度变成X倍, Y:把高度变成Y倍;
+   	X > 1 变大X倍 , 0 < X 变小X倍；
+   	可分开写：transform:scale(0.5) 宽度变为原来的0.5倍 
+   	*/ 
+   	.scale{ 
+		transform:scale(1.5,1.5);          
+		-webkit-transform:scale(1.5,1.5);      
+		-moz-transform:scale(1.5,1.5);          
+		-ms-transform:scale(1.5,1.5);          
+		-o-transform:scale(1.5,1.5);         
+	}
+
+	/*  
+   	skew(X,Y) 	    倾斜
+   	X:围绕X轴旋转X度, Y:围绕Y轴旋转Y度;
+   	可分开写：transform:skewX(-45deg) 围绕X轴逆时针旋转45deg
+   	*/ 
+   	.skew{ 
+		transform:skew(10deg,10deg);          
+		-webkit-transform:skew(10deg,10deg);       
+		-moz-transform:skew(10deg,10deg);          
+		-ms-transform:skew(10deg,10deg);          
+		-o-transform:skew(10deg,10deg);          
+	}
+	</style>
+</head>
+<body>
+	<div id="rect" ><img src="one.jpg"></div>
+
+	<div id="control" >
+		<label for="translate">translate 位移</label>
+		<input id="translate" name="a" type="radio" value="translate">
+		<label for="rotate">rotate 旋转</label>
+		<input id="rotate" name="a" type="radio" value="rotate">
+		<label for="scale">scale 倍数</label>
+		<input id="scale" name="a" type="radio" value="scale">
+		<label for="skew">skew 倾斜</label>
+		<input id="skew" name="a" type="radio" value="skew">
+	</div>
+	<input id="button" type="button" value="复原">
+
+	<script>
+
+		var toRect = document.getElementById('rect');
+		var toButton = document.getElementById("button"); 
+		var toControl = document.getElementById("control");
+		taInput = toControl.getElementsByTagName("input");
+
+		for(var i = 0; i < taInput.length; i++){
+			taInput[i].addEventListener('click',addClass,false);
+		}
+
+		toButton.onclick = function(){
+			toRect.className = '';
+		}
+
+		function addClass(){
+			
+			if(toRect.className == this.value)
+				return;
+			toRect.className = this.value;
+
+			console.log(this);
+		}
+
+		/*
+		console.log() 
+		调试语句，可以打印出任何的东西，按住shift+ctrl+i，在console控制台上可以看到
+		this
+		指当前的操作对象
+									——xiaobin
+		*/
+	</script>
+</body>
+</html>

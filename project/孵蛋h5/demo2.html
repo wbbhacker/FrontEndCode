@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>神蛋</title>
+
+<style type="text/css">
+html,body,div,span,a,img,form {
+	margin:0;
+	padding:0;
+}
+html,body{
+	width:100%;
+	height:100%;
+}
+img {
+	vertical-align: bottom;
+}
+a {
+	text-decoration: none;
+}
+
+.page{
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	position:absolute;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position: center center;
+}
+/*动画*/
+@keyframes toLength { 
+	0%{ transform: scale(0,1);-webkit-transform: scale(0,1);} 
+	100%{ transform: scale(1,1);-webkit-transform: scale(1,1);}
+}
+@-webkit-keyframes toLength { 
+	0%{ transform: scale(0,1);-webkit-transform: scale(0,1);} 
+	100%{ transform: scale(1,1);-webkit-transform: scale(1,1);}
+}
+
+
+
+.page2{ z-index:100; background-image:url('p2/p2_bg.jpg'); background-position:center;position:relative; }
+.page2 img.egg1{ width:70%; top:27%; left:15%; position:absolute; display:none; }
+
+.page2 img.egg1{display:block;opacity:1; z-index:1000; }
+
+
+
+.toBrood{ position:absolute; width:200px;height:230px; top:19%; left:20%; z-index:10000;}
+.toBroodStr{ width:100px;  height:40px; color:#fff; background:#041749; border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;-moz-border-radius:5px;text-align:center; font-family:'楷体'; font-size:1.1em;line-height:40px; margin:0px auto;}
+
+
+.timeaxis{ position:absolute; top:85%; left:16%; width:224px; height:16px; background-image:url(p3/timeaxisBg.png); background-size: contain; background-repeat:no-repeat;}
+.timeaxis img{ height:100%; padding:0px; margin:0px; float:left; display:none;animation:toLength 1s forwards;-webkit-animation:toLength 1s forwards;transform-origin:left;-webkit-transform-origin:left}
+
+
+.numPerson{width:100%; position:absolute; color:#fff; bottom:7%;font-family:'楷体'; font-size:1.1em;text-align:center;}
+</style>
+</head>
+<body>
+	<div id="page2" class="page2 page">
+ 		<img id="egg1" class="egg1" src="p3/egg1.png">
+ 		<!-- <div id="toBrood"  class="toBrood">
+ 			<div class="toBroodStr"><span>点击孵蛋</span></div>
+ 		</div> -->
+		<div id="timeaxis" class="timeaxis">
+			<img src="p3/time1.png">
+			<img src="p3/time2.png">
+			<img src="p3/time3.png">
+			<img src="p3/time4.png">
+			<img src="p3/time5.png">
+			<img src="p3/time6.png">
+			<img src="p3/time7.png">
+			<img src="p3/time8.png">
+		</div>
+
+
+		<div id="numPerson" class="numPerson">
+			<span>没人帮你孵蛋</span> 
+		</div>
+ 	</div>
+ <script>
+ var numImg = 7; //该参数，显示几个人孵蛋
+ var offOn = true;
+ var getTime = document.getElementById("timeaxis");
+ var getEgg1 = document.getElementById("egg1");
+ var getToBrood = document.getElementById("toBrood");
+ var num = Math.ceil(Math.random()*8);
+ var taImg = getCiledsElem(getTime);
+ var getText = getCiledsElem(document.getElementById("numPerson"));
+
+ /*
+ document.getElementById("toBrood").onclick = function(){
+ 	   getEgg(numImg);
+ 	   numImg++;
+ };*/
+
+
+window.onload = function(){
+	   if( 0 != numImg ){
+	   	 for( var i = 0; i < numImg; i++ ){
+	   	 	getEgg(i);
+	   	 }
+	   }
+}
+
+function getEgg(piImg){
+
+ 	   if( 3 == piImg )
+ 	   		getEgg1.src = "p3/egg2.png";
+ 	   if( 8 == piImg ){
+ 	   		if( true == offOn )
+ 	   			getEgg1.src = "p2/s" + num + ".png";
+ 	   	    offOn = false ;
+ 	   	    getText[0].innerHTML = "恭喜你孵化出神兽"
+ 	   }
+       taImg[piImg].style.display = "block";
+       getText[0].innerHTML = "已经有"+(piImg+1)+"个人帮你孵蛋"
+    
+} 
+ function getCiledsElem(poElem){
+
+ 	var elemArr = [];
+ 	for( var i = 0 ; i < poElem.childNodes.length ; i++ ){
+ 			if( 1 == poElem.childNodes[i].nodeType )
+ 				elemArr.push( poElem.childNodes[i] )
+ 		}
+ 	return elemArr;
+ 	
+ }
+ </script>
+</body>
+</html>

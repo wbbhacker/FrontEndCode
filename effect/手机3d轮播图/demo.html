@@ -31,7 +31,6 @@
 				poConf.control = 2 ;
 			};
 			LRsignMaker._move = function(e){
-				//console.log("d")
 				if(2 != poConf.control)
 					return;
 				var _this = poConf;
@@ -75,8 +74,6 @@
 				for( var i = 0; i < a.length; i++){
 					a[i].style.height = h + "px";
 					a[i].style.width = w*0.778 +"px";
-					//a[i].style.transition = "transform 2s";
-					//a[i].style.webkitTransition = "transform 2s";
 					a[i].addEventListener('webkitTransitionEnd',function(){
 						poConf.control = true;
 					})

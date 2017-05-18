@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/* 左边固定宽度，右边自适应 */
+	*{ margin:0px; padding:0px; }
+
+	/*一.左侧进行浮动，右侧设置margin-left*/
+/*	.nav{
+		float:left; 
+		width:200px; 
+		height:200px; 
+		background-color: #ff0;
+	}
+	.content{
+		height: 200px;
+		margin-left:200px;
+		background-color: #f0f;
+	}*/	
+	/*二.利用绝对定位来代替浮动*/
+	/*.nav{
+		position: absolute;
+		top:0;
+		left:0;
+		width:200px; 
+		height:200px; 
+		background-color: #ff0;
+	}
+	.content{
+		height: 200px;
+		margin-left:200px;
+		background-color: #f0f;
+	}	*/
+
+	/*三.利用css3中的旧盒子模型*/
+/*	.box{
+		display:-webkit-box;
+	}
+	.nav{
+		width:200px;
+		height: 200px;
+		background-color: #f0f;
+	}
+	.content{
+		-webkit-box-flex:1;
+		box-flex:1;
+		height:200px;
+		background-color: #ff0;
+	}*/
+	/*四.利用css3中的新盒子模型*/
+	/*.box{
+		display: -webkit-flex;
+		display:flex;
+	}
+	.nav{
+		width:200px;
+		height:200px;
+		background-color: #f0f;
+	}
+	.content{
+		-wekbit-flex:1;
+		flex:1;
+		height:200px;
+		background-color: #ff0;
+	}
+*/	</style>
+</head>
+<body>	
+	<div class="box">	
+		<div class="nav"></div>
+		<div class="content"></div>
+	</div>
+</body>
+</html>

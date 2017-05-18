@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{ margin:0px; padding:0px;}
+		#autoPic{ width:400px; height: 200px; overflow: hidden; position: relative; }
+		#autoPic .right{ position: absolute;right: 0px;top:0px;}
+		#autoPic .left{ position: absolute;left: 0px;top:0px;}
+	</style>
+</head>
+<body>
+		
+	<div id="autoPic">
+			<img src="images/spic_1.png">
+			<img src="images/spic_2.png">
+			<img src="images/spic_1.png">
+			<button class="left">下一页</button>
+			<button class="right">上一页</button>
+	</div>
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/autoPic.js"></script>
+	<script>
+		var instance = new autoPic({
+			layoutBK:function(){
+				console.log("布局完成")
+			},
+			runBK:function(){
+				console.log("翻页完成")
+			},
+			autoPlay:true
+		});
+
+
+		$(".left").click(function(){
+			instance.control('+');
+			instance.run();
+		})
+
+		$(".right").click(function(){
+			instance.control('-');
+			instance.run();
+		})
+
+	</script>
+</body>
+</html>

@@ -15,10 +15,9 @@ body { position:relative; overflow:hidden; }
 
 
 .stage{ width:100%; height:100%; background:#fff;overflow:hidden; perspective:0px; -webkit-perspective:0px;}
-/*.screen{ width:100%; height:100%; background:#f00; transform-style:preserve-3d; -webit-transform-style:preserve-3d; animation:rotation 5s linear infinite; -webkit-animation:rotation 5s linear infinite;}*/
+.screen{ width:100%; height:100%; background:#f00; transform-style:preserve-3d; -webit-transform-style:preserve-3d; /*animation:rotation 5s linear infinite; -webkit-animation:rotation 5s linear infinite;*/}
 .screen{ width:100%; height:100%; background:#fff; position:relative; transform-style:preserve-3d; -webit-transform-style:preserve-3d;perspective:0px; -webkit-perspective:0px;  }
 .screen img{ width:100%; height:100%; position:absolute; left:0px; top:0px; transform-style:preserve-3d; -webit-transform-style:preserve-3d;}
-
 
 
 @keyframes rotation { 
@@ -41,6 +40,7 @@ body { position:relative; overflow:hidden; }
 		<img src="img/2.jpg" style="">
 		<img src="img/3.jpg" style="">
 		<img src="img/4.jpg" style="">
+		<img src="img/4.jpg" style="">
 	</div>
 </div>
 <script>
@@ -51,6 +51,7 @@ poConf {
 	rate:int
 }
 */
+
 var rotation = function(poConf){
 	poConf.numDeg=0;
 	poConf.prevPointX = 0; 
@@ -64,7 +65,6 @@ var rotation = function(poConf){
 		if( (360 <= poConf.numDeg) || (poConf.numDeg <= -360)){   //360度转动
 			poConf.numDeg = 0;
 		}
-		//console.log(numDeg)
 		if( 0 < (point.screenX - poConf.prevPointX) ){   //判断手势方向
 			poConf.numDeg += poConf.rate;
 		} else {
@@ -95,12 +95,8 @@ poConf{
 	bind:dom,
 }
 */
-
-
 var imgLayout = function(poConf){
-
 	poConf.imgArrs = [];
-
 	poConf.findChilds = function(){
 		var childsElem = poConf.bind.childNodes;
 		for( var i = 0; i < childsElem.length; i++){
@@ -108,9 +104,7 @@ var imgLayout = function(poConf){
 				poConf.imgArrs.push(childsElem[i])
 		}
 	}
-
 	poConf.findChilds();
-
 	poConf.layout = function(){
 		var imgs = poConf.imgArrs;
 		for( var i = 0; i < imgs.length; i++ ){
@@ -120,8 +114,6 @@ var imgLayout = function(poConf){
 		  	console.log(imgs[i])	
 		}
 	}
-
-	//poConf.layout()
 	return poConf;
 }
 

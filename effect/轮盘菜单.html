@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <title></title>
+    <style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .turntable {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        text-align: center;
+        transition: all 0.8s ease-out;
+        -webkit-transition: all 0.8s ease-out;
+        transition: all 1.5s ease-out;
+    }
+    
+    .turntable .pie {
+        width: 80px;
+        height: 80px;
+        background: #f0f;
+        position: absolute;
+        margin-left: 50%;
+    }
+    
+    .pie2 {
+        transform-origin: 50% 200%;
+        transform: rotate(35deg);
+        -webkit-transform: rotate(35deg);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="turntable" class="turntable">
+        <div class="pie">1</div>
+        <div class="pie">2</div>
+        <div class="pie">3</div>
+        <div class="pie">4</div>
+        <div class="pie">5</div>
+        <div class="pie">6</div>
+        <div class="pie">7</div>
+        <div class="pie">8</div>
+    </div>
+    <script>
+    /*
+    	poConf{
+    		bind: Dom,
+    		touche: fn
+    	}
+    	*/
+    var LRsignMaker = function(poConf) {
+            LRsignMaker._start = function(e) {
+                var point = e.touches ? e.touches[0] : e;
+                poConf.startcoor = [point.screenX, point.screenY];
+                poConf.control = true;
+            };
+            LRsignMaker._move = function(e) {
+                if (!poConf.control)
+                    return;
+                var _this = poConf;
+                var point = e.touches ? e.touches[0] : e;
+                poConf.endcoor = [point.screenX, point.screenY];
+            };
+            LRsignMaker._end = function(e) {
+                if (!poConf.control)
+                    return;
+                if (poConf.endcoor[0] > poConf.startcoor[0]) {
+                    poConf.way = "R";
+                } else {
+                    poConf.way = "L";
+                }
+                poConf.touche();
+            };
+            poConf.control = false;
+            poConf.bind.addEventListener('touchstart', LRsignMaker._start, false);
+            poConf.bind.addEventListener('touchmove', LRsignMaker._move, false);
+            poConf.bind.addEventListener('touchend', LRsignMaker._end, false);
+        }
+        /*
+        poConf:
+        {
+        	bind:Dom,
+        	rota:fn
+        }
+        */
+    var turntable = function(poConf) {
+        _this = poConf.bind;
+        var p_h = _this.offsetHeight;
+        poConf.deg = 360 / ((_this.childNodes.length - 1) / 2);
+        var deg = poConf.deg
+        for (var i = 0; i < _this.childNodes.length; i++) {
+            if (1 == _this.childNodes[i].nodeType) {
+                var y = p_h / (2 * _this.childNodes[i].offsetHeight) * 100;
+                _this.childNodes[i].style.transformOrigin = "50% " + y + "%";
+                _this.childNodes[i].style.webkitTransformOrigin = "50% " + y + "%";
+                _this.childNodes[i].style.transform = "translateX(-50%) rotate(" + (i - 1) / 2 * deg + "deg) "
+                _this.childNodes[i].style.webkitTransform = "translateX(-50%) rotate(" + (i - 1) / 2 * deg + "deg) "
+            }
+        }
+        return poConf
+
+    }
+    var ins = turntable({
+        bind: document.getElementById("turntable")
+    });
+    var degs = 0;
+    LRsignMaker({
+        bind: document.getElementById("turntable"),
+        touche: function() {
+            if ("R" == this.way) {
+                degs = degs + ins.deg;
+            } else {
+                degs = degs - ins.deg;
+            }
+            this.bind.style.transform = "rotate(" + degs + "deg)";
+            this.bind.style.webkitTransform = "rotate(" + degs + "deg)";
+
+
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="form.css">
+	<style>
+		button{
+			cursor:pointer;
+		}
+
+		div{
+			visibility: visible;
+		}
+	</style>
+</head>
+<body>
+	<div id="name" class="textInput">
+		<input class="hC" type="hidden" value="">
+		<label for="male">姓名:</label>
+		<span class="vC">小张</span>
+		<input class="iC" type="text" value="">
+	</div>
+	<div id="year" class="textInput">
+		<input class="hC" type="hidden" value="">
+		<label for="male">年龄:</label>
+		<span class="vC">20</span>
+		<input class="iC" type="text" value="">
+	</div>
+	<div id="hobby" class="textInput">
+		<input class="hC" type="hidden" value="">
+		<label for="male">爱好:</label>
+		<span class="vC">电竞</span>
+		<input class="iC" type="text" value="">
+	</div>
+	<br>
+	<br>
+	<button class="edit">编辑</button>
+	<button class="unable_edit">禁止编辑</button>
+	<button class="able_edit">启动编辑</button>
+	<button class="cancel_edit">取消编辑</button>
+	<button class="confirm_edit">确认编辑</button>
+	
+
+	<script src="js/jquery-1.10.1.min.js"></script>
+	<script src="js/textInput.js"></script>
+	<script>
+
+	var textArray = ['name','year','hobby'],
+		textRes = [];
+
+	
+	$(textArray).each(function(i,v){
+		var textRe = textInput({
+						hC:'#'+v+' '+'.hC',   //hidden input classname
+						vC:'#'+v+' '+'.vC',   //visible value classname
+						iC:'#'+v+' '+'.iC',   //edit input classname
+						normalStyle:function(){
+							normalStyle($('#'+v+' '+'.iC'),$('#'+v+' '+'.vC'))	
+						},
+						editStyle:function(){
+							editStyle($('#'+v+' '+'.vC'),$('#'+v+' '+'.iC'))
+						},
+						ableStyle:function(){
+							ableStyle($('#'+v+' '+'.iC'))
+						},
+						unableStyle:function(){
+							unableStyle($('#'+v+' '+'.iC'))
+						}
+					});
+		textRes.push(textRe);
+	});
+	
+	function normalStyle(elem_f,elem_t){
+		elem_f.css('display','none');
+		elem_t.css('display','inline-block');
+	}
+
+	function editStyle(elem_f,elem_t){
+		elem_f.css('display','none');
+		elem_t.css('display','inline-block');
+	}
+
+	function ableStyle(elem){
+		elem.removeAttr('disabled');
+	}
+
+	function unableStyle(elem){
+		elem.attr('disabled','');
+	}
+
+	$('.edit').click(function(){
+		textRes[0].edit();
+		textRes[1].edit();
+		textRes[2].edit();
+	})
+
+	$(".unable_edit").click(function(){
+		textRes[0].unableEdit();
+	})
+	$('.able_edit').click(function(){
+		textRes[0].ableEdit();
+	})
+
+	$('.cancel_edit').click(function(){
+		textRes[0].cancelEdit();
+	})
+	$('.confirm_edit').click(function(){
+		textRes[0].confirmEdit();
+		console.log(textRes[0].value);
+	})
+
+
+
+	</script>
+</body>
+</html>

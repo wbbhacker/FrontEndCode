@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation_1</title>
+	<style>
+
+		*{ margin:0px; padding:0px; }
+		#stage{ width:400px; height:300px; background:#000; margin:10% auto; overflow:hidden;}
+		#rect{ width:100px; height:100px; position:relative; margin-left:150px; margin-top:100px;}
+		#rect img{ width:100%; height:100%;  }
+		
+		/*
+			第一步：创建动画
+			@keyframes name{
+					0%{ 开始状态时的属性 }
+					10%{ 10%时状态时的属性 }
+					.
+					.  中间你可以分任意多的时段
+					.
+					100%{ 结束时状态时的属性 }
+			}
+			第二步：添加动画到元素里面
+			animation:name time; 
+			name:动画名字，time:完成这个动画需要花费的时间;
+			animation 还有其他六个属性：可以参考：http://www.w3school.com.cn/css3/css3_animation.asp
+
+		*/
+		
+		.l-r{ animation:left_right 2s; -webkit-animation:left_right 2s;}
+		.rotate{ animation:rotate 2s linear ; -webkit-animation:rotate 2s linear; }
+		.larger{ animation:larger 2s linear ; -webkit-animation:larger 2s linear}
+
+		/*左右晃动*/
+		@keyframes left_right{
+			0%{ left:0px;}
+			25%{ left:150px;}
+			50%{ left:0px;}
+			75%{ left:-150px;}
+			100%{ left:0px;}
+		}
+		@-webkit-keyframes left_right{    /*这里我只兼容了webkit内核浏览器如：谷歌*/
+			0%{ left:0px;}
+			25%{ left:150px;}
+			50%{ left:0px;}
+			75%{ left:-150px;}
+			100%{ left:0px;}
+		}
+
+		/*旋转*/
+		@keyframes rotate{
+			0%{ transform:rotate(0deg); -webkit-transform:rotate(0deg);}
+			100%{ transform:rotate(360deg); -webkit-transform:rotate(360deg);}
+		}
+		@-webkit-keyframes rotate{
+			0%{ transform:rotate(0deg); -webkit-transform:rotate(0deg);}
+			100%{ transform:rotate(360deg); -webkit-transform:rotate(360deg);}
+		}
+
+		/*旋转变大*/
+		@keyframes larger{
+			0%{ transform:scale(1,1) rotate(0deg); -webkit-transform:scale(1,1) rotate(0deg);}
+			100%{ transform:scale(4,3) rotate(360deg); -webkit-transform:scale(4,3) rotate(360deg);}
+		}
+		@-webkit-keyframes larger{
+			0%{ transform:scale(1,1) rotate(0deg); -webkit-transform:scale(1,1) rotate(0deg);}
+			100%{ transform:scale(4,3) rotate(360deg); -webkit-transform:scale(4,3) rotate(360deg);}
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="stage" class="rotate">
+	<span style="color:#fff">点击小猫</span>
+		<div id="rect"><img src="one.jpg"></div>
+	</div>
+ 	<script>
+ 		var toElem = document.getElementById("rect");
+ 		var control = 0;
+ 		toElem.addEventListener("click",function(){
+ 			if( 3 == control )
+ 				control = 0;
+ 			switch(control){
+ 				case 0:
+ 					this.className = "l-r";
+ 					break;
+ 				case 1:
+ 					this.className = "rotate";
+ 					break;
+ 				case 2:	
+ 					this.className = "larger";
+ 					break;
+ 			}
+ 			control++
+ 		},false);
+
+ 		//监听动画结束时的事件
+ 		toElem.addEventListener("webkitAnimationEnd",function(){
+ 			this.className = '';
+ 		},false);
+ 		/*
+ 			动画执行的两种情况：
+ 			1.元素添加带动画的类（class）时，才会执行
+
+ 			2.明天继续。。。- _ -   
+ 														--xiaobin
+ 		*/ 
+ 	</script>
+</body>
+</html>
