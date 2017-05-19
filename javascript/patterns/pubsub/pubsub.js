@@ -19,6 +19,7 @@ define(function() {
             while ( --len >= 0 ) {
                 topics[topic][len].func(args);
             }
+        
 
         };
 
