@@ -45,26 +45,26 @@
 // //  console.log(b);                    
 
 
-function bubbleSort3(arr3) {
-    var low = 0;
-    var high= arr.length-1; //设置变量的初始值
-    var tmp,j;
-    console.time('2.改进后冒泡排序耗时');
-    while (low < high) {
-        for (j= low; j< high; ++j) //正向冒泡,找到最大者
-            if (arr[j]> arr[j+1]) {
-                tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;
-            }
-        --high;                 //修改high值, 前移一位
-        for (j=high; j>low; --j) //反向冒泡,找到最小者
-            if (arr[j]<arr[j-1]) {
-                tmp = arr[j]; arr[j]=arr[j-1];arr[j-1]=tmp;
-            }
-        ++low;                  //修改low值,后移一位
-    }
-    console.timeEnd('2.改进后冒泡排序耗时');
-    return arr3;
-}
+// function bubbleSort3(arr3) {
+//     var low = 0;
+//     var high= arr.length-1; //设置变量的初始值
+//     var tmp,j;
+//     console.time('2.改进后冒泡排序耗时');
+//     while (low < high) {
+//         for (j= low; j< high; ++j) //正向冒泡,找到最大者
+//             if (arr[j]> arr[j+1]) {
+//                 tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;
+//             }
+//         --high;                 //修改high值, 前移一位
+//         for (j=high; j>low; --j) //反向冒泡,找到最小者
+//             if (arr[j]<arr[j-1]) {
+//                 tmp = arr[j]; arr[j]=arr[j-1];arr[j-1]=tmp;
+//             }
+//         ++low;                  //修改low值,后移一位
+//     }
+//     console.timeEnd('2.改进后冒泡排序耗时');
+//     return arr3;
+// }
 // var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
 // console.log(bubbleSort3(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
@@ -141,27 +141,67 @@ function bubbleSort3(arr3) {
 // ***四***
 // ***希尔排序***
 
-function shellSort(arr) {
-    var len = arr.length,
-        temp,
-        gap = 1;
-    console.time('希尔排序耗时:');
-    while(gap < len/5) {          //动态定义间隔序列
-        gap =gap*5+1;
+// function shellSort(arr) {
+//     var len = arr.length,
+//         temp,
+//         gap = 1;
+//     console.time('希尔排序耗时:');
+//     while(gap < len/5) {          //动态定义间隔序列
+//         gap =gap*5+1;
 
-    }
-    for (gap; gap > 0; gap = Math.floor(gap/5)) {
-        console.log(gap)
-        for (var i = gap; i < len; i++) {
-            temp = arr[i];
-            for (var j = i-gap; j >= 0 && arr[j] > temp; j-=gap) {
-                arr[j+gap] = arr[j];
-            }
-            arr[j+gap] = temp;
+//     }
+//     for (gap; gap > 0; gap = Math.floor(gap/5)) {
+//         console.log(gap)
+//         for (var i = gap; i < len; i++) {
+//             temp = arr[i];
+//             for (var j = i-gap; j >= 0 && arr[j] > temp; j-=gap) {
+//                 arr[j+gap] = arr[j];
+//             }
+//             arr[j+gap] = temp;
+//         }
+//     }
+//     console.timeEnd('希尔排序耗时:');
+//     return arr;
+// }
+// var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+// console.log(shellSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 
+
+// ***五***
+// ***归并排序***
+function merge(left,right){
+
+    var result = [];
+    while(left.length > 0 && right.length > 0){
+
+        if(left[0] < right[0]){
+            result.push(left.shift());
+        }else{
+            result.push(right.shift());
         }
+        
     }
-    console.timeEnd('希尔排序耗时:');
-    return arr;
+    return result.concat(left,right);
 }
-var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
-console.log(shellSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 
+
+function mergeSort(item){
+
+    if(item.length == 1) return item;
+
+    var middle = Math.floor(item.length/2);
+    var left,right;
+    left = item.slice(0,middle);
+    right = item.slice(middle);
+
+    return merge(mergeSort(left),mergeSort(right));
+
+}
+
+var testdata = [9,2,14,44,1,0];
+
+console.log(mergeSort(testdata))
+
+
+
+
+
+
