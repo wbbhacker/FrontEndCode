@@ -168,37 +168,69 @@
 
 // ***五***
 // ***归并排序***
-function merge(left,right){
 
-    var result = [];
-    while(left.length > 0 && right.length > 0){
+// function merge(left,right){
 
-        if(left[0] < right[0]){
-            result.push(left.shift());
-        }else{
-            result.push(right.shift());
-        }
-        
-    }
-    return result.concat(left,right);
-}
+//     var result = [];
+//     while(left.length > 0 && right.length > 0){
 
-function mergeSort(item){
+//         if(left[0] < right[0]){
+//             result.push(left.shift());
+//         }else{
+//             result.push(right.shift());
+//         }
 
-    if(item.length == 1) return item;
+//     }
+//     return result.concat(left,right);
+// }
 
-    var middle = Math.floor(item.length/2);
-    var left,right;
-    left = item.slice(0,middle);
-    right = item.slice(middle);
+// function mergeSort(item){
 
-    return merge(mergeSort(left),mergeSort(right));
+//     if(item.length == 1) return item;
 
-}
+//     var middle = Math.floor(item.length/2);
+//     var left,right;
+//     left = item.slice(0,middle);
+//     right = item.slice(middle);
 
-var testdata = [9,2,14,44,1,0];
+//     return merge(mergeSort(left),mergeSort(right));
 
-console.log(mergeSort(testdata))
+// }
+
+// var testdata = [9,2,14,44,1,0];
+
+// console.log(mergeSort(testdata))
+
+// ***六***
+// ***鸡尾酒排序***
+// ***六***
+// ***鸡尾酒排序***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
