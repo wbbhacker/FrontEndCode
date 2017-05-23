@@ -2,21 +2,21 @@
 // ***冒泡排序***
 
 // function bubbleSort(arr){
-// 	console.time('改进后冒泡排序耗时');
-// 	var len = arr.length;
-// 	for( var i=0; i < len; i++ ){
-// 		for( var j=0; j < len-1-i; j++ ){
-// 			if(arr[j] > arr[j+1]){
-// 				var temp = arr[j];
-// 					arr[j] = arr[j+1];
-// 					arr[j+1] = temp; 
-// 			}
-// 		}
-// 	}
-// 	console.timeEnd('改进后冒泡排序耗时');
-// 	return arr;
+//  console.time('改进后冒泡排序耗时');
+//  var len = arr.length;
+//  for( var i=0; i < len; i++ ){
+//      for( var j=0; j < len-1-i; j++ ){
+//          if(arr[j] > arr[j+1]){
+//              var temp = arr[j];
+//                  arr[j] = arr[j+1];
+//                  arr[j+1] = temp; 
+//          }
+//      }
+//  }
+//  console.timeEnd('改进后冒泡排序耗时');
+//  return arr;
 // }
-               
+
 // var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
 // console.log(bubbleSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 
@@ -29,8 +29,8 @@
 //             if (arr[j]> arr[j+1]) {
 //                 pos= j; //记录交换的位置
 //                 var tmp = arr[j]; 
-// 	                arr[j]=arr[j+1];
-// 	                arr[j+1]=tmp;
+//                  arr[j]=arr[j+1];
+//                  arr[j+1]=tmp;
 //             }
 //         }
 //         i= pos; //为下一趟排序作准备
@@ -44,6 +44,9 @@
 // //  var b = bubbleSort(a);
 // //  console.log(b);                    
 
+
+// ***一丶1***
+// ***鸡尾酒排序***
 
 // function bubbleSort3(arr3) {
 //     var low = 0;
@@ -118,20 +121,20 @@
 // ***快速排序***
 
 // function qSort(list){
-// 	if( list.length == 0){
-// 		return [];
-// 	}
-// 	var lesser = [],
-// 		greater = [],
-// 		pivot = list[0];
-// 	for( var i=1; i<list.length; i++ ){
-// 		if( list[i] < pivot ){
-// 			lesser.push(list[i]);
-// 		}else{
-// 			greater.push(list[i]);
-// 		} 
-// 	}
-// 	return qSort(lesser).concat(pivot,qSort(greater));
+//  if( list.length == 0){
+//      return [];
+//  }
+//  var lesser = [],
+//      greater = [],
+//      pivot = list[0];
+//  for( var i=1; i<list.length; i++ ){
+//      if( list[i] < pivot ){
+//          lesser.push(list[i]);
+//      }else{
+//          greater.push(list[i]);
+//      } 
+//  }
+//  return qSort(lesser).concat(pivot,qSort(greater));
 // }
 
 // var a = [2,3,4,1,8,3,4];
@@ -202,38 +205,46 @@
 // console.log(mergeSort(testdata))
 
 // ***六***
-// ***鸡尾酒排序***
-// ***六***
-// ***鸡尾酒排序***
+// ***堆排序***
 
 
+Array.prototype.buildMaxHeap = function() {
+    for (var i = Math.floor(this.length / 2) - 1; i >= 0; i--) {
+        this.heapAdjust(i, this.length);
+    }
+};
 
+Array.prototype.swap = function(i, j) {
+    var tmp = this[i];
+    this[i] = this[j];
+    this[j] = tmp;
+};
 
+Array.prototype.heapSort = function() {
+    this.buildMaxHeap();
+    for (vari = this.length - 1; i > 0; i--) {
+        this.swap(0, i);
+        this.heapAdjust(0, i);
+    }
 
+    return this;
+};
 
+Array.prototype.heapAdjust = function(i, j) {
+    var largest = i;
+    var left = 2 * i + 1;
+    var right = 2 * i + 2;
 
+    if (left < j && this[largest] < this[left]) {
+        largest = left;
+    }
 
+    if (right < j && this[largest] < this[right]) {
+        largest = right;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if (largest != i) {
+        this.swap(i, largest);
+        this.heapAdjust(largest, j);
+    }
+};
