@@ -221,3 +221,12 @@ function createComparison(propertyName) {
 var compare = createComparison("name");
 
 var result = compare({ name: "d", age: 20 }, { name: "c", age: 27 });
+
+
+//******************************************************************************************
+
+Array.prototype.slice.call(arguments)； //  将具有length属性的对象转化成数组 
+
+
+
+
