@@ -346,21 +346,28 @@
 // 	this.sex = "man"
 // }
 // function animation(){
-
+ 
 // }
 // function goods(){
-
+// 	this.name = '冰激淋';
+// 	this.say = function(){
+// 		console.log('ss')
+// 	}
 // }
 // function sun(){
 
 // }
 // console.log(Person.prototype)
+
 // Person.prototype = {
 // 	constructor:Person,
 // 	name:"N"
 // }
 // goods.prototype = {
-// 	name:"goods"
+// 	name:"goods",
+// 	say:function(){
+// 		console.log('www')
+// 	}
 // }
 // animation.prototype.run = {
 // 	name:"animation"
@@ -368,12 +375,28 @@
 
 // var friend = new Person();
 // var goodss = new goods();
+
 // var runs = new animation();
 
 // console.log(sun.prototype)
 
 // console.log(friend.__proto__)	 //
 // console.log(goodss.__proto__)    //  这就是有无constructor
+
+// console.log(friend.sex)
+// console.log(goodss.name)
+// goodss.say();
+
+
+
+// console.log(animation.prototype)
+
+// console.log(friend.prototype)
+
+// 为什么new 出来的实例 的prototype 为undefined
+// console.log({}.prototype)
+// console.log({}.__proto__)
+
 // console.log(runs.__proto__)	     //
 // console.log(goodss instanceof goods)
 // console.log(goodss.__proto__ === goods.prototype )
@@ -447,6 +470,34 @@
 
 // Object intanceof Function: Object.__proto__ === Function.prototype, 因为结果为true
 // Function instanceof Object: Function.__proto__.__proto__ === Object.prototype, 因为结果也为true
+
+// ***二十***
+
+// function foo(){this.value =42;}
+
+// foo.prototype = {method:function(){return false}};
+
+// function bar(){
+// 	var value = 1;
+// 	return {method:function(){ return value}};
+// }
+
+// foo.prototype = new bar();
+
+// console.log(foo.prototype.constructor);
+// console.log(foo.prototype instanceof bar);
+
+// var test = new foo();
+
+// console.log(test instanceof foo);
+
+// console.log(test.__proto__)
+// console.log(test instanceof bar);
+
+
+
+// console.log(test.method())
+
 
 
 
@@ -750,24 +801,24 @@
 
 
 // ***三十三*** 
-function Foo(){
-    Foo.a=function(){ console.log(4,this)}
+// function Foo(){
+//     Foo.a=function(){ console.log(4,this)}
     
-    this.a=function(){ console.log(3,this)}
+//     this.a=function(){ console.log(3,this)}
 
-    a=function(){ console.log(1,this)}
-    return this;
-}
+//     a=function(){ console.log(1,this)}
+//     return this;
+// }
 
-Foo.a=function(){ console.log(10)}
-Foo.prototype.a=function(){ console.log(13)}
-var a=function(){ console.log(11)}
-function a(){console.log(12)}
+// Foo.a=function(){ console.log(10)}
+// Foo.prototype.a=function(){ console.log(13)}
+// var a=function(){ console.log(11)}
+// function a(){console.log(12)}
 
 
-Foo()
-Foo.a()
-a()
-Foo().a()
-new Foo().a()
-new Foo.a()
+// Foo()
+// Foo.a()
+// a()
+// Foo().a()
+// new Foo().a()
+// new Foo.a()
