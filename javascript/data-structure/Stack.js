@@ -24,12 +24,21 @@
 
 	}
 
-	// 数制间的相互转换
+	//  将数字转为二进制和八进制
+	
+	console.log(mulbase(101,2))
 
 	function mulbase(num,base){
-		
+		var instance = new Stack();
 
+		do{
+
+			instance.push(num % base);
+			num = Math.floor(num/base);
+
+		}while( num > 0) 
 		
+		return instance.dataStore.reverse().join('');
 		
 	}
 
@@ -38,4 +47,4 @@
 
 
 
-})
+})()
