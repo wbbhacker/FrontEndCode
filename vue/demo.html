@@ -1,34 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
-	<meta name="keywords" content="">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+    <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="email=no" />
-	<title></title>
-	<script src="js/vue.min.js"></script>
+    <title></title>
+    <script src="js/vue.min.js"></script>
+    <style>
+    	h4{
+    		color:#f0f;
+    	}
+    </style>
 </head>
-<body>
-	<div id="app">
-		{{ message }}
-	</div>
-	<div id="app-2">
-		<span v-bind:title="message">
-			鼠标悬停几秒钟查看此处动态绑定的提示信息！
-		</span>
-	</div>
 
-	<script>
-		var app = new Vue({
-			el:'#app',
-			data:{
-				message:'Hello Vue!'
-			}
-		})
-	</script>
+<body>
+	
+
+	<!-- example-2 -->
+	<h4>exampple-2</h4>
+    <div id="example-2">
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+    </div>
+	
+	<!-- example-4 -->
+	<h4>exampple-4</h4>
+    <children id="example-4" message="hello!"></children>
+	
+	<!-- example-3 -->
+	<h4>exampple-5</h4>
+    <div id="example-5">
+    	<input v-model="message">
+    	<br>
+    	<div >{{ message }}</div>
+    </div>
+
+	<!-- example-3 -->
+	<h4>exampple-3</h4>
+    <div id="example-3">
+
+        <input v-model="message">
+        <br>
+        <child v-bind:my-message="message"></child>
+
+    </div>
+
+    <script>
+
+    // example-3
+    Vue.component('child', {
+        props: ['myMessage'],
+        template: '<span>{{ myMessage }}</span>'
+    });
+
+    new Vue({
+        el: '#example-3',
+        data:{
+        	message:''
+        },
+
+    });
+
+    // example-5
+    new Vue({
+    	el:'#example-5',
+    	data:{
+    		message:'实时'
+    	}
+    });
+
+
+    // example-2
+    Vue.component('simple-counter', {
+        template: '<button v-on:click="counter += 1">{{counter}}</button>',
+        data: function() {
+            return {
+                counter: 0
+            };
+        }
+    });
+    new Vue({
+        el: '#example-2'
+    });
+
+
+    // example-4
+    Vue.component('children', {
+        props: ['message'],
+        template: '<span>{{ message }}</span>'
+    });
+
+    new Vue({
+    	el:'#example-4'
+    });
+
+
+
+    </script>
 </body>
+
 </html>
