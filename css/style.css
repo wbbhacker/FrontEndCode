@@ -10,14 +10,13 @@ i.triangle{
     border-left:6px solid #000;
 }
 
-/*垂直居中*/
+/*2.垂直居中*/
 .search{
 	position: relative;
 	height: 60px;
 	padding:0 0 0 8px;
 	border-top:1px solid #cccccc;
 	border-bottom:1px solid #cccccc;
-	vertical-align:middle;
 } 
 
 .search .form_text{
@@ -44,14 +43,43 @@ i.triangle{
 	vertical-align: middle;
 
 }
+/*3.垂直、水平居中*/
+.box-3{
+	position: relative;
+	left:50px;
+	width: 200px;
+	height: 200px;
+	border:1px solid #ccc;
+}
+.box-3 .box-sub{
+	position: relative;
+	width:100px;
+	height:100px;
+	background-color: #f00;
+}
+	/*已知宽高*/
+.box-3 .first{
+	left:50%;
+	top:50%;
+	margin-left:-50px;
+	margin-top:-50px;
+}
+	/*未知宽高*/
+.box-3 .second{
+	left:50%;
+	top:50%;
+	-webkit-transform:translateX(-50%) translateY(-50%);
+	transform:translateX(-50%) translateY(-50%);
+}
 
 
-/*修改*/
+/*************************************************************************************************/
 
 /*来改变按钮在iPhone下的默认风格*/
 select{
 	-webkit-appearance: none; 
 }
+
 /*input 设置背景透明*/
 input{
 	background-color:transparent;
@@ -70,14 +98,6 @@ input{
 　　input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 　　	color:#666;
 　　}
-/**/
-{
-	position: relative;    /* 内容超出部分自动隐藏*/
-	position: absolute;    /*内容超出部分不自动隐藏*/
-}
-
-
-/* 用 transition 的时候要小心，因为页面刷新的时候会有动画效果*/
 
 
 /*qu*/
