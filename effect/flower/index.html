@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <meta name="viewport" content="width=640,user-scalable=no" />
+    <script src="easeljs-0.8.2.min.js"></script>
+   	<script src="tweenjs-0.6.2.min.js"></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html,
+    body {
+        text-align: center;
+    }
+    
+    button {
+        display: block;
+        width: 240px;
+        height: 50px;
+        margin-top: 50px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    </style>
+</head>
+
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <button id="finish">完成</button>
+    <script>
+
+    var stage = new createjs.Stage("myCanvas");
+    var context = stage.canvas.getContext('2d');
+    var REFV = [255, 241, 0, 255];
+
+    var petal = new createjs.Container();
+
+    createjs.Touch.enable(stage);
+    stage.canvas.width = 600;
+    stage.canvas.height = 900;
+    
+    // stage.canvas.style.border = '1px solid #f00';
+
+    // 图片加载
+    var img = new Image();
+    img.onload = handle;
+    img.src = "bg-2.png";
+
+    // 线条
+    var shape = new createjs.Shape();
+    var graphics = shape.graphics;
+    graphics.beginStroke("black");
+    graphics.append(graphics.setStrokeStyle(1).command);
+
+    createjs.Ticker.addEventListener("tick", tick);
+
+    // 动画
+    petal.set({
+            x: 186
+        });
+
+    var toJson = {scaleX:2.5,scaleY:2.5,x:15}
+    var fromJson = {scaleX:1,scaleY:1,x:186}
+
+    createjs.Tween.get(petal).to(toJson,1000)
+
+    // var FPS = createjs.Ticker.framerate;
+
+    createjs.Ticker.framerate = 100;
+
+    function tick(){
+    	stage.update();
+    }
+
+    function handle() {
+
+        var bitmap = new createjs.Bitmap(img);
+
+        petal.addEventListener('pressmove', touchmoveHandel);
+
+        petal.addEventListener('mousedown', function(e) {
+
+            var localPoint = petal.globalToLocal(e.stageX, e.stageY);
+            graphics.moveTo(localPoint.x, localPoint.y);
+
+        });
+
+        petal.addChild(bitmap);
+        
+
+        petal.addChild(shape);
+        stage.addChild(petal);
+        stage.update();
+
+    }
+
+    function touchmoveHandel(e) {
+        var point = {};
+        point.x = e.stageX;
+        point.y = e.stageY;
+
+        var color = getColor(point);
+
+        var localPoint = petal.globalToLocal(point.x, point.y);
+
+        if (color.toString() == REFV.toString()) {
+
+            graphics.lineTo(localPoint.x, localPoint.y);
+
+            
+
+        } else {
+        	// graphics.closePath();
+            graphics.moveTo(localPoint.x, localPoint.y);
+        }
+
+    }
+
+    function drawSmiley() {
+
+        var s = new createjs.Shape();
+        var g = s.graphics;
+
+        g.setStrokeStyle(10, 'round', 'round');
+        g.beginStroke("#000");
+        g.beginFill("#FC0");
+        g.drawCircle(0, 0, 2);
+
+        return s;
+
+    }
+
+    function getColor(point) {
+        var pix = context.getImageData(point.x, point.y, 1, 1);
+        return pix.data.slice(0, 4);
+    }
+
+
+    console.log(createjs.Tween)
+
+    var flag = true;
+
+    document.getElementById('finish').addEventListener('click', function() {
+    	if(!flag) return;
+    	createjs.Tween.get(petal).to(fromJson,1000).wait(500).call(cb);
+    	function cb(){
+	        var deg = 45
+
+	        for (var i = 0; i < 7; i++) {
+
+	            var clonePetal = petal.clone(true);
+	            clonePetal.regX = 114;
+	            clonePetal.regY = 300;
+
+	            clonePetal.x += clonePetal.regX;
+	            clonePetal.y += clonePetal.regY;
+
+	            createjs.Tween.get(clonePetal).to({rotation:deg}, 1000)
+
+	            deg += 45 ;
+
+	            stage.addChild(clonePetal);
+
+	        }
+	        stage.update();
+    	}
+	        flag = false;
+    });
+    </script>
+</body>
+
+</html>
