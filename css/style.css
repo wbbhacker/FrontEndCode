@@ -1,148 +1,197 @@
-
 /*1.三角型*/
 
-i.triangle{
-	position: relative;
-	display: inline-block;
-	width: 0px;
-	height: 0px;
-    border:6px solid transparent;
-    border-left:6px solid #000;
+i.triangle {
+    position: relative;
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    border: 6px solid transparent;
+    border-left: 6px solid #000;
 }
+
 
 /*2.垂直居中*/
-.search{
-	position: relative;
-	height: 60px;
-	padding:0 0 0 8px;
-	border-top:1px solid #cccccc;
-	border-bottom:1px solid #cccccc;
-} 
 
-.search .form_text{
-	vertical-align:middle;
-	color:#181818;
+.search {
+    position: relative;
+    height: 60px;
+    padding: 0 0 0 8px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
 }
 
-.search .form_text label{
-	margin: 0 12px;
+.search .form_text {
+    vertical-align: middle;
+    color: #181818;
 }
 
-.search .query{
-	width: 100px;
-	height: 35px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-	background-color: #2194ff;
-	color:#fff;
+.search .form_text label {
+    margin: 0 12px;
 }
-.search .vertical-align-span{
-	display: inline-block;
-	width: 1px;
-	height: 100%;
-	vertical-align: middle;
 
+.search .query {
+    width: 100px;
+    height: 35px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #2194ff;
+    color: #fff;
 }
+
+.search .vertical-align-span {
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    vertical-align: middle;
+}
+
+
 /*3.垂直、水平居中*/
-.box-3{
-	position: relative;
-	left:50px;
-	width: 200px;
-	height: 200px;
-	border:1px solid #ccc;
+
+.box-3 {
+    position: relative;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
 }
-.box-3 .box-sub{
-	position: relative;
-	width:100px;
-	height:100px;
-	background-color: #f00;
+
+.box-3 .box-sub {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: #f00;
 }
+
+
 	/*已知宽高*/
-.box-3 .first{
-	left:50%;
-	top:50%;
-	margin-left:-50px;
-	margin-top:-50px;
+
+.box-3 .first {
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
 }
+
+
 	/*未知宽高*/
-.box-3 .second{
-	left:50%;
-	top:50%;
-	-webkit-transform:translateX(-50%) translateY(-50%);
-	transform:translateX(-50%) translateY(-50%);
+
+.box-3 .second {
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
+
+/**/
 
 
 /*************************************************************************************************/
 
+
 /*来改变按钮在iPhone下的默认风格*/
-select{
-	-webkit-appearance: none; 
-}
 
-/*input 设置背景透明*/
-input{
-	background-color:transparent;
-}
-
-/*input placeholder 字体的颜色*/
-	input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-　　	color: #666;
-　　}
-　　input:-moz-placeholder, textarea:-moz-placeholder {
-　　	color:#666;
-　　}
-　　input::-moz-placeholder, textarea::-moz-placeholder {
-　　	color:#666;
-　　}
-　　input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-　　	color:#666;
-　　}
-
-
-/*qu*/
-select{
-	outline: none;
+select,input{
     -webkit-appearance: none;
 }
 
 
+/*input 设置背景透明*/
+
+input {
+    background-color: transparent;
+}
+
+
+/*input placeholder 字体的颜色*/
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #666;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: #666;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #666;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #666;
+}
+
+
+/*qu*/
+
+select {
+    outline: none;
+    -webkit-appearance: none;     /*这个也可以去掉默认三角*/
+}
+
+
 /*去除ios中点击a标签时的默认背景*/
-a{
-	-webkit-tap-highlight-color:rgba(0,0,0,0);
+
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a,
+img {
+    -webkit-tap-highlight-color: transparent;
 }
 
 
 /*定义滚动条的样式*/
-.popup-tips .tips-text::-webkit-scrollbar{
+
+.popup-tips .tips-text::-webkit-scrollbar {
     width: 10px;
     height: 16px;
     border-radius: 10px;
     background-color: #b8000c;
 }
-.popup-tips .tips-text::-webkit-scrollbar-thumb{
+
+.popup-tips .tips-text::-webkit-scrollbar-thumb {
     width: 5px;
     height: 10px;
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #fff;
 }
 
+
 /*半透明兼容*/
-.opacity{
-	opacity: 0.7;
-	filter: alpha(opacity=70);
+
+.opacity {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
 }
 
 
-/*ios 禁止用户选中元素*/
-div{
-	-webkit-user-select: none;
-	user-select: none;
+/*ios 禁止用户选中元素(触发ios中的选中等效果)*/
+
+div {
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 
 /*禁止点击图片，出现阴影*/
-html,body{
-	-webkit-tap-highlight-color: transparent;
+
+html,
+body {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/*单行文本溢出*/
+
+.single-overflow{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
