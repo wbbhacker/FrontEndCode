@@ -12,6 +12,7 @@ var person = function() {
 var student = {};
 
 (student.skill = function() {
+
     this.name = '王彬彬';
 
 }).prototype = new skill();
@@ -21,6 +22,7 @@ var student = {};
 }).prototype = new person();
 
 
+console.log(student.prototype) 
 
 var instance = new student.skill();
 
