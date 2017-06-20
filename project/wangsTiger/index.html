@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=640,user-scalable=no,target-densitydpi= device-dpi">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+	<title>新福特翼虎美国出色之旅</title>
+	<link rel="stylesheet" href="css/styleReset.css">
+	<link rel="stylesheet" href="http://go.163.com/2015/public/common/loading/loading.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/zepto.min.js"></script>
+	<script src="http://go.163.com/2014/1226/tool/loading/loading.js"></script>
+	<script src="js/easeljs-0.8.2.min.js"></script>
+	<script src="js/preloadjs-0.6.2.min.js"></script>
+</head>
+<body>
+	<img src="img/share.jpg" alt="" style="display:none;">
+	<div id="stage" class="stage">
+		<div id="page1" class="page1">
+			<!-- <div id="stage"> -->
+			<img class="page1-car" src="img/page1-car.png" alt="">
+			<img class="page1-bg-1" src="img/page1-bg-1.png" alt="">
+			<img class="page1-title" src="img/page1-title.png" alt="">
+			<img src="img/page1-woman.png" alt="" class="page1-woman">
+			<img src="img/page1-btn.png" alt="" class="page1-btn">
+			<img src="img/page1-arrow.png" alt="" class="page1-arrow">
+			<!-- </div> -->
+		</div>
+		<div id="page2" class="page2">
+			<img src="" alt="" class="page2-car1">
+			<img src="img/page2-color-name.png" alt="" class="page2-color-name">
+			<ul>
+				<li>
+					<img src="img/page2-btn1.jpg" alt="">
+					<div></div>
+				</li>
+				<li>
+					<img src="img/page2-btn2.jpg" alt="">
+					<div></div>
+				</li>
+				<li>
+					<img src="img/page2-btn3.jpg" alt="">
+					<div></div>
+				</li>
+				<li>
+					<img src="img/page2-btn4.jpg" alt="">
+					<div></div>
+				</li>
+				<li>
+					<img src="img/page2-btn5.jpg" alt="">
+					<div></div>
+				</li>
+				<li>
+					<img src="img/page2-btn6.jpg" alt="">
+					<div></div>
+				</li>
+				<li>
+					<img src="img/page2-btn7.jpg" alt="">
+					<div></div>
+				</li>
+				<li>
+					<img src="img/page2-btn8.jpg" alt="">
+					<div></div>
+				</li>
+				<li>
+					<img src="img/page2-btn9.jpg" alt="">
+					<div></div>
+				</li>
+			</ul>
+			<p class="page2-car-name"></p>
+			<img src="img/page2-btn.png" alt="" class="page2-btn">
+		</div>
+		<div id="page3" class="page3">
+			<ul>
+				<li>
+					<img src="img/page3-solid-circle.png" alt="">
+				</li>
+				<li>
+					<img src="img/page3-solid-circle.png" alt="">
+				</li>
+				<li>
+					<img src="img/page3-solid-circle.png" alt="">
+				</li>
+			</ul>
+			<img src="img/page3-btn.png" alt="" class="page3-btn">
+		</div>
+		
+		<canvas id="myCanvas" class="myCanvas" width="640" height="1136"></canvas>
+		<!-- 调试 -->
+		<!-- <canvas id="myCanvas" class="myCanvas" width="1136" height="640"></canvas> -->
+	
+		<div class="popup-layer">
+			<div class="popup-layer-bg"></div>
+			<img src="img/prompt-graph.png" alt="" class="prompt-graph">
+			<img src="img/prompt-graph-tips.png" alt="" class="prompt-graph-tips">
+		</div>
+		<div class="popup-game-over">
+			<div class="popup-game-over-bg"></div>
+			<div class="content">
+				<img src="img/popup-title.png" alt="" class="popup-title">
+				<ul>
+					<li class="game-again">
+						<img src="img/popup-btn-2.png" alt="">
+					</li>
+					<li>
+						<a href="http://c.m.163.com/news/s/S1478495907364.html">
+						<img src="img/popup-btn-3.png" alt="">
+						</a>
+					</li>
+					<li class="game-form">
+						<img src="img/popup-btn-4.png" alt="">
+					</li>
+					<li id="shareBtn">
+						<img src="img/popup-btn-5.png" alt="">
+					</li>
+				</ul>
+				<img src="img/popup-close.png" alt="" class="popup-close">
+			</div>
+		</div>
+		<div class="popup-form">
+			<div class="popup-form-bg"></div>
+			<div class="content">
+				<ul>
+					<li>
+						<span>姓名:</span>
+						<input id="name" type="text">
+					</li>
+					<li>
+						<span>电话:</span>
+						<input id="phone"  type="text">						
+					</li>
+					<li>
+						<span>省份:</span>
+						<select id="province" name="" id=""></select>
+						<i></i>
+					</li>
+					<li>
+						<span>城市:</span>
+						<select id="city" name="" id=""></select>						
+						<i></i>
+					</li>
+					<li>
+						<span>经销商:</span>
+						<select id="dealer" name="" id=""></select>
+						<i></i>
+					</li>
+					<li>
+						<span>预计购车时间:</span>
+						<select name="" id="bugTime" class="select-s">
+							<option value="">请选择</option>
+							<option value="0-3个月">0-3个月</option>
+							<option value="4-6个月">4-6个月</option>
+							<option value="7-12个月">7-12个月</option>
+							<option value="1-2年">1-2年</option>
+							<option value="有购车计划但没决定时间">有购车计划但没决定时间</option>
+							<option value="暂无购车计划">暂无购车计划</option>
+						</select>
+						<i></i>						i
+					</li>
+				</ul>
+				<img src="img/popup-close.png" alt="" class="popup-close-1">
+
+				<img src="img/popup-btn-1.png" alt="" class="popup-btn-1">
+			</div>
+		</div>
+		<div class="popup-game">
+			<div class="popup-game-bg"></div>
+			<div class="content">			
+				<p class="name1">游戏说明</p>
+				<p class="name2">如何控制车速</p>
+				<img src="img/explain-bg1.jpg" alt="" class="explain-bg1">
+				<p class="name3">双指交替点击屏幕以控制车速，点击频率越高，翼虎速度越快哦！</p>
+				<div class="next-step">下一步</div>
+				<img src="img/explain-hand-l.png" alt="" class="explain-hand-l">
+				<img src="img/explain-hand-r.png" alt="" class="explain-hand-r">
+			</div>
+		</div>
+		<div class="popup-game-acc">
+			<div class="popup-game-acc-bg"></div>
+			<div class="content">			
+				<p class="name1">游戏说明</p>
+				<p class="name2">翼虎ACC巡航控制</p>
+				<img src="img/explain-bg2.jpg" alt="" class="explain-bg1">
+				<img src="img/explain-circle.png" alt="" class="explain-acc">
+				<img src="img/explain-tips.png" alt="" class="explain-acc-1">
+				<p class="name3">开启后智能自动调节车速，满载安心欣赏北美风景。</p>
+				<div class="next-step-1">完成</div>
+			</div>
+		</div>
+		<div class="pupup-go">
+			<div class="pupup-go-bg"></div>
+			<div class="content">
+				<img src="img/go-title.png" alt="" class="go-title">
+				<img src="img/go-bg.png" alt="" class="go-bg">
+				<img src="img/go-word1.png" alt="" class="go-word1">
+				<img src="img/go-word2.png" alt="" class="go-word2">
+				<div class="go-sao">
+					<img src="img/go-sao.png" alt="">
+				</div>
+				<img src="img/go-light.png" alt="" class="go-light">
+			</div>
+		</div>
+		<div class="popup-tips">
+			<div class="popup-tips-bg"></div>
+			<div class="content">
+				<img class="unlock" src="img/lock.png" alt="">
+				<p>请锁定竖排方向</p>
+				<p>为了更好体验</p>
+			</div>
+		</div>
+		<div class="share-tips">
+			<div class="share-tips-bg"></div>
+			<img src="img/share-tips.png" alt="">
+		</div>
+		<div class="tips">
+			<div class="tips-bg"></div>
+			<img src="img/tips.png" alt="" class="tips1">
+			<img src="img/tips-1.png" alt="" class="tips2">
+		</div>
+	</div>
+	<!-- 别动audio 三个标签的顺序 -->
+	<audio class="song" src="mp3/song-bg.mp3" loop="true" autoplay="true"></audio>
+	<audio class="song" src="mp3/song-1.mp3" loop="true"></audio>
+	<audio class="song" src="mp3/song-2.mp3" loop="true"></audio>
+		
+	<div class="netease-loader">
+	    <section>
+	        <article>
+	            <span class="load_type"></span>
+	            <span class="load_data"></span>
+	            <span class="load_text"></span>
+	        </article>
+	    </section>
+	</div>
+
+	<script src="http://go.163.com/2015/public/team/kongdejian/share.js"></script>
+	<script src="js/shop.js"></script>
+	<script src="js/index.js?sdsd"></script>
+	<script>
+            var shareData={
+                MsgImg:'http://s.auto.163.com/2016/1110/wangsTiger/img/share.jpg',  //分享图片
+                link:'http://s.auto.163.com/2016/1110/wangsTiger/',    //分享链接
+                title:'这场美国出色之旅目前就差你的加入！',   //分享标题
+                desc:'酷炫驾驭新福特翼虎，更有线下试驾邀你体验！',    //分享描述
+                fText:'这场美国出色之旅目前就差你的加入！',    //分享朋友圈
+                callback:function(){
+                    share_survey(true);
+                    // 新福特翼虎美国出色之旅
+                }
+            };
+            NeteaseShareInit();//用于初始化
+            document.getElementById("shareBtn").onclick = function() {
+            	NeteaseShare(function(){
+		            $('.share-tips').show();
+		        });
+            }
+
+   	</script>
+	<!-- START NetEase Devilfish 2006 -->
+	<script src="http://go.163.com/2015/0211/encore/js/share.js" type="text/javascript"></script>
+	<script src="http://analytics.163.com/ntes.js" type="text/javascript"></script>
+	<script type="text/javascript"> 
+	    share_survey();
+	    if (window.location.href.search(/auto\.163\.com|163\.com\/auto/) >= 0) {
+	            _ntes_nacc = "auto";
+	    } else if (window.location.href.search(/go\.163\.com/) >= 0) {
+	            _ntes_nacc = "minisites";
+	    }
+	    neteaseTracker();
+	</script>
+	<!-- END NetEase Devilfish 2006 -->
+	<!--汽车类活动第三方监测代码（缔元信）-->
+	<!-- START WRating v1.0 -->
+	<script src="http://img1.cache.netease.com/common/script/wrating.js" type="text/javascript"></script>
+	<script type="text/javascript"> 
+	    var vjAcc="860010-0508010000";
+	    var wrUrl="http://163.wrating.com/";
+	    vjTrack("");
+	</script>
+	<noscript><img src="http://163.wrating.com/a.gif?a=&c=860010-0508010000" width="1" height="1"></noscript>
+	<!-- END WRating v1.0-->
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=640,hieght=1136,user-scalable=no,target-densitydpi=device-dpi" />
+	<!-- <meta name="viewport" content="width=device-width,user-scalable=no,target-densitydpi= device-dpi" /> -->
+	<meta name="keywords" content="奇瑞、瑞虎7、互动游戏">
+    <meta name="description" content="奇瑞瑞虎7互动游戏">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+	<title>加速直行</title>
+	<link rel="stylesheet" href="css/styleReset.css">
+	<link rel="stylesheet" href="css/index.css">
+	 <link rel="stylesheet" href="http://go.163.com/2015/public/common/loading/loading.css">
+	<script src="js/zepto.min.js"></script>
+	<script src="js/easeljs-0.8.2.min.js"></script>
+	<script src="js/preloadjs-0.6.2.min.js"></script>
+</head>
+<body>
+
+	<div class="stage" id="stage">	
+		
+		<div class="kv">
+			<div class="content">
+				<img src="img/logo.png" alt="" class="logo">
+				<img src="img/kv-title.png" alt="" class="kv-title">
+				<img src="img/arrow.png" alt="" class="arrow">
+
+			</div>
+		</div>
+		<div class="page1">
+			<div class="content">
+				<div class="scale">
+					<img src="img/logo.png" alt="" class="logo">
+					<img src="img/page1-bg-bg.png" alt="" class="page1-bg-bg">
+					<img src="img/page1-title.png" alt="" class="page1-title">
+					<img src="img/page1-car1.png" alt="" class="car">
+					<img src="img/page1-car2.png" alt="" class="car">
+					<img src="img/page1-car3.png" alt="" class="car">
+					<img src="img/page1-car4.png" alt="" class="car">
+					<img src="img/page1-btn2.png" alt="" class="left">
+					<img src="img/page1-btn1.png" alt="" class="right">
+					<img src="img/page1-btn.png" alt="" class="btn">
+				</div>
+			</div>
+		</div>
+		<canvas id="myCanvas" class="myCanvas" height="1136" width="640"></canvas>
+		<!-- 调试 -->
+		<!-- <canvas id="myCanvas" class="myCanvas" height="640" width="1136"></canvas> -->
+		<div class="game-over">
+			<div class="content">
+				<div class="bg"></div>
+				<img src="img/game-over-bg.png" alt="" class="game-over-bg">
+				<img src="img/btn-close.png" alt="" class="close">
+				<img src="img/btn-1.png" alt="" class="play-again">
+				<img src="img/btn-2.png" alt="" class="btn-form">
+				<img id="shareBtn" src="img/btn-3.png" alt="" class="btn-share">
+				<span></span>
+			</div>
+		</div>
+		<div class="game-tips">
+			<div class="content">
+				<div class="bg"></div>
+				<img src="img/game-how.png" alt="" class="tips">
+				<img src="img/btn-close.png" alt="" class="close">
+				<div class="tips-btn">开始游戏</div>
+				
+			</div>
+		</div>
+		<div class="game-go">
+			<div class="content">
+				<div class="bg"></div>
+				<img src="img/go-title.png" alt="" class="go-title">
+				<img src="img/go-bg.png" alt="" class="go-bg">
+				<div class="go-sao">
+					<img src="img/go-sao.png" alt="" >
+				</div>
+				<img src="img/go-light.png" alt="" class="go-light">
+				<img src="img/go-word1.png" alt="" class="go-word1">
+				<img src="img/go-word2.png" alt="" class="go-word2">
+			</div>
+		</div>
+		<div class="popup-form">
+			<div class="bg"></div>
+			<div class="form">
+				<ul>
+					<li><span>姓名:</span><input id="name" type="text"></li>
+					<li><span>手机:</span><input id="phone" type="text"></li>
+					<li><span>省份:</span><select name="" id="province"></select></li>
+					<li><span>城市:</span><select name="" id="city"></select></li>
+					<li class="dealer"><span>经销商:</span><select name="" id="dealer"></select></li>
+				</ul>
+				<img class="form-btn" src="img/form-btn.png" alt="">
+			</div>
+		</div>
+		<div class="share-tips">
+			<div class="bg"></div>
+			<img src="img/weixin.png" alt="">
+		</div>
+		<div class="vertical-tips">
+			<div class="bg"></div>
+			<img src="img/lock.png" alt="">
+			<p>请锁定竖屏</p>
+			<p>为了更好的体验</p>
+		</div>	
+	</div>
+	<div class="netease-loader">
+	    <section>
+	        <article>
+	            <span class="load_type"></span>
+	            <span class="load_data"></span>
+	            <span class="load_text"></span>
+	        </article>
+	    </section>
+	</div>
+	<script src="js/shop.js"></script>
+	<script src="http://go.163.com/2015/public/common/loading/loading.js"></script>
+	<script src="js/index.js"></script>
+	<script src="http://go.163.com/2015/public/team/kongdejian/share.js"></script>
+	<script>
+            var shareData={
+                MsgImg:'http://s.auto.163.com/2016/1116/ruiTiger/img/share.jpg',  //分享图片
+                link:'http://s.auto.163.com/2016/1116/ruiTiger/',    //分享链接
+                title:'活耀不凡 TIGGO瑞虎7',   //分享标题
+                desc:'奇瑞瑞虎7--加速直行互动游戏',    //分享描述
+                fText:'奇瑞瑞虎7--加速直行互动游戏',    //分享朋友圈
+                callback:function(){
+                    share_survey(true);
+                }
+            };
+            NeteaseShareInit();//用于初始化
+            document.getElementById("shareBtn").onclick = function() {
+                NeteaseShare();
+            }
+    </script>
+	<!-- START NetEase Devilfish 2006 -->
+	<script src="http://go.163.com/2015/0211/encore/js/share.js" type="text/javascript"></script>
+	<script src="http://analytics.163.com/ntes.js" type="text/javascript"></script>
+	<script type="text/javascript"> 
+	    share_survey();
+	    if (window.location.href.search(/auto\.163\.com|163\.com\/auto/) >= 0) {
+	            _ntes_nacc = "auto";
+	    } else if (window.location.href.search(/go\.163\.com/) >= 0) {
+	            _ntes_nacc = "minisites";
+	    }
+	    neteaseTracker();
+	</script>
+	<!-- END NetEase Devilfish 2006 -->
+	<!--汽车类活动第三方监测代码（缔元信）-->
+	<!-- START WRating v1.0 -->
+	<script src="http://img1.cache.netease.com/common/script/wrating.js" type="text/javascript"></script>
+	<script type="text/javascript"> 
+	    var vjAcc="860010-0508010000";
+	    var wrUrl="http://163.wrating.com/";
+	    vjTrack("");
+	</script>
+	<noscript><img src="http://163.wrating.com/a.gif?a=&c=860010-0508010000" width="1" height="1"></noscript>
+	<!-- END WRating v1.0-->
+</body>
+</html>
