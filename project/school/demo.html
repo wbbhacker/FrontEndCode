@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script>
+		var elem = document.createElement('meta');
+		var h = window.screen.width/640;
+		elem.name = 'viewport';
+		elem.content = 'width=device-width,user-scalable=no,initial-scale='+h;
+		document.getElementsByTagName('head')[0].appendChild(elem);
+
+		
+		var orient= "onorientationchange" in window ? "orientationchange" : "resize";
+		window.addEventListener(orient, adaptation, false);
+		function adaptation(){
+		    if(window.orientation==180||window.orientation==0){ 
+		    	var h = window.screen.width/640;
+ 		    	elem.content= 'width=device-width,user-scalable=no,initial-scale='+h;
+		    } 
+		    if(window.orientation==90||window.orientation==-90){  
+		    	setTimeout(function(){
+			    	var h = window.screen.height/640;
+	 		    	elem.content= 'width=device-width,user-scalable=no,initial-scale='+h;
+		    	},0)
+		    }
+		}
+		document.addEventListener('touchmove',function(e){
+			e.preventDefault();
+
+		})
+	</script>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	html,body{
+		position: relative;
+		width: 640px;
+		height: 100%;
+		overflow: hidden;
+	}
+	.page1{
+		position: absolute;
+		width:640px;
+		height:1080px;
+		z-index: 100;
+	    background-image: url("../img/loading.gif");
+	    background-repeat: no-repeat;
+	    background-size: 100% 100%;
+	    overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+	<div id="page1" class="page1">
+		<img src="img/page1-btn.png" alt="" class="page1-btn">
+	</div>
+
+	<script>
+
+	fixH();
+
+	function fixH(){    
+	    var h = document.body.offsetHeight;
+	    var n = h/1080;
+	    var arr = ['page1'];
+	    for(var i=0; i<arr.length; i++){
+	        var elem = document.getElementById(arr[i]);
+	        elem.style['webkitTransformOrigin'] = 'left top';
+	        elem.style['webkitTransform'] = 'scaleY('+n+')';
+	        elem.style['transform'] = 'scaleY('+n+')';        
+	    }
+	};
+
+	</script>
+</body>
+</html>

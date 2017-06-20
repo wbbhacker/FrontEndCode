@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script>
+		var elem = document.createElement('meta');
+		var h = window.screen.width/640;
+		elem.name = 'viewport';
+		elem.content = 'width=device-width,user-scalable=no,initial-scale='+h;
+		document.getElementsByTagName('head')[0].appendChild(elem);
+	</script>
+	<meta charset="UTF-8">
+	
+	<!-- <meta name="viewport" content="width=640,user-scalable=no"/>   -->
+	
+	<!-- <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.5858"/> -->
+	
+	<meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no" />
+	<title></title>
+	<link rel="stylesheet" href="css/styleReset.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="http://go.163.com/2015/public/common/loading/loading.css">
+	<script src="js/zepto.min.js"></script>
+	<script src="js/matter.min.js"></script>
+	<script src="js/TweenLite.min.js"></script>
+	<script src="js/TimelineMax.min.js"></script>
+	<script src="js/CSSPlugin.min.js"></script>
+</head>
+<body landscape ="no">
+	<div class="netease-loader">
+		  <img src="img/loading.gif"  class="loading">
+	</div>
+	<audio id="round1" src="round1.mp3" loop="true" ></audio>
+	<audio id="round2" src="round2.mp3" loop="true" ></audio>
+	<audio id="round3" src="round3.mp3" loop="true" ></audio>
+	<audio id="round4" src="round4.mp3" loop="true" ></audio>
+
+	<audio id="bg-music" src="bg.mp3" loop="true" ></audio>
+
+	<audio id="music" src="page2-music.mp3"></audio>
+
+	<div id="page1" class="page1">
+		<img src="img/page1-btn.png" alt="" class="page1-btn">
+	</div>
+	<div id="card-show" class="card-show">
+		<img src="img/card/card-show1.jpg" alt="" class="card-show-card">
+		<img src="img/card/card-show2.jpg" alt="" class="card-show-card">
+		<img src="img/card/card-show3.jpg" alt="" class="card-show-card">
+		<img src="img/card/card-show4.jpg" alt="" class="card-show-card">
+		<img src="img/card/card-show-tips.png" alt="" class="card-show-tips">
+		<img src="img/card/card-show-btn.png" alt="" class="card-show-btn">
+	</div>
+	
+	<div id="page2" class="page2">
+		<img src="img/page2-1.png" alt="" class="page2-1">
+		<img src="img/page2-2.png" alt="" class="page2-2">
+		<img src="img/page2-3.png" alt="" class="page2-3">
+		<img src="img/page2-voice1.png" alt="" class="page2-voice1">
+		<img src="img/page2-voice2.png" alt="" class="page2-voice2">
+		<img src="img/page2-voice3.png" alt="" class="page2-voice3">
+		<img src="img/page2-voice4.png" alt="" class="page2-voice4">
+		<img src="img/page2-voice5.png" alt="" class="page2-voice5">
+		<img src="img/page2-z1.png" alt="" class="page2-z1 page2-z">
+		<img src="img/page2-z2.png" alt="" class="page2-z2 page2-z">
+		<img src="img/page2-z3.png" alt="" class="page2-z3 page2-z">
+		<img src="img/page2-z4.png" alt="" class="page2-z4 page2-z">
+		<img src="img/page2-z5.png" alt="" class="page2-z5 page2-z">
+		<img src="img/page2-btn.png" alt="" class="page2-btn">
+	</div>
+	<div id="page3" class="page3">
+		<img src="img/ti/border.png" alt="" class="border">
+		<img src="img/ti/cue-btn.png" class="cue-btn">
+		<img src="img/ti/play-btn1.gif" class="play-btn">
+		<img src="img/ti/wheel-l.png" class="wheel-l ">
+		<img src="img/ti/wheel-r.png" class="wheel-r ">
+		<img src="img/ti/ti1.png" class="ti">
+		<img src="img/ti/cue-a.png" class="cue-a">
+		<div class="ti-r">
+			<ul>
+				<li><img src="img/ti/dot.png"></li>
+				<li><img src="img/ti/dot.png"></li>
+				<li><img src="img/ti/dot.png"></li>
+			</ul>
+		</div>
+		<div class="tip">
+			<img src="img/ti/cue-e.png" class="cue cue-e">
+			<img src="img/ti/cue-f.png" class="cue cue-f">
+			<img src="img/ti/cue-z.png" class="cue cue-z">
+		</div>
+		<!-- <img src="img/ti/ti-r.png" class="ti-r"> -->
+		
+	</div>
+	<div id="page4" class="page4">
+		<img src="img/ti/border.png" alt="" class="border">
+		<img src="img/ti/cue-btn.png" class="cue-btn">
+		<img src="img/ti/play-btn1.gif" class="play-btn">
+		<img src="img/ti1/wheel-l.png" class="wheel-l">
+		<img src="img/ti1/wheel-r.png" class="wheel-r">
+		<img src="img/ti1/ti1.png" class="ti">
+		<img src="img/ti1/cue-a.png" class="cue-a">
+		<div class="ti-r">
+			<ul>
+				<li><img src="img/ti1/dot.png"></li>
+				<li><img src="img/ti1/dot.png"></li>
+				<li><img src="img/ti1/dot.png"></li>
+			</ul>
+		</div>
+		<div class="tip">
+			<img src="img/ti1/cue-e.png" class="cue cue-e" >
+			<img src="img/ti1/cue-f.png" class="cue cue-f">
+			<img src="img/ti1/cue-z.png" class="cue cue-z">
+		</div>
+	</div>
+	<div id="page5" class="page5">
+		<img src="img/ti/border.png" alt="" class="border">
+		<img src="img/ti/cue-btn.png" class="cue-btn">
+		<img src="img/ti/play-btn1.gif" class="play-btn">
+		<img src="img/ti2/wheel-l.png" class="wheel-l">
+		<img src="img/ti2/wheel-r.png" class="wheel-r">
+		<img src="img/ti2/ti1.png" class="ti">
+		<img src="img/ti2/cue-a.png" class="cue-a">
+		<div class="ti-r">
+			<ul>
+				<li><img src="img/ti2/dot.png"></li>
+				<li><img src="img/ti2/dot.png"></li>
+				<li><img src="img/ti2/dot.png"></li>
+			</ul>
+		</div>
+		<div class="tip">
+			<img src="img/ti2/cue-e.png" class="cue cue-e" >
+			<img src="img/ti2/cue-f.png" class="cue cue-f">
+			<img src="img/ti2/cue-z.png" class="cue cue-z">
+		</div>
+	</div>
+
+	<div id="page6" class="page6">
+		<img src="img/ti/border.png" alt="" class="border">
+		<img src="img/ti/cue-btn.png" class="cue-btn">
+		<img src="img/ti/play-btn1.gif" class="play-btn">
+		<img src="img/ti3/wheel-l.png" class="wheel-l">
+		<img src="img/ti3/wheel-r.png" class="wheel-r">
+		<img src="img/ti3/ti1.png" class="ti">
+		<img src="img/ti3/cue-a.png" class="cue-a">
+		<div class="ti-r">
+			<ul>
+				<li><img src="img/ti3/dot.png"></li>
+				<li><img src="img/ti3/dot.png"></li>
+				<li><img src="img/ti3/dot.png"></li>
+			</ul>
+		</div>
+		<div class="tip">
+			<img src="img/ti3/cue-e.png" class="cue cue-e" >
+			<img src="img/ti3/cue-f.png" class="cue cue-f">
+			<img src="img/ti3/cue-z.png" class="cue cue-z">
+		</div>
+	</div>
+	<div id="page7" class="page7">
+		<a href="http://campus.163.com/#/home">
+		<img src="img/btn-1.png" alt="" class="btn-1">
+		</a>
+		<a href="http://hr.163.com">
+		<img src="img/btn-2.png" alt="" class="btn-2">
+		</a>
+		<img id="share-btn" src="img/share-btn.png" alt="" class="share-btn">
+	</div>
+	<div class="share-tips">
+		
+	</div>
+	<div class="tips">
+		
+	</div>
+	<div class="stage" id="stage">
+		
+	</div>
+	<script src="http://test.go.163.com/go/2015/public/common/js/common.min.js"></script>
+	<script src="js/index.js?a=1"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>maze</title>
+    <meta name="viewport" content="width=640,user-scalable=no"/>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no" />
+    <script src="matter.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body{width: 100%;height: 100%;}
+        .stage{width:640px; height: 1080px;}
+    </style>
+</head>
+<body>
+    
+    <div id="stage" class="stage">
+    </div>
+    <script>
+
+    var Engine = Matter.Engine,
+        Render = Matter.Render,
+        Runner = Matter.Runner,
+        Composites = Matter.Composites,
+        Common = Matter.Common,
+        MouseConstraint = Matter.MouseConstraint,
+        Mouse = Matter.Mouse,
+        World = Matter.World,
+        Bodies = Matter.Bodies,
+        Events = Matter.Events,
+        Body = Matter.Body;
+
+
+    // create engine
+    var engine = Engine.create(),
+        world = engine.world;
+
+    // create renderer
+    var cH =  document.documentElement.clientHeight;
+    var cW =  document.documentElement.clientWidth;
+
+    var render = Render.create({
+        element: document.getElementById('stage'),
+        engine: engine,
+        options: {
+            width: 640,
+            height: 1080,
+            wireframes: false,
+            background:'images/bg-1.jpg',
+        }
+    });
+
+    Render.run(render);
+
+    // create runner
+    var runner = Runner.create();
+    Runner.run(runner, engine);
+
+
+    var ball = Bodies.circle(311,930,20, {
+                density: 10,
+                frictionAir:0.03,
+                restitution: 0.1,
+                friction:8,
+                render: {
+                    sprite: {
+                        texture:'ball.png'
+                    }
+                }
+            });
+
+    var bodyData = [
+        {x:0,y:0,w:269,h:201,opt:{ isStatic: true,render:{sprite:{texture:'images/1.jpg'}}}},
+        {x:389,y:0,w:251,h:201,opt:{ isStatic: true,render:{sprite:{texture:'images/2.jpg'}}}},
+        {x:0,y:201,w:53,h:563,opt:{ isStatic: true,render:{sprite:{texture:'images/3.jpg'}}}},
+        {x:605,y:201,w:35,h:563,opt:{ isStatic: true,render:{sprite:{texture:'images/4.jpg'}}}},
+        {x:0,y:765,w:259,h:316,opt:{ isStatic: true,render:{sprite:{texture:'images/5.jpg'}}}},
+        {x:363,y:765,w:278,h:316,opt:{ isStatic: true,render:{sprite:{texture:'images/6.jpg'}}}},
+        {x:158,y:327,w:330,h:330,opt:{ isStatic: true, render:{sprite:{texture:'images/center.jpg'}}}},
+        {x:0,y:1079,w:640,h:1,opt:{ isStatic: true}},
+    ];
+
+    var bodyS = addRect(bodyData);
+
+    console.log(bodyS)
+
+    World.add(world,ball);
+
+    function addRect(array){
+        var arr = [];
+        array.map(function(item,idx){
+            var body = Bodies.rectangle(item.x+item.w/2,item.y+item.h/2,item.w,item.h,item.opt);
+            World.add(world,[body]);
+            arr.push(body);
+        });
+        return arr;
+    }
+
+    console.log(bodyS.length)
+    var gravity_flag = false;
+    var changS = 1;
+    Events.on(engine,'collisionStart',function(e){
+            var pairs = e.pairs;
+            for (var i = 0, j = pairs.length; i != j; ++i) {
+                var pair = pairs[i];
+                if (pair.bodyB === ball && pair.bodyA !== bodyS[7]) {
+
+                    gravity_flag = true;
+
+                    Body.set(pair.bodyA,'isSensor',true);
+                    
+                    pair.bodyB.render.opacity = 0.5;
+                    pair.bodyB.render.sprite.xScale = 0.5;
+                    pair.bodyB.render.sprite.yScale = 0.5;
+                    
+                    setTimeout(function(){
+                        Body.setPosition(pair.bodyB,{x:311,y:930});
+                        Body.set(pair.bodyA,'isSensor',false);
+                        pair.bodyB.render.opacity = 1;
+                        pair.bodyB.render.sprite.xScale = 1;
+                        pair.bodyB.render.sprite.yScale = 1;
+                        gravity_flag = false;
+
+                    },1500)
+
+                } else if(pair.bodyA === ball && pair.bodyB !== bodyS[7]){
+                    console.log('______________________________________')
+
+                    gravity_flag = true;
+
+                    Body.set(pair.bodyB,'isSensor',true);
+                    
+                    pair.bodyA.render.opacity = 0.5;
+                    pair.bodyA.render.sprite.xScale = 0.5;
+                    pair.bodyA.render.sprite.yScale = 0.5;
+                    console.log(pair.bodyB)
+                    setTimeout(function(){
+                        Body.setPosition(pair.bodyA,{x:311,y:930});
+                        Body.set(pair.bodyB,'isSensor',false);
+                        pair.bodyA.render.opacity = 1;
+                        pair.bodyA.render.sprite.xScale = 1;
+                        pair.bodyA.render.sprite.yScale = 1;
+                        gravity_flag = false;
+
+                    },1500)
+
+
+                }
+            }
+    });
+
+         // add mouse control
+    var mouse = Mouse.create(render.canvas),
+        mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.2,
+                render: {
+                    visible: false
+                }
+            }
+        });
+
+    World.add(world, mouseConstraint);
+
+    // keep the mouse in sync with rendering
+    render.mouse = mouse;
+
+    // add gyro control
+    var updateGravity = function(event) {
+        if(gravity_flag) return;
+        var orientation = typeof window.orientation !== 'undefined' ? window.orientation : 0,
+            gravity = engine.world.gravity;
+
+        if (orientation === 0) {
+            gravity.x = Common.clamp(event.gamma, -90, 90) / 90*2;
+            gravity.y = Common.clamp(event.beta, -90, 90) / 90*2;
+        } else if (orientation === 180) {
+            gravity.x = Common.clamp(event.gamma, -90, 90) / 90*2;
+            gravity.y = Common.clamp(-event.beta, -90, 90) / 90*2;
+        } else if (orientation === 90) {
+            gravity.x = Common.clamp(event.beta, -90, 90) / 90*2;
+            gravity.y = Common.clamp(-event.gamma, -90, 90) / 90*2;
+        } else if (orientation === -90) {
+            gravity.x = Common.clamp(-event.beta, -90, 90) / 90*2;
+            gravity.y = Common.clamp(event.gamma, -90, 90) / 90*2;
+        }
+        
+    };
+ 
+
+
+    window.addEventListener('deviceorientation', updateGravity);
+
+    Render.lookAt(render, {
+        min: { x: 0, y: 0 },
+        max: { x: 640, y: 1080 }
+    });
+
+    document.addEventListener('touchmove',function(e){
+     e.preventDefault();
+    })
+
+    fixH();
+
+    
+    function fixH(){    
+        var h = document.body.offsetHeight;
+        var n = h/1080;
+        var arr = ['stage'];
+        for(var i=0; i<arr.length; i++){
+            var elem = document.getElementById(arr[i]);
+            elem.style['webkitTransformOrigin'] = 'left top';
+            elem.style['webkitTransform'] = 'scaleY('+n+')';
+            elem.style['transform'] = 'scaleY('+n+')';        
+        }
+    };
+    </script>
+</body>
+</html>

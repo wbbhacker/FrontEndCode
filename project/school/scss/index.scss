@@ -1,0 +1,225 @@
+@import 'scssLib.scss';
+html,body{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	// overflow: scroll;
+	overflow: hidden;
+}
+.stage{
+	position: relative;
+	background-color: #333188;
+	width: 640px;
+	height: 1080px;
+}
+.page1,.page2,.page3,.page4,.page5,.page6,.card-show,.page7,.share-tips{
+	position: absolute;
+	width:640px;
+	height:1080px;
+}
+
+.page1{
+	z-index: 100;
+	@include bgm('../img/page1-bg.gif');
+	.page1-btn{
+		@include postl(1025px,224px);
+	}
+}
+.share-tips{
+	z-index: 2000;
+	display: none;
+	@include bgm('../img/share-tips.png')
+}
+.page2{
+	display: none;
+	z-index: 200;
+	background-color: #FFF;
+	@include bgm('../img/page2-bg.png');
+	.page2-btn{
+		@include postl(965px,506px);
+	}
+	.page2-1,.page2-2,.page2-3{
+		opacity: 0;
+		@include postl(0,0);
+	}
+	.page2-voice1{
+		opacity: 0;
+		@include postl(246px,20px);
+	}
+	.page2-voice2{
+		opacity: 0;
+		@include postl(342px,20px);
+	}
+	.page2-voice3{
+		opacity: 0;
+		@include postl(446px,366px);
+	}
+	.page2-voice4{
+		opacity: 0;
+		@include postl(531px,20px);
+	}
+	.page2-voice5{
+		opacity: 0;
+		@include postl(788px,20px);
+	}
+	.page2-z{
+		opacity: 0;
+		@include postl(0,0);
+	}
+	.page2-z5{
+		left:-137px;
+	}
+
+}
+.border{
+	// width:100%;
+	// height:100%;
+}
+.wheel-l{
+	@include postl(273px,162px);
+}
+.wheel-r{
+	@include postl(273px,387px);
+}
+.cue-btn{
+	@include postl(93px,116px);
+}
+.play-btn{
+	@include postl(92px,447px);
+}
+.ti{
+	@include postl(513px,84px);
+}
+.cue-a{
+	@include postl(633px,72px);
+}
+.ti-r{
+	display: none;
+	@include pos(509px,138px,633px,72px);
+	ul{
+		position: relative;
+		top:77px;
+		height: 58px;
+		li{
+			position: relative;
+			float:left;
+			height:58px;
+			width:169px;
+			img{
+				display: none;
+			}
+			&:nth-child(1){
+				img{
+					@include postl(23px,85px);
+				}
+			}
+			&:nth-child(2){
+				img{
+					@include postl(23px,56px);
+				}
+			}
+			&:nth-child(3){
+				img{
+					@include postl(23px,17px);
+				}
+			}
+		}
+	}
+}
+.tip{
+	@include pos(509px,240px,783px,72px);
+}
+.cue{
+	display: none;
+}
+.page3{
+
+	z-index: 300;
+	display: none;
+	@include bgm('../img/ti/ti-bg-1.jpg');
+	.ti-r{
+		@include bgm('../img/ti/ti-r.png');
+	}
+}
+
+.page4{
+	z-index: 400;
+	display: none;
+	@include bgm('../img/ti1/ti-bg-1.jpg');
+	.ti-r{
+		@include bgm('../img/ti1/ti-r.png');
+	}
+}
+
+.page5{
+	z-index: 500;
+	display: none;
+	@include bgm('../img/ti2/ti-bg-1.jpg');
+	.ti-r{
+		@include bgm('../img/ti2/ti-r.png');
+	}
+}
+.page6{
+	z-index: 600;
+	display: none;
+	@include bgm('../img/ti3/ti-bg-1.jpg');
+	.ti-r{
+		@include bgm('../img/ti3/ti-r.png');
+	}
+}
+.page7{
+	z-index: 700;
+	display: none;
+	@include bgm('../img/last-bg.jpg');
+
+	.btn-1{
+		@include postl(776px,162px);
+	}
+	.btn-2{
+		@include postl(857px,162px);
+	}
+	.share-btn{
+		
+		@include postl(930px,162px);
+	}
+}
+
+.card-show{
+	z-index: 1000;
+	display: none;
+	.card-show-card{
+		display: none;
+	}
+	.card-show-tips{
+		@include postl(921px,170px);
+	}
+	.card-show-btn{
+		@include postl(890px,59px);
+	}
+}
+.tips{
+	position: absolute;
+	display: none;
+	z-index: 1000;
+	width:640px;
+	height:100%;
+	background-image: url(../img/tips.jpg);
+}
+// loading
+.loading{
+	width: 100%;
+	height: 100%;
+}
+// animation
+.rotate{
+	animation:rotate 2s infinite linear;
+}
+
+@keyframes rotate{
+	0%{
+		transform:rotate(0deg);
+	}
+	100%{
+		transform:rotate(360deg);
+	}
+}
