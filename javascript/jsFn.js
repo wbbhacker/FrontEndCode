@@ -227,6 +227,7 @@ var result = compare({ name: "d", age: 20 }, { name: "c", age: 27 });
 
 Array.prototype.slice.call(arguments)； //  将具有length属性的对象转化成数组 
 
-
-
-
+// 随机 min~max  之间的数字
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
