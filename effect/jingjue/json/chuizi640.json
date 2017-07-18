@@ -1,0 +1,100 @@
+{"frames": {
+
+"chuizi_00000.png":
+{
+	"frame": {"x":130,"y":287,"w":126,"h":215},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":78,"w":126,"h":215},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00001.png":
+{
+	"frame": {"x":1,"y":287,"w":127,"h":219},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":74,"w":127,"h":219},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00002.png":
+{
+	"frame": {"x":828,"y":1,"w":123,"h":225},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":60,"y":70,"w":123,"h":225},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00003.png":
+{
+	"frame": {"x":258,"y":276,"w":136,"h":234},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":61,"w":136,"h":234},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00004.png":
+{
+	"frame": {"x":614,"y":266,"w":154,"h":243},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":52,"w":154,"h":243},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00005.png":
+{
+	"frame": {"x":652,"y":1,"w":174,"h":253},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":37,"y":42,"w":174,"h":253},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00006.png":
+{
+	"frame": {"x":456,"y":1,"w":194,"h":263},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":32,"w":194,"h":263},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00007.png":
+{
+	"frame": {"x":239,"y":1,"w":215,"h":273},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":22,"w":215,"h":273},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00008.png":
+{
+	"frame": {"x":1,"y":1,"w":236,"h":284},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":11,"w":236,"h":284},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00009.png":
+{
+	"frame": {"x":770,"y":256,"w":150,"h":241},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":54,"w":150,"h":241},
+	"sourceSize": {"w":247,"h":299}
+},
+"chuizi_00010.png":
+{
+	"frame": {"x":456,"y":266,"w":156,"h":242},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":51,"w":156,"h":242},
+	"sourceSize": {"w":247,"h":299}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "chuizi640.png",
+	"format": "RGBA8888",
+	"size": {"w":952,"h":511},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:16d07b831e98a6e047005de1888649ca:b25315cf7a5f5769b30ce69ab73d09ec:a63836461849dcf08e497e58095155b6$"
+}
+}

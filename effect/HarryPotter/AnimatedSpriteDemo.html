@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi,minimal-ui">
+    <title>AnimatedSpriteDemo</title>
+    <script src="js/pixi.min.js"></script>
+    <script src="js/pixi-sound.js"></script>
+    <script src="js/lodash.min.js"></script>
+    <script src="js/Animate.js">
+    </script>
+    <script src="js/Scroller.js"></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+
+<body>
+
+    <script src="js/AnimatedSpriteData.js"></script>
+    <script>
+    var app = new PIXI.Application(window.innerWidth, window.innerHeight, {
+        backgroundColor: '0xfffbee'
+    });
+    var loader = new PIXI.loaders.Loader();
+    var container = new PIXI.Container();
+
+    container.interactive = true;
+
+    document.body.appendChild(app.view);
+
+    loader.add(AnimatedSpriteData)
+        .add('hat', 'music/school1-1.mp3')
+        .add('fly', 'music//fly1.mp3')
+        .add('text','music/change_success1.mp3')
+        .add('word1','music/word3.mp3')
+        .add('word2','music/word4.mp3')
+        .add('word3','music/word5.mp3')
+        .add('word4','music/word2-1.mp3')
+        .add('word5','music/word1-1.mp3')
+
+    loader.load(function(loader, resources) {
+
+        // 帽子
+        var hat = createAnimatedSprite('images/hat/', 12, {
+            animationSpeed: 0.2,
+            interactive: true
+        });
+
+        hat.on('touchstart', function() {
+            if(!hat.playing){            
+                hat.play();
+                resources.hat.sound.play();
+            }
+        })
+        hat.onLoop = function(){
+            hat.stop();
+        }
+        container.addChild(hat);
+
+        // 飞球
+        var flynext = createAnimatedSprite('images/flynext/', 51, {
+
+            y: container.height,
+            animationSpeed: 0.3,
+            interactive: true
+        });
+        flynext.on('touchstart', function() {
+            if(!flynext.playing){            
+                flynext.play();
+                resources.fly.sound.play();
+            }
+        })
+        flynext.onLoop = function(){
+            flynext.stop();
+        }
+        container.addChild(flynext);
+
+
+        // 飞文字
+        var flytext = createAnimatedSprite('images/flytext/xuanfu_000', 75, {
+            y: container.height,
+            animationSpeed: 0.5,
+            interactive:true
+        });
+        flytext.on('touchstart', function() {
+            if(!flytext.playing){            
+                flytext.play();
+                resources.text.sound.play();
+            }
+        })
+        flytext.onLoop = function(){
+            flytext.stop();
+        }
+        container.addChild(flytext);
+
+
+
+        // 书
+        var book = new PIXI.Container();
+        bookBg = new PIXI.Sprite.fromImage('images/book/bg.png');
+        book.y = container.height;
+        book.interactive = true;
+        book.addChild(bookBg);
+        container.addChild(book);
+        book.scale.x = 640 / book.width;
+        book.scale.y = 640 / book.width;
+
+        var page = createAnimatedSprite('images/book/', 70, {
+            loop: false,
+            x: 60,
+            animationSpeed: 0.2
+        });
+        book.addChild(page);
+
+        book.on('touchstart', function(e) {
+             console.log(page.currentFrame) 
+            switch(page.currentFrame){
+                case 0:
+                    resources.word3.sound.play();    
+                    break;
+                case 16:
+                    resources.word1.sound.play();    
+                    break;
+                case 31:
+                    resources.word2.sound.play();    
+                    break;
+                case 48:
+                    resources.word4.sound.play();    
+                    break;
+                case 66:
+                    resources.word5.sound.play();    
+                    break;
+                // case 1:
+
+            }
+            page.play()
+        });
+        page.onComplete = function() {
+            page.stop();
+        }
+        page.onFrameChange = function(frame) {
+
+            if (frame == 16 || frame == 31 || frame == 48 || frame == 66) {
+                page.stop();
+            }
+
+        }
+
+        app.stage.addChild(container);
+
+
+        // 滚动
+        var scroller = new Scroller(function(left, top, zoom) {
+            container.y = -top;
+            console.log(top)
+        }, {
+            zooming: true,
+            bouncing: false
+        });
+
+        scroller.setDimensions(app.view.width, app.view.height, container.width, container.height);
+
+        var mousedown = false;
+        document.addEventListener("touchstart", function(e) {
+
+            var pageX = e.touches[0].pageX,
+                pageY = e.touches[0].pageY;
+
+            scroller.doTouchStart(e.touches, e.timeStamp);
+
+            mousedown = true;
+
+        }, false);
+
+        document.addEventListener("touchmove", function(e) {
+
+
+            var pageX = e.touches[0].pageX,
+                pageY = e.touches[0].pageY;
+
+            if (!mousedown) {
+                return;
+            }
+
+            scroller.doTouchMove(e.touches, e.timeStamp);
+
+            mousedown = true;
+
+        }, false);
+
+        document.addEventListener("touchend", function(e) {
+
+
+            if (!mousedown) {
+                return;
+            }
+
+            scroller.doTouchEnd(e.timeStamp);
+
+            mousedown = false;
+        }, false);
+
+
+    });
+
+
+    function createAnimatedSprite(name, num, opt, start) {
+
+        // 用json 资源创建一个 AnimatedSprite 对象
+        var Textures = [],
+            i, AnimatedSpriteInstance;
+        i = start || 0;
+
+        for (; i < num; i++) {
+            var Texture = PIXI.Texture.fromImage(name + i + '.png');
+            Textures.push(Texture);
+        }
+
+        AnimatedSpriteInstance = new PIXI.extras.AnimatedSprite(Textures);
+
+        if (opt) {
+            _.forIn(opt, function(value, key) {
+                AnimatedSpriteInstance[key] = value;
+            });
+        }
+        return AnimatedSpriteInstance;
+
+    }
+
+
+    
+    </script>
+</body>
+
+</html>

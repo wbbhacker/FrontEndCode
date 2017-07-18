@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi,minimal-ui">
+    <title>AnimatedSpriteDemo</title>
+    <script src="js/pixi.min.js"></script>
+    <script src="js/pixi-sound.js"></script>
+    <script src="js/lodash.min.js"></script>
+    <script src="js/Animate.js">
+    </script>
+    <script src="js/Scroller.js"></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+
+<body>
+
+    <script src="js/spriteData.js"></script>
+    <script>
+    var app = new PIXI.Application(window.innerWidth, window.innerHeight, {
+        backgroundColor: '0xfffbee'
+    });
+
+    var loader = new PIXI.loaders.Loader();
+    var container = new PIXI.Container();
+
+    container.interactive = true;
+
+    document.body.appendChild(app.view);
+
+    loader.add(spriteData)
+
+    loader.load(function(loader, resources) {
+        
+        // 学校
+
+        var school =  new PIXI.Sprite.fromImage('images/school/0.jpg');
+
+
+
+        var paint1 = new PIXI.Container();
+
+        var paint1Photo = new PIXI.Sprite.fromImage('images/paint1/1.jpg');
+            paint1.addChild(paint1Photo);
+            paint1.addChild(new PIXI.Sprite.fromImage('images/paint1/bg.png'));
+            paint1.y = app.view.height*2;
+            paint1Photo.x = 96;
+            paint1Photo.y = 94;
+
+
+        var paint2 = new PIXI.Container();
+        var paint2Photo = new PIXI.Sprite.fromImage('images/paint2/1.jpg');
+            paint2.addChild(paint2Photo);
+            paint2.addChild(new PIXI.Sprite.fromImage('images/paint2/bg.png'));
+            paint2.y = paint1.height + paint1.y;
+            paint2Photo.x = 54;
+            paint2Photo.y = 45;
+
+        var paint3 = new PIXI.Container();
+        var paint3Photo = new PIXI.Sprite.fromImage('images/paint3/1.jpg');
+            paint3.addChild(paint3Photo);
+            paint3.addChild(new PIXI.Sprite.fromImage('images/paint3/bg.png'));
+            paint3.y = paint2.height + paint2.y;
+            paint3Photo.x = 45;
+            paint3Photo.y = 135;
+            console.log(paint3.height+paint3.y)
+
+        var paint4 = new PIXI.Sprite.fromImage('images/school/0.jpg');
+
+            paint4.y = 3732;
+
+
+            // container.addChild(paint4);
+
+        container.addChild(paint1,paint2,paint3);
+
+        app.stage.addChild(school,container);
+        console.log(container)
+
+
+        // 滚动
+        var scroller = new Scroller(function(left, top, zoom) {
+            
+            container.y = -top;
+
+            if( 0 < top && top < app.view.height ){
+                    var num = Math.floor(top/app.view.height*50);
+                    school.texture = new PIXI.Texture.fromImage('images/school/'+num+'.jpg');
+            }
+            if( 1700 < top && top < 2260 ){
+                var num = Math.ceil((top-1700)/(2260-1700)*16);
+                paint1Photo.texture = new PIXI.Texture.fromImage('images/paint1/'+num+'.jpg');
+            }   
+
+            if( 2040 < top && top < 2750 ){
+                var num = Math.ceil((top-2040)/(2750-2040)*11);
+                paint2Photo.texture = new PIXI.Texture.fromImage('images/paint2/'+num+'.jpg');
+
+            }
+
+            if( 2550 <top && top < 3094 ){
+                var num = Math.ceil((top-2550)/(3094-2550)*14);
+                paint3Photo.texture = new PIXI.Texture.fromImage('images/paint3/'+num+'.jpg');
+                
+            }
+
+        }, {
+            zooming: true,
+            bouncing: false
+        });
+
+        scroller.setDimensions(app.view.width, app.view.height,app.view.width , paint1.height+app.view.height*2+paint2.height+paint3.height+500);
+
+        var mousedown = false;
+        document.addEventListener("touchstart", function(e) {
+
+            var pageX = e.touches[0].pageX,
+                pageY = e.touches[0].pageY;
+
+            scroller.doTouchStart(e.touches, e.timeStamp);
+
+            mousedown = true;
+
+        }, false);
+
+        document.addEventListener("touchmove", function(e) {
+
+
+            var pageX = e.touches[0].pageX,
+                pageY = e.touches[0].pageY;
+
+            if (!mousedown) {
+                return;
+            }
+
+            scroller.doTouchMove(e.touches, e.timeStamp);
+
+            mousedown = true;
+
+        }, false);
+
+        document.addEventListener("touchend", function(e) {
+
+
+            if (!mousedown) {
+                return;
+            }
+
+            scroller.doTouchEnd(e.timeStamp);
+
+            mousedown = false;
+        }, false);
+
+
+    });
+
+
+    function createAnimatedSprite(name, num, opt, start) {
+
+        // 用json 资源创建一个 AnimatedSprite 对象
+        var Textures = [],
+            i, AnimatedSpriteInstance;
+        i = start || 0;
+
+        for (; i < num; i++) {
+            var Texture = PIXI.Texture.fromImage(name + i + '.png');
+            Textures.push(Texture);
+        }
+
+        AnimatedSpriteInstance = new PIXI.extras.AnimatedSprite(Textures);
+
+        if (opt) {
+            _.forIn(opt, function(value, key) {
+                AnimatedSpriteInstance[key] = value;
+            });
+        }
+        return AnimatedSpriteInstance;
+
+
+    }
+
+
+    
+    </script>
+</body>
+
+</html>

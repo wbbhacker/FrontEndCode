@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi,minimal-ui">
+    <title>hello,world!</title>
+    <script src="lib/pixi.min.js"></script>
+    <script src="lib/pixi-sound.js"></script>
+    <script src="lib/TweenLite.min.js"></script>
+    <script src="lib/lodash.min.js"></script>
+    <script src="lib/Animate.js"></script>
+    <script src="lib/Scroller.js"></script>
+    <style>
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <audio src="mp3/bianfu.mp3"></audio>
+    <script src="touchTime.js"></script>
+    <script>
+    var app = new PIXI.Application(window.innerWidth, window.innerHeight);
+    var loader = new PIXI.loaders.Loader();
+    var container = new PIXI.Container();
+
+    container.interactive = true;
+
+    document.body.appendChild(app.view);
+
+    var imgJson = {
+        dilie:['images/4/dilie-0.jpg','images/4/dilie-1.jpg','images/4/dilie-2.jpg'],
+        ditie:['images/5/ditie-0.jpg','images/5/ditie-1.jpg','images/5/ditie-2.jpg','images/5/ditie-3.jpg','images/5/ditie-4.jpg'],
+        men:['images/7/men-0.jpg','images/7/men-1.jpg','images/7/men-2.jpg','images/7/men-3.jpg','images/7/men-4.jpg','images/7/men-5.jpg','images/7/men-6.jpg'],
+        feilong:['images/9/long-0.jpg','images/9/long-1.jpg','images/9/long-2.jpg','images/9/long-3.jpg','images/9/long-4.jpg','images/9/long-5.jpg','images/9/long-6.jpg','images/9/long-7.jpg','images/9/long-8.jpg','images/9/long-9.jpg','images/9/long-10.jpg','images/9/long-11.jpg']
+
+    }
+
+    loader.add(makeImgArray('images/bg/', 12))
+        .add('bianfu', 'json/bianfu-0.json')
+        .add('bianfuMusic', 'mp3/bianfu.mp3')
+        .add('guandao', 'images/3/guandao-0.jpg')
+        .add('guandaoMusic', 'mp3/guandao.mp3')
+        .add(imgJson.dilie)
+        .add('dilieMusic','mp3/dilie.mp3')
+        .add(imgJson.ditie)
+        .add('ditieMusic','mp3/ditie.mp3')
+        .add('yiji1','json/yiji-0.json')
+        .add('yiji2','json/yiji-1.json')
+        .add('yiji3','json/yiji-2.json')
+        .add('yijiMusic','mp3/yiji.mp3')
+        .add(imgJson.men)
+        .add('menMusic','mp3/men.mp3')
+        .add('kunchong','json/kunchong-0.json')
+        .add(imgJson.feilong)
+        .add('feilongMusic','mp3/feilong.mp3')
+
+
+    loader.load(function(loader, resources) {
+
+
+        //背景
+        for (var i = 1; i < 13; i++) {
+            var bgSprite = new PIXI.Sprite(PIXI.Texture.fromImage('images/bg/' + i + '.jpg'));
+            bgSprite.y = container.height;
+            container.addChild(bgSprite);
+        }
+
+        // 蝙蝠
+        var bat;
+
+        bat = createAnimatedSprite('bianfu_000', 38, {
+            loop: false,
+            x: 80,
+            y: 400,
+            animationSpeed: 0.25
+        });
+
+        bat.onComplete = function() {
+            bat.visible = false;
+        }
+
+        container.addChild(bat)
+
+        // 管道
+        var guandao;
+
+        guandao = spritesheetToAnimatedSprite('guandao', 5, 3, {
+            y: 1384,
+            animationSpeed: 0.2,
+        });
+
+        container.addChild(guandao);
+
+        // 地裂
+        var dilie =  mangImgToAnimatedSprite(imgJson.dilie,7,4,18,{
+            loop:false,
+            y: 1756,
+            animationSpeed: 0.2,
+            width: 640,
+            height: 378.75
+        })
+
+        container.addChild(dilie);
+
+        // 火车
+
+        var car;
+
+        car = mangImgToAnimatedSprite(imgJson.ditie,7,3,16,{
+            loop:false,
+            y:2284,
+            loop:false,
+            animationSpeed: 0.3
+        });
+
+        container.addChild(car);
+
+
+        // yiji
+        var yiji;
+        yiji = createAnimatedSprite('yiji_000',37,{
+            loop:false,
+            x: 10,
+            y: 3000,
+            animationSpeed: 0.25
+        },1);
+
+        container.addChild(yiji);
+
+        // men 
+        var men;
+        men = mangImgToAnimatedSprite(imgJson.men,3,3,6,{
+            loop:false,
+            y:4155,
+            animationSpeed:0.3
+        });
+        container.addChild(men);
+
+        var kunchong;
+        kunchong = createAnimatedSprite('kunchong_000',114,{
+            loop:false,
+            x: 10,
+            y: 5205,
+            animationSpeed:0.5
+        });
+
+        container.addChild(kunchong)
+
+        // feilong  
+
+        var feilong;
+
+        feilong = mangImgToAnimatedSprite(imgJson.feilong,2,4,4,{
+            loop:false,
+            y:6564,
+            animationSpeed: 0.3
+
+        });
+        feilong.scale.x = 640/512;
+        feilong.scale.y = 640/512;
+
+        container.addChild(feilong)
+
+        app.stage.addChild(container);
+
+        // 滚动
+        var scroller = new Scroller(function(left, top, zoom) {
+
+            container.y = -top;
+
+            var y = container.y;
+
+
+            // 蝙蝠
+            if (y < -5 && y > -30 && bat.playing == false) {
+                bat.visible = true;
+                bat.gotoAndPlay(0);
+                resources.bianfuMusic.sound.play();
+            }
+
+            // 管道1
+            if (y < -322 && y > -1670 && guandao.playing == false && flag) {
+
+                guandao.gotoAndPlay(0);
+                resources.guandaoMusic.sound.play();
+                guandao.onLoop = function() {
+                    guandao.stop();
+                    guandao.timer = setTimeout(function() {
+                        guandao.play();
+                        resources.guandaoMusic.sound.play();
+                    }, 3e3);
+                }
+
+                flag = false;
+            } else if (y > -322 || y < -1670 && flag == false) {
+                clearTimeout(guandao.timer);
+                flag = true;
+            }
+
+            // 管道2
+
+            if( y < -654 && y > -1070 && dilie.playing == false ){
+                dilie.gotoAndPlay(0);
+                resources.dilieMusic.sound.play();
+            }
+
+            // 火车
+
+            if( y < -1600 && y >-1800 && car.playing == false ){
+                car.gotoAndPlay(0);
+                resources.ditieMusic.sound.play();
+            }
+
+            // yiji
+
+            if( y< -2500 && y > -2800 && yiji.playing == false){
+                yiji.gotoAndPlay(0);
+                resources.yijiMusic.sound.play();
+            }
+
+            // men 
+            if( y < -3800 && y > -3900 && men.playing == false ){
+                men.gotoAndPlay(0);
+                resources.menMusic.sound.play();
+            }
+
+            // kunchong
+            if( y < -4650 && y > -4750 && kunchong.playing == false ){
+                kunchong.gotoAndPlay(0);
+            }
+
+            // feilong
+            if( y <-6130 && y > -6300 && feilong.playing == false ){
+                feilong.gotoAndPlay(0);
+                resources.feilongMusic.sound.play();
+            }
+
+
+        }, {
+            zooming: true,
+            bouncing: false
+        });
+
+        scroller.setDimensions(app.view.width, app.view.height, container.width, container.height);
+
+        var mousedown = false;
+        document.addEventListener("touchstart", function(e) {
+
+            var pageX = e.touches[0].pageX,
+                pageY = e.touches[0].pageY;
+
+            scroller.doTouchStart(e.touches, e.timeStamp);
+
+            mousedown = true;
+
+        }, false);
+
+        document.addEventListener("touchmove", function(e) {
+
+
+            var pageX = e.touches[0].pageX,
+                pageY = e.touches[0].pageY;
+
+            if (!mousedown) {
+                return;
+            }
+
+            scroller.doTouchMove(e.touches, e.timeStamp);
+
+            mousedown = true;
+        }, false);
+
+        document.addEventListener("touchend", function(e) {
+
+
+            if (!mousedown) {
+                return;
+            }
+
+            scroller.doTouchEnd(e.timeStamp);
+
+            mousedown = false;
+        }, false);
+
+    });
+        // imgArray 数组, row 每张图的行数, col 每张图片的列数, 最后一张图片的总帧数
+    
+    function mangImgToAnimatedSprite(imgArray,row,col,lastNum,opt){
+
+        var textures = [];
+        var AnSpTextures = [];
+        var w,h,AnimatedSpriteInstance;
+
+        _.map(imgArray,function(v){
+            textures.push(PIXI.Texture.fromImage(v))
+        });
+        h = textures[0].orig.height / row;
+        w = textures[0].orig.width / col;
+
+       
+        for(var i=1; i<=row; i++){
+
+            for(var j=1; j<=col; j++){
+
+                 var rect = new PIXI.Rectangle((j-1) * w, (i-1) * h, w, h);
+
+                 _.map(textures,function(v,n){
+
+                    var idx = j+(i-1)*col-1;  
+
+                    if( idx+1 > lastNum && n == textures.length-1) return;
+
+                    var textureClone = v.clone();
+
+                    textureClone.frame = rect;
+
+                    AnSpTextures[idx + row*col*n] = textureClone; 
+                });
+            }
+        }
+ 
+
+        AnimatedSpriteInstance = new PIXI.extras.AnimatedSprite(AnSpTextures);
+
+        _.forIn(opt, function(value, key) {
+            AnimatedSpriteInstance[key] = value;
+        });
+
+        return AnimatedSpriteInstance
+
+    }
+
+
+    function spritesheetToAnimatedSprite(name, row, col, opt) {
+
+        // 用spritesheet 图片创建一个AnimatedSprite对象
+        var texture = PIXI.Texture.fromImage(name);
+        var h = texture.orig.height / row,
+            w = texture.orig.width / col,
+            textures = [],
+            AnimatedSpriteInstance;
+
+
+        for (var i = 0; i < row; i++) {
+            for (var j = 0; j < col; j++) {
+                var textureClone = texture.clone();
+                textureClone.frame = new PIXI.Rectangle(j * w, i * h, w, h);
+                textures.push(textureClone);
+
+            }
+        }
+        AnimatedSpriteInstance = new PIXI.extras.AnimatedSprite(textures);
+        _.forIn(opt, function(value, key) {
+            AnimatedSpriteInstance[key] = value;
+        });
+
+        return AnimatedSpriteInstance
+
+    }
+
+
+
+    function createAnimatedSprite(name, num, opt,start) {
+        // 用json 资源创建一个 AnimatedSprite 对象
+        var Textures = [],
+            i, AnimatedSpriteInstance;
+
+            i = start || 0;
+        var flag = true;
+
+            
+
+        for (i; i < num; i++) {
+
+            if (i < 10) {
+                i = '0' + i;
+            }
+
+            if( i >= 100 && flag ){
+                name = name.substr(0,name.length-1);
+                flag = false;
+            }
+            var Texture = PIXI.Texture.fromImage(name + i + '.png');
+            Textures.push(Texture);
+        }
+
+        AnimatedSpriteInstance = new PIXI.extras.AnimatedSprite(Textures);
+        _.forIn(opt, function(value, key) {
+            AnimatedSpriteInstance[key] = value;
+        });
+        return AnimatedSpriteInstance;
+
+    }
+
+
+
+
+
+    function makeImgArray(url_prev, number) {
+        var imgArray = [];
+        var i = 1;
+        for (; i <= number; i++) {
+            var imgUrl = url_prev + i + '.jpg';
+            imgArray.push(imgUrl);
+        }
+        return imgArray;
+    }
+    </script>
+</body>
+
+</html>

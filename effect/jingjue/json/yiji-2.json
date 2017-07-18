@@ -1,0 +1,108 @@
+{"frames": {
+
+"yiji_00011.png":
+{
+	"frame": {"x":1,"y":1097,"w":394,"h":498},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":37,"w":394,"h":498},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00012.png":
+{
+	"frame": {"x":401,"y":1093,"w":392,"h":506},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":33,"w":392,"h":506},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00013.png":
+{
+	"frame": {"x":795,"y":1093,"w":397,"h":504},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":32,"w":397,"h":504},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00017.png":
+{
+	"frame": {"x":1195,"y":549,"w":395,"h":513},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":32,"w":395,"h":513},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00018.png":
+{
+	"frame": {"x":1195,"y":1064,"w":394,"h":514},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":32,"w":394,"h":514},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00024.png":
+{
+	"frame": {"x":797,"y":549,"w":396,"h":537},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":396,"h":537},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00026.png":
+{
+	"frame": {"x":803,"y":1,"w":396,"h":546},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":396,"h":546},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00029.png":
+{
+	"frame": {"x":401,"y":549,"w":394,"h":542},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":394,"h":542},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00031.png":
+{
+	"frame": {"x":402,"y":1,"w":399,"h":543},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w":399,"h":543},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00033.png":
+{
+	"frame": {"x":1,"y":1,"w":399,"h":546},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":399,"h":546},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00039.png":
+{
+	"frame": {"x":1,"y":549,"w":398,"h":546},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":398,"h":546},
+	"sourceSize": {"w":512,"h":546}
+},
+"yiji_00041.png":
+{
+	"frame": {"x":1201,"y":1,"w":387,"h":543},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":387,"h":543},
+	"sourceSize": {"w":512,"h":546}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "../images/6/yiji-2.png",
+	"format": "RGBA8888",
+	"size": {"w":1591,"h":1600},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f8f3f75bd37d3bf75bfa2bd9f9ce9f69:74ab2e98c165e33a3bacaa654c4d906d:1c7de763124429ca0babf56c1649ad22$"
+}
+}
