@@ -93,6 +93,9 @@ i.triangle {
 
 select,input{
     -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
 }
 
 
@@ -131,7 +134,13 @@ textarea:-ms-input-placeholder {
 select {
     outline: none;
     -webkit-appearance: none;     /*这个也可以去掉默认三角*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
 }
+
+
 
 
 /*去除ios中点击a标签时的默认背景*/
@@ -185,6 +194,9 @@ div {
 html,
 body {
     -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
 }
 
 
