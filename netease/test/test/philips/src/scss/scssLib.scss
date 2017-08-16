@@ -1,0 +1,26 @@
+// pc 端
+
+@mixin opacity($opacity:50) {
+  	opacity: $opacity / 100;
+ 	filter: alpha(opacity=$opacity);
+}
+
+// wap 端
+
+@mixin bgm($url) {
+	background-image: url($url);
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+@mixin postl($t,$l) {
+	position: absolute;
+	top:$t;
+	left:$l;
+}
+@mixin pos($w,$h,$t,$l) {
+	position: absolute;
+	top:$t;
+	left:$l;
+	width:$w;
+	height:$h;
+}

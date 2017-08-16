@@ -1,0 +1,88 @@
+@import 'scssLib.scss';
+html,body{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+a,
+img {
+    -webkit-tap-highlight-color: transparent;
+}
+.swiper-main{
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+.main-bg{
+	height:2697px;
+	background-image: url(../img/bg1.jpg)
+}
+.btn1{
+	@include postl(964px,474px);
+}
+.btn2{
+	@include postl(1988px,433px);
+}
+.swiper1{
+	position: absolute;
+	left:47px;
+	top:1157px;
+	width:543px;
+	height:394px;
+}
+.swiper1-r{
+	position: absolute;
+	top:1364px;
+	right:15px;
+	z-index: 1000;
+}
+.swiper1-l{
+	position: absolute;
+	top:1364px;
+	left:15px;
+	z-index: 1000;
+	-webkit-transform:rotate(180deg);
+	transform:rotate(180deg);
+}
+.swiper1-b{
+	position: absolute;
+	top:1567px;
+	left:50%;
+	font-size:24px;
+	color:#fff;
+	-webkit-transform:translateX(-50%);
+	transform:translateX(-50%);
+}
+
+
+.swiper2{
+	position: absolute;
+	left:47px;
+	top:2060px;
+	width:543px;
+	height:394px;
+}
+
+.swiper2-r{
+	position: absolute;
+	top:2192px;
+	right:15px;
+	z-index: 1000;
+}
+.swiper2-l{
+	position: absolute;
+	top:2192px;
+	left:15px;
+	z-index: 1000;
+	-webkit-transform:rotate(180deg);
+	transform:rotate(180deg);
+}
+.swiper2-b{
+	position: absolute;
+	top:2427px;
+	left:50%;
+	font-size:24px;
+	color:#fff;
+	-webkit-transform:translateX(-50%);
+	transform:translateX(-50%);
+}
