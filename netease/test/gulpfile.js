@@ -15,6 +15,7 @@ var changed = require('gulp-changed');
 
 var uglify = require('gulp-uglify');
 var pump = require('pump');
+
 var concat = require('gulp-concat');
 
 var cleanCSS = require('gulp-clean-css');
@@ -187,14 +188,16 @@ gulp.task('rev', function() {
     var d = gulp.src(path+'/src/lib/*.js')
         .pipe(uglify())
         .pipe(gulp.dest(path + '/dist/lib'))
-
+    console.log('压缩完毕！！！！！！！')
     return merge(b,c,d);
 
 });
 
+
 // html: 替换css、js、img
 gulp.task('html',function(){
     console.log('html: 替换css、js、img中......')
+
     var a = gulp.src([path + '/rev/**/*.json', path + '/src/*.html'])
         .pipe(changed(path + '/dist/*.html'))
         .pipe(revCollector({
@@ -216,15 +219,19 @@ gulp.task('html',function(){
 // --打包任务------------------------------------------------
 
 
-gulp.task('pack',['img'],function(){
+gulp.task('first-step',['img'],function(){
 
     gulp.start('rev'); 
 
 });
 
-gulp.task('packa',['pack'],function(){
+gulp.task('pack',['first-step'],function(){
 
-    gulp.start('html');
+    setTimeout(function(){
+
+        gulp.start('html');
+    },1000)
+
 
 });
 

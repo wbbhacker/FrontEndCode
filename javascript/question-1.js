@@ -175,37 +175,45 @@
 
 
 // ***十二***
+
 // function a(){
+
 // 	console.log(this)
+
 // 	console.log("我是内部");
+
 // 	this.name = function(){
 // 		console.log("我是内部的方法")
 // 	}();
 
 //  	console.log(this)
 
-// 	return {
-// 		b:"c"
-// 	}
+// 	// return this
 // 	// return "c"
+// 	// return {}
 // 	// 没有return 的情况下返回什么
 
 // }
+
 // a.prototype.say = function(){
+
 // 	console.log("我是原型链")
+
 // }();
 
-// console.log(new a());
+// console.log( new a() );
+
 
 // 如果 return "c"
-   // console.log(new a())  打印值为？
+//    console.log(new a())  打印值为？
 //  如果没有return 
-	// console.log(new a())  打印值为？
+// 	console.log(new a())  打印值为？
 
 
 
 
 // ***十三***
+
 // 写一个add函数实现以下结果
 // add(2,5);   // 结果是7
 // add(2)(5);  // 结果为7
@@ -502,6 +510,7 @@
 
 
 // ***二十一***
+
 // function SuperType(){
 // 	this.colors = ["red","blue"];
 // }
