@@ -393,9 +393,11 @@
 
 // console.log(friend.sex)
 // console.log(goodss.name)
-// goodss.say();
+// goodss.say(); 
 
+// console.log(Function.__proto__ == Person.__proto__)
 
+// console.log(typeof Person)
 
 // console.log(animation.prototype)
 
@@ -404,6 +406,7 @@
 // 为什么new 出来的实例 的prototype 为undefined
 // console.log({}.prototype)
 // console.log({}.__proto__)
+// console.log({}.__proto__.__proto__)
 
 // console.log(runs.__proto__)	     //
 // console.log(goodss instanceof goods)
