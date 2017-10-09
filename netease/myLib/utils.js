@@ -90,8 +90,6 @@
 
 		var arr = url.split('?');
 
-		// var reg = new RegExp('(^|&|\\?)=([^&])(&|$)');
-
 		var reg = new RegExp('([^&=]+)=([\w\W]*?)(&|$)','g');
 
 		var arr2 = reg.exec(arr[1]);
@@ -109,10 +107,12 @@
 		return null;
 
 	}
+
 	// 字符串去空
 	utils.trim = function(str){
 		return str.replace(/\s/g,'');
 	}
+	
 
 	// 判断是否原生数组
 	utils.isArray = function(value){
@@ -125,9 +125,6 @@
 		return arr.sort(function(){return 0.5 - Math.random()})
 	}
 
-
 	
-
-
 
 }.call(this))
