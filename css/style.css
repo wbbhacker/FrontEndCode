@@ -154,6 +154,11 @@ img {
     -webkit-tap-highlight-color: transparent;
 }
 
+/*ios禁止长按保存图片*/
+img{
+    pointer-events: none;
+}
+
 
 /*定义滚动条的样式*/
 
@@ -206,4 +211,11 @@ body {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+
+/*滚动的更流畅*/
+.外层滚动框{    
+    overflow-y:scroll;
+    -webkit-overflow-scrolling:touch;
 }
