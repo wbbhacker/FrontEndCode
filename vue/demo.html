@@ -13,47 +13,44 @@
     <title></title>
     <script src="js/vue.min.js"></script>
     <style>
-    	h4{
-    		color:#f0f;
-    	}
+    h4 {
+        color: #f0f;
+    }
     </style>
 </head>
 
 <body>
-	
-
-	<!-- example-2 -->
-	<h4>exampple-2</h4>
+    <!-- example-2 -->
+    <h4>exampple-2</h4>
     <div id="example-2">
         <simple-counter></simple-counter>
         <simple-counter></simple-counter>
         <simple-counter></simple-counter>
     </div>
-	
-	<!-- example-4 -->
-	<h4>exampple-4</h4>
+    <!-- example-4 -->
+    <h4>exampple-4</h4>
     <children id="example-4" message="hello!"></children>
-	
-	<!-- example-3 -->
-	<h4>exampple-5</h4>
+    <!-- example-3 -->
+    <h4>exampple-5</h4>
     <div id="example-5">
-    	<input v-model="message">
-    	<br>
-    	<div >{{ message }}</div>
+        <input v-model="message">
+        <br>
+        <div>{{ message }}</div>
     </div>
-
-	<!-- example-3 -->
-	<h4>exampple-3</h4>
+    <!-- example-3 -->
+    <h4>exampple-3</h4>
     <div id="example-3">
-
         <input v-model="message">
         <br>
         <child v-bind:my-message="message"></child>
-
     </div>
-
+    <!-- example-5 -->
+    <div id="counter-event-example">
+        <p>{{ total }}</p>
+        <button-counter v-on:increment="incrementTotal"></button-counter>
+        <button-counter v-on:increment="incrementTotal"></button-counter>
+    </div>
     <script>
-
     // example-3
     Vue.component('child', {
         props: ['myMessage'],
@@ -62,18 +59,18 @@
 
     new Vue({
         el: '#example-3',
-        data:{
-        	message:''
+        data: {
+            message: ''
         },
 
     });
 
     // example-5
     new Vue({
-    	el:'#example-5',
-    	data:{
-    		message:'实时'
-    	}
+        el: '#example-5',
+        data: {
+            message: '实时'
+        }
     });
 
 
@@ -86,6 +83,7 @@
             };
         }
     });
+
     new Vue({
         el: '#example-2'
     });
@@ -98,7 +96,37 @@
     });
 
     new Vue({
-    	el:'#example-4'
+        el: '#example-4'
+    });
+
+
+    // example-5
+
+
+    Vue.component('button-counter', {
+      template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+      data: function () {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        incrementCounter: function () {
+          this.counter += 1
+          this.$emit('increment')
+        }
+      },
+    })
+    new Vue({
+      el: '#counter-event-example',
+      data: {
+        total: 0
+      },
+      methods: {
+        incrementTotal: function () {
+          this.total += 1
+        }
+      }
     });
 
 
