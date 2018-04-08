@@ -81,6 +81,7 @@ gulp.task('sass', function() {
             cascade: true,
             remove: true
         }))
+
         .pipe(gulp.dest(cssPath))
         .pipe(reload({ stream: true }))
 
@@ -187,7 +188,8 @@ gulp.task('rev', function() {
 
     var d = gulp.src(path+'/src/lib/*.js')
         .pipe(uglify())
-        .pipe(gulp.dest(path + '/dist/lib'))
+        .pipe(gulp.dest(path + '/dist/lib'));
+        
     console.log('压缩完毕！！！！！！！')
     return merge(b,c,d);
 
@@ -234,7 +236,6 @@ gulp.task('pack',['first-step'],function(){
 
 
 });
-
 
 // --命令------------------------------------------------
 
