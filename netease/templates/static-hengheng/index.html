@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+
+    var elem = document.createElement('meta');
+    var h = window.screen.width/640;
+    elem.name = 'viewport';
+    elem.content = 'width=device-width,user-scalable=no,initial-scale='+h;
+    document.getElementsByTagName('head')[0].appendChild(elem);
+
+    
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no" />
+    <title></title>
+    <link rel="stylesheet" href="css/styleReset.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/index.css">
+   
+
+</head>
+<body>
+	<div class="main" id="main"></div>
+    
+    <script src="js/lib/zepto.min.all.js"></script>
+    <script src="js/lib/lodash.min.js"></script>
+    <script src="js/lib/TweenMax.min.js"></script>
+    <script src="js/lib/TimelineMax.min.js"></script>
+    <script src="js/lib/CSSPlugin.min.js"></script>
+    <script src="js/lib/EaselPlugin.min.js"></script>
+    <script src="js/lib/pixi.min.js"></script>
+    <script src="js/lib/pixi-sound.js"></script>
+    <script src="js/lib/Animate.js"></script>
+    <script src="js/lib/Scroller.js"></script>
+	<script src="js/pixi-util.js"></script>
+	<script src="js/pixiData.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
