@@ -447,27 +447,32 @@
 // Object.prototype.a = 'value a';
 // Function.prototype.b = 'value b';
 
-// console.log(foo.a)    // value a
-// console.log(foo.b)    // undefined
-// console.log(F.a)      // value a
-// console.log(F.b)      // value b
+// console.log(foo.a)    
+// console.log(foo.b)    
+// console.log(F.a)      
+// console.log(F.b)      
 // console.log(Object.prototype.__proto__)
 
 // console.log(Function.__proto__)
 
+// console.log(foo.__proto__.__proto__)
+// console.log(F.__proto__.__proto__)
 // foo.a的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 找到value a
 // foo.b的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 没有 ---> foo.__proto__.__proto__ (Object.prototype.__proto__): 没有
 // F.a的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 没有 ---> F.__proto__.__proto__(Object.prototype): 找到value a
 // F.b的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 找到value b
 
 
-// function a(){
-// 	this.name = "wang";
+function a(){
+	this.name = "wang";
+}
 
-// }
-// var b = new a();
-// console.log(b.__proto__)
-// console.log(a.__proto__.__proto__)
+var b = new a();
+
+// console.log(b.__proto__.__proto__)
+
+// console.log(a.__proto__.__proto__.__proto__)
+
 // console.log(Object.__proto__)
 
 // console.log(Object.prototype)
@@ -480,6 +485,7 @@
 // 关于instanceof的结果不要仅从字面上理解, 它的计算规则是: 如果右侧构造函数的prototype属性能在左侧的对象的原型链中找到, 那么就返回true, 否则就返回false
 
 // Object intanceof Function: Object.__proto__ === Function.prototype, 因为结果为true
+console.log(Object instanceof Function)
 // Function instanceof Object: Function.__proto__.__proto__ === Object.prototype, 因为结果也为true
 
 // ***二十***
