@@ -13,10 +13,10 @@
 	<script>
 		// 图像Ping  
 			// 单向通信、GET方式、最常用于跟踪用户点击页面或动态广告曝光次数
-		var url = 'http://10.0.0.92:4000?name=wbb';
+		var url = 'http://10.234.152.26:4000?name=wbb';
 		var img = new Image();
-		img.onload = img.onerror = function(){
-			console.log("this")
+		img.onload = img.onerror = function(res){
+			console.log(res)
 		}
 		img.src = url;
 

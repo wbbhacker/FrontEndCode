@@ -20,24 +20,24 @@ var server = http.createServer(function (request, response) {
     // cors 解决ajax跨域问题
 
  
-    // response.writeHead(200,{"Content-Type":'application/json','charset':'utf-8','Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'PUT,POST,GET,DELETE,OPTIONS'});//可以解决跨域的请求
-    // response.write(json)
-    // response.end();
+    response.writeHead(200,{"Content-Type":'application/json','charset':'utf-8','Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'PUT,POST,GET,DELETE,OPTIONS'});//可以解决跨域的请求
+    response.write(json)
+    response.end();
 
 
 
     
 
     // jsonp 解决跨域问题
-    var str =  qs.callback+'('+JSON.stringify(data)+')';
+    // var str =  qs.callback+'('+JSON.stringify(data)+')';
 
-    console.log(str)
+    // console.log(str)
     
-    response.writeHead(200,{'Content-Type':'application/javascript'});
+    // response.writeHead(200,{'Content-Type':'application/javascript'});
 
-    response.write(str)
+    // response.write(str)
 
-    response.end();
+    // response.end();
 
 
 
