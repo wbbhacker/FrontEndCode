@@ -53,6 +53,7 @@ toCanvas.height = document.body.offsetHeight;
 toCanvas.addEventListener('touchstart', onActDown);
 toCanvas.addEventListener('touchend', onActUp);
 toCanvas.addEventListener('touchmove', onActMove);
+
 toCanvas.addEventListener('mousedown', onActDown);
 toCanvas.addEventListener('mouseup', onActUp);
 toCanvas.addEventListener('mousemove', onActMove);
@@ -80,7 +81,7 @@ function onActMove(e) {
 function onActUp(e) {
 	upPoint = null;
 		
-	toCanvas.getContext('2d').closePath();
+	// toCanvas.getContext('2d').closePath();
 }
 
 </script>

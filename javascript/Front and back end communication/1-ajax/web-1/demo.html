@@ -1,60 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>文档</title>
+    <meta charset="UTF-8">
+    <title>文档</title>
 </head>
+
 <body>
 
 
-	<!-- jsonp解决跨域 -->
-	<div class="box"></div>
-	<script src="lib/jquery-1.10.1.min.js"></script>
-	<!-- 预先定义好的callback函数 -->
-	<!-- <script>
+    <!-- jsonp解决跨域 -->
+    <!-- <div class="box"></div> -->
+    <!-- <script src="lib/jquery-1.10.1.min.js"></script> -->
+    <!-- 预先定义好的callback函数 -->
+    <!-- <script>
 	// 	var callback = function(data){
 	// 		console.log(data.name)
 	// 	}
-	</script>-->
-	<script>
+    </script>-->
+    <script>
 
-		// cors 解决跨域
-		// var url = 'http://192.168.1.93:4000';
-		// $.ajax({
-		// 	url:url,
-		// 	success:function(res){
-		// 		console.log(res.name)
-		// 	}
-		// })
+        // cors 解决跨域
+
+        var url = 'http://10.234.152.26:4000';
+        var xhr = new XMLHttpRequest();
+        xhr.open('post',url);
+        xhr.send(null);
+        xhr.onreadystatechange = function(){
+            if(xhr.status == 200 && xhr.readyState == 4){
+                console.log( xhr.responseText );
+            }
+        }
+            
+        // $.ajax({
+        // 	url:url,
+        // 	success:function(res){
+        // 		console.log(res.name)
+        // 	}
+        // })
+
+        
 
 
-		// jsonp 解决跨域
-			// GET方式
-		// var url = 'http://10.0.0.92:4000?callback=?';
-		// $.ajax({
-		// 	url:url,
-		// 	type:'GET',
-		// 	dataType:'jsonp',
-		// 	success:function(res){
-		// 		console.log(typeof res)
-		// 	}
-		// });
+        // jsonp 解决跨域
+        // GET方式
+        // var url = 'http://10.0.0.92:4000?callback=?';
+        // $.ajax({
+        // 	url:url,
+        // 	type:'GET',
+        // 	dataType:'jsonp',
+        // 	success:function(res){
+        // 		console.log(typeof res)
+        // 	}
+        // });
 
-		// 图像Ping  
-			// 单向通信、GET方式、最常用于跟踪用户点击页面或动态广告曝光次数
-		var url = 'http://10.0.0.92:4000?name=wbb';
-		var img = new Image();
-		img.onload = img.onerror = function(){
-			console.log("this")
-		}
-		img.src = url;
+        // 图像Ping  
+        // 单向通信、GET方式、最常用于跟踪用户点击页面或动态广告曝光次数
+        // var url = 'http://10.0.0.92:4000?name=wbb';
+        // var img = new Image();
+        // img.onload = img.onerror = function () {
+        //     console.log("this")
+        // }
+        // img.src = url;
 
 		// 插入script
 
-	</script>
-	<!-- 通过插入script 来解决跨域 -->
-	<!--
+    </script>
+    <!-- 通过插入script 来解决跨域 -->
+    <!--
 	<script src="http://192.168.1.93:4000?callback=callback"></script>
 	-->
 </body>
+
 </html>

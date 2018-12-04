@@ -1,0 +1,16 @@
+@import 'scssLib.scss';
+html,body{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.main {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.swiper-main{
+	position: relative;
+	height: 100%;
+	width: 100%;
+}

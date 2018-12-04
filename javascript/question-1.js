@@ -1,12 +1,14 @@
 // *** 一 ***
 // var n = 0;
 // function a(){
-// 	var n = 10;
+//     var n = 10;
+    
 // 	function b(){
 // 		n++;
 // 		console.log(n)
 // 		// console.log('1')
-// 	}
+//     }
+    
 // 	b();
 // 	// console.log('2')
 // 	return b;
@@ -37,6 +39,7 @@
 // *** 三 ***
 
 // function b(x,y,a){
+//     console.log(arguments);
 // 	arguments[2] = 10;
 // 	console.log(a);
 // }
@@ -76,6 +79,7 @@
 
 
 // *** 六 ***
+
 // var name = "The window";
 // var object = {
 // 	name:"My Object",
@@ -97,8 +101,8 @@
 // *** 七 ***
 
 // var a = "a";
-// function say(word) {
-
+// function say(a) {
+//     console.log(a);
 // }
 
 // function execute(someFunction, value) {
@@ -121,6 +125,7 @@
 // 	conf();
 // }
 // test(demo);
+
 // 见 一、二
 
 // ***九***
@@ -140,6 +145,7 @@
 // var c = fun(0).fun(1); c.fun(2); c.fun(3); 
 
 
+
 // 闭包的作用：
 // 1.匿名自执行函数
 // 2.延长作用域链
@@ -153,28 +159,29 @@
 // 	return this;
 // }
 // fn.prop = function (){ console.log(2); };
-// fn.prototype.prop = function (){ console.log(3); };
+// fn.prototype.prop = function (){ console. log(3); };
 // var prop = function (){ console.log(4); };
 // function prop() {console.log(5)};
 
-// // 连续代码段， 不是独立的
+// // // 连续代码段， 不是独立的
 
-// fn.prop();  //2
-// prop();  //  4
-// fn().prop(); //1
-// prop(); // 1
-// new fn.prop();
-// new fn().prop();
-// new new fn().prop();
+// fn.prop(); 
+// prop();  
+// fn().prop(); 
+// prop(); 
+// new fn.prop(); 
+// new fn().prop(); 
+// new new fn().prop(); 
 
 // ***十一***
 // console.log(x);//输出：function x(){}
 // var x=1;
+// console.log(x);
 // function x(){}
 
 
 
-// ***十二***
+// ***十二***  不明白
 
 // function a(){
 
@@ -241,8 +248,37 @@
 // 		}
 // 	}
 // }
+
+
 // console.log(add(2,5))
 // console.log(add(2)(5))
+
+
+// 进一步扩展 add(2,3,4) add(2)(3)(4)相同呢  重点
+// function add(num1,num2,num3){
+//     let sum = 0;
+
+//     if(arguments.length  > 1){
+//         for(let i=0 ; i<arguments.length; i++){
+//             sum = sum + arguments[i];
+//         }
+//         return sum;
+//     }else{
+
+//         function addFake(y){  
+//             num1 = num1 + y;  
+//             return addFake;  
+//         };  
+
+//         addFake.toString = addFake.valueOf = function(){return num1;};  
+        
+//         return addFake;  
+//     }
+// }
+
+
+// console.log(add(2,3,4));
+// console.log(add(2)(3)(4));
 
 
 // ***十四***
@@ -257,8 +293,10 @@
 // 	}
 // 	return {x:x,y:y}
 // }
-// // point(2,3)
+// point(2,3)
+
 // console.log(point(2,3))
+// console.log(point())
 
 
 
@@ -269,8 +307,9 @@
 // var s2 = new String('hello');
 
 // console.log(s1 === s2)
-// console.log(s1)
+// console.log(s1 == s2)
 // console.log(s2)
+// 对象通过指针指向的内存地址来做比较。
 
 // var s3 = 'hello';
 // var s4 = 'hello';
@@ -288,7 +327,7 @@
 // var s6 = String('hello');
 
 // console.log(this)
-// console.log(typeof s3)
+// console.log(typeof s1)
 
 
 // ***十六***
@@ -297,19 +336,19 @@
 
 // ***十七***
 
-// console.log(undefined == null);
-// console.log(undefined === null);
-// console.log(undefined == NaN);
-// console.log(undefined === NaN);
-// console.log( null == NaN );
-// console.log( null === NaN );
-// console.log( undefined == 0)
-// console.log( undefined === 0)
-// console.log( null == 0 )
-// console.log(++undefined)
+// console.log(undefined == null);  
+// console.log(undefined === null); 
+// console.log(undefined == NaN); 
+// console.log(undefined === NaN); 
+// console.log( null == NaN ); 
+// console.log( null === NaN ); 
+// console.log( undefined == 0) 
+// console.log( undefined === 0) 
+// console.log( null == 0 ) 
+// console.log(++undefined) 
 // console.log( null === 0 )
 
-// console.log(Number(null))
+// console.log(Number(null)) 
 
 // console.log(var undefined);
 // console.log([] == false );
@@ -326,15 +365,16 @@
 
 
 // console.log(2&3)
-// 	console.log(2|3)
-// 	console.log(~true)    //true boolean   -2
-// 	console.log(NaN == NaN)    //true boolean   -2
-// 	console.log(undefined == undefined)    //true boolean   -2
-// 	console.log(null == null)    //true boolean   -2
-// 	console.log( typeof(NaN) )    
-// 	console.log( typeof(undefined) )    
-// 	console.log( typeof(null) )    
-// 	console.log( typeof([]) )    
+// console.log(2|3)
+// console.log(~true)    //true boolean   -2
+// console.log(NaN == NaN)    
+// console.log(undefined == undefined)    
+// console.log(null == null)    
+
+// console.log( typeof(NaN) )    
+	// console.log( typeof(undefined) )    
+	// console.log( typeof(null) )    
+	// console.log( typeof([]) )    
 
 // ***十八***
 
@@ -350,68 +390,64 @@
 
 // ***十九***
 
-// function Person(){
-// 	this.sex = "man"
-// }
-// function animation(){
+function Person(){
+	this.sex = "man"
+}
+function animation(){
  
-// }
-// function goods(){
-// 	this.name = '冰激淋';
-// 	this.say = function(){
-// 		console.log('ss')
-// 	}
-// }
-// function sun(){
+}
+function goods(){
+	this.name = '冰激淋';
+	this.say = function(){
+		console.log('ss')
+	}
+}
+function sun(){
 
-// }
-// console.log(Person.prototype)
+}
+
+// console.log(Person.prototype);
 
 // Person.prototype = {
-// 	constructor:Person,
-// 	name:"N"
+// 	// constructor:Person,
+// 	// name:"N"
 // }
-// goods.prototype = {
-// 	name:"goods",
-// 	say:function(){
-// 		console.log('www')
-// 	}
-// }
-// animation.prototype.run = {
-// 	name:"animation"
-// }
+goods.prototype = {
+	name:"goods",
+	say:function(){
+		console.log('www')
+	}
+}
+animation.prototype.run = {
+	name:"animation"
+}
 
-// var friend = new Person();
-// var goodss = new goods();
+var friend = new Person();
+var goodss = new goods();
 
-// var runs = new animation();
+var runs = new animation();
 
 // console.log(sun.prototype)
 
 // console.log(friend.__proto__)	 //
 // console.log(goodss.__proto__)    //  这就是有无constructor
 
-// console.log(friend.sex)
-// console.log(goodss.name)
-// goodss.say(); 
 
-// console.log(Function.__proto__ == Person.__proto__)
-
+// console.log(Function.__proto__.__ == Person.__proto__)
 // console.log(typeof Person)
-
 // console.log(animation.prototype)
-
 // console.log(friend.prototype)
+
 
 // 为什么new 出来的实例 的prototype 为undefined
 // console.log({}.prototype)
 // console.log({}.__proto__)
 // console.log({}.__proto__.__proto__)
 
-// console.log(runs.__proto__)	     //
+// console.log(runs.__proto__)
+
 // console.log(goodss instanceof goods)
 // console.log(goodss.__proto__ === goods.prototype )
-// console.log(goods.prototype)
 // console.log(goods.prototype)
 
 
@@ -421,7 +457,7 @@
 
 // console.log(friend instanceof Object )
 // console.log(friend instanceof Person )
-// console.log(friend.constructor)
+
 // console.log( friend.constructor == Person )
 // console.log( friend.constructor == Object )
 

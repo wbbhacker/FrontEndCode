@@ -1,0 +1,46 @@
+// pc 端
+
+@mixin opacity($opacity:50) {
+  	opacity: $opacity / 100;
+ 	filter: alpha(opacity=$opacity);
+}
+
+// wap 端
+
+@mixin bgm($url) {
+	background-image: url($url);
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+@mixin postl($l,$t) {
+	position: absolute;
+	top:$t;
+	left:$l;
+}
+@mixin pos($w,$h,$l,$t) {
+	position: absolute;
+	top:$t;
+	left:$l;
+	width:$w;
+	height:$h;
+}
+
+$baseFontSize: 100px !default;
+
+@function pxToRem($px) {
+  @return $px / $baseFontSize * 1rem;
+}
+
+@mixin posR($w,$h,$l,$t) {
+	position: absolute;
+	top:pxToRem($t);
+	left:pxToRem($l);
+	width:pxToRem($w);
+	height:pxToRem($h);
+}
+
+@mixin postlR($l,$t) {
+	position: absolute;
+	top:pxToRem($t);
+	left:pxToRem($l);
+}

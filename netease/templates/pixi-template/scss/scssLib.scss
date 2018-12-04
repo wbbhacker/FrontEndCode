@@ -1,0 +1,42 @@
+// pc 端
+@mixin opacity($opacity:50) {
+    opacity: $opacity / 100;
+    filter: alpha(opacity=$opacity);
+}
+
+// wap 端
+@mixin bgm($url) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+@mixin postl( $l,$t) {
+    position: absolute;
+    top: $t;
+    left: $l;
+}
+
+@mixin pos($w, $h, $l, $t) {
+    position: absolute;
+    top: $t;
+    left: $l;
+    width: $w;
+    height: $h;
+}
+
+@mixin center($dir) {
+    @if $dir==h {
+        left: 50%;
+    	transform: translateX(-50%) ;
+    }
+    @else if $dir==v {
+    	top: 50%;
+   		transform:  translateY(-50%);
+    }
+    @else {
+        left: 50%;
+	    top: 50%;
+	    transform: translateX(-50%) translateY(-50%);
+    }
+}

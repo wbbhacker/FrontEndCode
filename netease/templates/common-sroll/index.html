@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no" />
+    <title></title>
+    <link rel="stylesheet" href="css/swiper.3.1.7.min.css">
+    <link rel="stylesheet" href="css/styleReset.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+        var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+        rem();
+        function rem(psd) {
+            var psd = 640,
+                wWidth = window.innerWidth,
+                fontSize = 100*wWidth / psd;
+            document.documentElement.style.fontSize = fontSize + 'px';
+        }
+        window.addEventListener(resizeEvt,rem, false);
+    </script>
+</head>
+
+<body>
+
+    <div class="main ">
+        <div class="swiper-container swiper-main">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">slider1</div>
+                <div class="swiper-slide">slider2</div>
+                <div class="swiper-slide">slider3</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/zepto.min.all.js"></script>
+    <script src="js/swiper.3.1.7.min.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
